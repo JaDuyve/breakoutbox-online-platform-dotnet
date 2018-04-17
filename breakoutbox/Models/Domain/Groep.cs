@@ -1,6 +1,6 @@
 ﻿namespace breakoutbox.Models.Domain
 {
-    public class groep
+    public class Groep
     {
         
     }
