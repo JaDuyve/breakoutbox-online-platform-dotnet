@@ -1,8 +1,10 @@
-﻿namespace breakoutbox.Models.Domain
+﻿using System;
+
+namespace breakoutbox.Models.Domain
 {
     public interface IGroepRepository
     {
-//        Groep GetById(long ID);
+        Groep GetById(Decimal ID);
         
         
     }

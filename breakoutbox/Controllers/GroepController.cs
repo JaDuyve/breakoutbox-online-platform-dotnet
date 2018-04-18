@@ -16,8 +16,8 @@ namespace breakoutbox.Controllers
 
         public IActionResult Index()
         {
-            
-            IList<Groep> groep = _groepRepository
+
+            Groep groep = _groepRepository.GetById(1);
             return View(groep);
         }
     }

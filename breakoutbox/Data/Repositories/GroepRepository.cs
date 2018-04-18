@@ -1,4 +1,6 @@
-﻿using breakoutbox.Models.Domain;
+﻿using System;
+using System.Linq;
+using breakoutbox.Models.Domain;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +17,10 @@ namespace breakoutbox.Data.Repositories
             _groepen = context.Groepen;
         }
         
-        public Groep GetById(long ID)
+        public Groep GetById(Decimal Id)
         {
             // nog uitwerken
-            return null;
+            return _groepen.SingleOrDefault(g => g.Id == Id);
         }
     }
 }
