@@ -8,7 +8,9 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Oefening> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("Oefening");
+
+            builder.HasKey(t => t.Naam);
         }
     }
 }

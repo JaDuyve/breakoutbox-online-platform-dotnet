@@ -8,7 +8,9 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Groepsbewerking> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("Groepsbewerking");
+
+            builder.HasKey(t => t.Naam);
         }
     }
 }
