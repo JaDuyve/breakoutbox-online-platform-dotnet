@@ -8,7 +8,9 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Toegangscode> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("Toegangscode");
+
+            builder.HasKey(t => t.ToegangscodeId);
         }
     }
 }

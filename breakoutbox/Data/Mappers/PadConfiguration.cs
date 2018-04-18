@@ -8,7 +8,9 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Pad> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("Pad");
+
+            builder.HasKey(t => t.PadId);
         }
     }
 }

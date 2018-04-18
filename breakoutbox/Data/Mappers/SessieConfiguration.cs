@@ -9,7 +9,9 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Sessie> builder)
         {
-            throw new System.NotImplementedException();
+            builder.ToTable("Sessie");
+
+            builder.HasKey(t => t.Naam);
         }
     }
 }
