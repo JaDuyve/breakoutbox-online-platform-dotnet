@@ -15,10 +15,10 @@ namespace breakoutbox.Data.Repositories
             _groepen = context.Groepen;
         }
         
-//        public Groep GetById(long ID)
-//        {
-//            // nog uitwerken
-//            return _groepen;
-//        }
+        public Groep GetById(long ID)
+        {
+            // nog uitwerken
+            return null;
+        }
     }
 }
