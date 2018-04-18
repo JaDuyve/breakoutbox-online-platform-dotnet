@@ -1,0 +1,22 @@
+﻿@model IEnumerable<breakoutbox.Models.Domain.Groep>
+
+@{
+    ViewData["Title"] = "Groepen";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    @foreach (var groep in Model)
+    {
+        <tr>
+            <td>
+                @groep.Naam
+            </td>
+            @foreach (var pad in groep.Paden)
+            {
+                @pad.Value.Oefening.Naam
+            }
+        </tr>
+    }
+</table>

@@ -55,7 +55,7 @@ namespace breakoutbox
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Groep}/{action=Index}/{id?}");
             });
         }
     }
