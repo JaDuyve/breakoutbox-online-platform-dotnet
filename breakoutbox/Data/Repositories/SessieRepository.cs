@@ -14,6 +14,7 @@ namespace breakoutbox.Data.Repositories
             _context = _context;
             _sessies = _context.Sessies;
         }
+        
 
         public IEnumerable<Sessie> GetAll()
         {
@@ -28,7 +29,7 @@ namespace breakoutbox.Data.Repositories
 
         public void SaveChanges()
         {
-            throw new System.NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

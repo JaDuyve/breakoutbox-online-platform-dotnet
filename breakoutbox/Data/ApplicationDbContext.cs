@@ -8,6 +8,8 @@ namespace breakoutbox.Data
     public class ApplicationDbContext: DbContext
     {
         public DbSet<Sessie> Sessies { get; set; }
+        public DbSet<Pad> Padden { get; set; }
+        public DbSet<Groep> Groepen { get; set; }
         
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
