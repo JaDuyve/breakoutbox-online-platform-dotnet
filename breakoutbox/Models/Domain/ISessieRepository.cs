@@ -5,7 +5,7 @@ namespace breakoutbox.Models.Domain
     public interface ISessieRepository
     {
         IEnumerable<Sessie> GetAll();
-        Sessie GetById(int sessieId);
+        Sessie GetById(string naam);
         void SaveChanges();
     }
 }

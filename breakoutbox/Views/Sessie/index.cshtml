@@ -1,0 +1,19 @@
+@model IEnumerable<breakoutbox.Models.Domain.Sessie>
+
+@{
+    ViewData["Title"] = "Sessies";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    @foreach (var sessie in Model)
+    {
+        <tr>
+            <td>
+                <a asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">@sessie.Naam</a>
+            </td>
+           <td>@sessie.StartDatum</td>
+        </tr>
+    }
+</table>

@@ -1,22 +1,24 @@
-﻿@model IEnumerable<breakoutbox.Models.Domain.Groep>
-
+﻿@model breakoutbox.Models.Domain.Sessie
 @{
-    ViewData["Title"] = "Groepen";
+    ViewData["Title"] = Model.Naam;
 }
 
-<h2>@ViewData["Title"]</h2>
-
+<h2>Groepen</h2>
 <table class="table">
-    @foreach (var groep in Model)
+    <tr>
+        <th>Naam</th>
+        <th>Klas</th>
+        <th>Contactleer</th>
+        <th></th>
+    </tr>
+    @foreach (var groep in Model.Groepen)
     {
         <tr>
-            <td>
-                @groep.Naam
-            </td>
-            @foreach (var pad in groep.Paden)
-            {
-                @pad.Value.Oefening.Naam
-            }
+            <td>@groep.Naam</td>
+            <td>@groep.Klas</td>
+            <td><input type="checkbox" @(groep.Contactleer ? "checked" : "") /></td>
+            <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Id">Start</a></td>
         </tr>
     }
 </table>
+<a asp-controller="Sessie" asp-action="Index">Back</a>

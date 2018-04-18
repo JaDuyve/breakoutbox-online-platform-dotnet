@@ -2,8 +2,7 @@
 {
     public interface IGroepRepository
     {
-//        Groep GetById(long ID);
-        
+        Groep GetById(long ID);
         
     }
 }

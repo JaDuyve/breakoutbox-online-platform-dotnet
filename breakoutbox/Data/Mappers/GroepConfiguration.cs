@@ -10,7 +10,11 @@ namespace breakoutbox.Data.Mappers
         {
             builder.ToTable("Groep");
 
-            builder.HasKey(t => t.ID);
+//            builder.HasKey(t => t.Id);
+
+//            builder.Property(g => g.Leerlingen);
+//            builder.HasMany(g => g.Paden)
+//                .WithOne();
         }
     }
 }

@@ -1,22 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace breakoutbox.Models.Domain
 {
     public class Groep
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
         public string Naam { get; set; }
         public string Klas { get; set; }
         public bool Contactleer { get; set; }
-        public List<string> Leerlingen { get; set; }
-        public Dictionary<int, Pad> Paden { get; set; }
-
-        public Groep(string naam, string klas, bool contactleer, List<string> leerlingen, Dictionary<int, Pad> paden)
+//        public ICollection<String> Leerlingen { get; set; }
+        public IDictionary<int, Pad> Paden { get; set; }
+        
+        protected Groep()
+        {
+            
+        }
+        
+        public Groep(string naam, string klas, bool contactleer/*, List<string> leerlingen*/, Dictionary<int, Pad> paden)
         {
             Naam = naam;
             Klas = klas;
             Contactleer = contactleer;
-            Leerlingen = leerlingen;
+//            Leerlingen = leerlingen;
             Paden = paden;
         }
 

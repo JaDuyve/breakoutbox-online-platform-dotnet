@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,20 +12,20 @@ namespace breakoutbox.Data.Repositories
 
         public SessieRepository(ApplicationDbContext context)
         {
-            _context = _context;
+            _context = context;
             _sessies = _context.Sessies;
         }
         
 
         public IEnumerable<Sessie> GetAll()
         {
-            return _sessies.Include(s => s.Groepen);
+            return _sessies/*.Include(s => s.Groepen)*/.ToList();
             
         }
 
-        public Sessie GetById(int sessieId)
+        public Sessie GetById(string naam)
         {
-            throw new System.NotImplementedException();
+            return _sessies.Include(s => s.Groepen).SingleOrDefault(s => s.Naam == naam);
         }
 
         public void SaveChanges()

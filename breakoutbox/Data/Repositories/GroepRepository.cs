@@ -1,6 +1,7 @@
 ﻿using breakoutbox.Models.Domain;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace breakoutbox.Data.Repositories
 {
@@ -17,8 +18,7 @@ namespace breakoutbox.Data.Repositories
         
         public Groep GetById(long ID)
         {
-            // nog uitwerken
-            return null;
+            return _groepen.Include(p => p.Paden).SingleOrDefault(g => g.Id == ID);
         }
     }
 }
