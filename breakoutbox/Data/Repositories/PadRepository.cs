@@ -12,7 +12,7 @@ namespace breakoutbox.Data.Repositories
         public PadRepository(ApplicationDbContext context)
         {
             _context = context;
-            _padden = context.Padden;
+            _padden = context.Paden;
         }
         
         public Pad GetById(int padId)

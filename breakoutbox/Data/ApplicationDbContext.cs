@@ -30,8 +30,10 @@ namespace breakoutbox.Data
             modelBuilder.ApplyConfiguration(new GroepConfiguration());
             modelBuilder.ApplyConfiguration(new GroepsBewerkingConfiguration());
             modelBuilder.ApplyConfiguration(new OefeningConfiguration());
-            modelBuilder.ApplyConfiguration(new BobConfiguration());
+            modelBuilder.ApplyConfiguration(new PadConfiguration());
             modelBuilder.ApplyConfiguration(new SessieConfiguration());
+            modelBuilder.ApplyConfiguration(new ToegangscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new VakConfiguration());
         }
     }
 }
