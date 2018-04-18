@@ -10,7 +10,7 @@ namespace breakoutbox.Models.Domain
         public string Klas { get; set; }
         public bool Contactleer { get; set; }
 //        public ICollection<String> Leerlingen { get; set; }
-        public Dictionary<int, Pad> Paden { get; set; }
+        public IDictionary<int, Pad> Paden { get; set; }
         
         protected Groep()
         {

@@ -14,7 +14,7 @@ namespace breakoutbox.Data.Mappers
 
 //            builder.Property(g => g.Leerlingen);
 //            builder.HasMany(g => g.Paden)
-//                .AsMap()
+//                .WithOne();
         }
     }
 }

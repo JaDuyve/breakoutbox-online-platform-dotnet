@@ -1,0 +1,19 @@
+@model IEnumerable<breakoutbox.Models.Domain.Sessie>
+
+@{
+    ViewData["Title"] = "Groepen";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    @foreach (var sessie in Model)
+    {
+        <tr>
+            <td>
+                @sessie.Naam
+            </td>
+           
+        </tr>
+    }
+</table>
