@@ -21,5 +21,10 @@ namespace breakoutbox.Models.Domain
             Groepen = groepen;
             Bob = bob;
         }
+
+        protected Sessie()
+        {
+            
+        }
     }
 }

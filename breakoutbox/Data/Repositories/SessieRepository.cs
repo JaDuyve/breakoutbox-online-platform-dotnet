@@ -23,10 +23,10 @@ namespace breakoutbox.Data.Repositories
             
         }
 
-        public Sessie GetById(string naam)
-        {
-            return _sessies.Include(s => s.Groepen).SingleOrDefault(s => s.Naam == naam);
-        }
+        //public Sessie GetById(string naam)
+       // {
+       //     return _sessies.Include(s => s.Groepen).SingleOrDefault(s => s.Naam == naam);
+       // }
 
         public void SaveChanges()
         {

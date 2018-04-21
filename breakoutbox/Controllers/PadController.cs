@@ -10,7 +10,7 @@ namespace breakoutbox.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return null;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace breakoutbox.Data.Mappers
 
 //            builder.HasKey(t => t.Id);
 
-//            builder.Property(g => g.Leerlingen);
+           builder.Property(g => g.Leerlingen);
 //            builder.HasMany(g => g.Paden)
 //                .WithOne();
         }

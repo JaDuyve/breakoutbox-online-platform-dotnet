@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using breakoutbox.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +17,20 @@ namespace breakoutbox.Controllers
             _sessieRepository = sessieRepository;
         }
 
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
-            Sessie sessie = _sessieRepository.GetById(id);
-            if (sessie == null)
+            //Sessie sessie = _sessieRepository.GetById(id);
+            //if (sessie == null)
+           // {
+           //     return NotFound();
+           // }
+
+            Groep groep = _groepRepository.GetById(1);
+            if (groep == null)
             {
                 return NotFound();
             }
-
-            return View(sessie);
+            return RedirectToAction(nameof(Start));
         }
 
         public IActionResult Start(long id)
