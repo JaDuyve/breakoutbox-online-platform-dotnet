@@ -13182,28 +13182,30 @@
     ]
   },
   "packageFolders": {
-    "/Users/thibaut/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Michiel\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/breakoutbox.csproj",
+      "projectUniqueName": "D:\\Michiel\\Documents\\Schooljaar 2017-2018\\Projecten II\\Dot Net\\code\\breakoutbox\\breakoutbox.csproj",
       "projectName": "breakoutbox",
-      "projectPath": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/breakoutbox.csproj",
-      "packagesPath": "/Users/thibaut/.nuget/packages/",
-      "outputPath": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/obj/",
+      "projectPath": "D:\\Michiel\\Documents\\Schooljaar 2017-2018\\Projecten II\\Dot Net\\code\\breakoutbox\\breakoutbox.csproj",
+      "packagesPath": "C:\\Users\\Michiel\\.nuget\\packages\\",
+      "outputPath": "D:\\Michiel\\Documents\\Schooljaar 2017-2018\\Projecten II\\Dot Net\\code\\breakoutbox\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/thibaut/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Michiel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -13241,7 +13243,6 @@
             "version": "[1.1.5, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
