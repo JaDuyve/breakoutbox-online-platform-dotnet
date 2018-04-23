@@ -17,20 +17,16 @@ namespace breakoutbox.Controllers
             _sessieRepository = sessieRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
-            //Sessie sessie = _sessieRepository.GetById(id);
-            //if (sessie == null)
-           // {
-           //     return NotFound();
-           // }
+            Sessie sessie = _sessieRepository.GetById(id);
 
-            Groep groep = _groepRepository.GetById(1);
-            if (groep == null)
+            if (sessie == null)
             {
                 return NotFound();
             }
-            return RedirectToAction(nameof(Start));
+
+            return View(sessie);
         }
 
         public IActionResult Start(long id)
