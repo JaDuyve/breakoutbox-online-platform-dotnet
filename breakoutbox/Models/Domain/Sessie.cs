@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace breakoutbox.Models
 {
@@ -7,7 +8,7 @@ namespace breakoutbox.Models
     {
         public Sessie()
         {
-            SessieGroep = new HashSet<SessieGroep>();
+            SessieGroep = new Collection<SessieGroep>();
         }
 
         public string Naam { get; set; }

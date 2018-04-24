@@ -1,4 +1,4 @@
-﻿@model breakoutbox.Models.Domain.Sessie
+﻿@model Sessie
 @{
     ViewData["Title"] = Model.Naam;
 }
@@ -11,13 +11,13 @@
         <th>Contactleer</th>
         <th></th>
     </tr>
-    @foreach (var groep in Model.Groepen)
+    @foreach (var groep in Model.SessieGroep)
     {
         <tr>
-            <td>@groep.Naam</td>
-            <td>@groep.Klas</td>
-            <td><input type="checkbox" @(groep.Contactleer ? "checked" : "") /></td>
-            <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Id">Start</a></td>
+            <td>@groep.Groepen.Naam</td>
+            <td>@groep.Groepen.Klas</td>
+            <td><input type="checkbox" @(groep.Groepen.Contactleer ? "checked" : "") /></td>
+            <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id">Start</a></td>
         </tr>
     }
 </table>

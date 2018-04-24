@@ -28,6 +28,11 @@ namespace breakoutbox.Data.Repositories
         {
             return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
         }
+
+        /*public Sessie GetById(string naam)
+        {
+            return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
+        }*/
   
 
         public void SaveChanges()

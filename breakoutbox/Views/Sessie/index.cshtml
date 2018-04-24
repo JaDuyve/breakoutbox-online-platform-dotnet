@@ -1,4 +1,4 @@
-@model IEnumerable<breakoutbox.Models.Domain.Sessie>
+@model IEnumerable<Sessie>
 
 @{
     ViewData["Title"] = "Sessies";
@@ -13,7 +13,7 @@
             <td>
                 <a asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">@sessie.Naam</a>
             </td>
-           <td>@sessie.StartDatum</td>
+           <td>@sessie.Startdatum</td>
         </tr>
     }
 </table>
