@@ -6,6 +6,7 @@ namespace breakoutbox.Models.Domain
     {
         IEnumerable<Sessie> GetAll();
         Sessie GetById(string naam);
+        Sessie GetByCode(int code);
         void SaveChanges();
     }
 }

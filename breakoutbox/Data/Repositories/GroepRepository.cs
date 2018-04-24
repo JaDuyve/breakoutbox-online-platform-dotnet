@@ -17,7 +17,7 @@ namespace breakoutbox.Data.Repositories
             _groepen = context.Groep;
         }
         
-        public Groep GetById(long ID)
+        public Groep GetById(decimal ID)
         {
             return _groepen.SingleOrDefault(g => g.Id == ID);
         }

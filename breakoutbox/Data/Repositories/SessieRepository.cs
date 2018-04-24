@@ -16,7 +16,11 @@ namespace breakoutbox.Data.Repositories
             _context = context;
             _sessies = _context.Sessie;
         }
-        
+
+        public Sessie GetByCode(int code)
+        {
+            return _sessies.Where(s => s.Code == code).SingleOrDefault();
+        }
 
         public IEnumerable<Sessie> GetAll()
         {
@@ -34,6 +38,7 @@ namespace breakoutbox.Data.Repositories
             return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
         }*/
   
+        
 
         public void SaveChanges()
         {

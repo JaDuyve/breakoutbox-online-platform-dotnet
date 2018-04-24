@@ -30,7 +30,7 @@ namespace breakoutbox.Controllers
             return View(sessie);
         }
 
-        public IActionResult Start(long id)
+        public IActionResult Start(decimal id)
         {
             Groep groep = _groepRepository.GetById(id);
             if (groep == null)
