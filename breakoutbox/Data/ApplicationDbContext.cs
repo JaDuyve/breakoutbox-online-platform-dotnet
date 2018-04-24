@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using breakoutbox.Data.Mappers;
+using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 

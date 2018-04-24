@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
+using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 

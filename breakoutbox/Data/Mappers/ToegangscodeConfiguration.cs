@@ -1,4 +1,5 @@
-﻿using breakoutbox.Models.Domain;
+﻿using breakoutbox.Models;
+using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,7 +11,7 @@ namespace breakoutbox.Data.Mappers
         {
             builder.ToTable("Toegangscode");
 
-            builder.HasKey(t => t.ToegangscodeId);
+            builder.HasKey(t => t.Id);
         }
     }
 }

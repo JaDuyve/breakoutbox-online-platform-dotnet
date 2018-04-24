@@ -31,6 +31,7 @@ namespace breakoutbox
             services.AddScoped<ISessieRepository, SessieRepository>();
             services.AddScoped<IPadRepository, PadRepository>();
             services.AddScoped<IGroepRepository, GroepRepository>();
+            services.AddScoped<IOefeningRepository, OefeningRepository>();
             
             
             services.AddMvc();

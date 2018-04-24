@@ -1,4 +1,5 @@
-﻿using breakoutbox.Models.Domain;
+﻿using breakoutbox.Models;
+using breakoutbox.Models.Domain;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

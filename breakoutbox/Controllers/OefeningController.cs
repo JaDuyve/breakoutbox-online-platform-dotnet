@@ -1,4 +1,5 @@
-﻿using breakoutbox.Models.Domain;
+﻿using breakoutbox.Models;
+using breakoutbox.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;

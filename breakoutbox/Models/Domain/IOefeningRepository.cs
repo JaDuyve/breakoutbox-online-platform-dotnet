@@ -7,7 +7,7 @@ namespace breakoutbox.Models.Domain
 {
     public interface IOefeningRepository
     {
-        Oefening GetById(int oefId);
+        Oefening GetById(string oefId);
         IEnumerable<Oefening> GetAll();
         void SaveChanges();
     }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,10 +19,10 @@ namespace breakoutbox.Data.Repositories
         public Pad GetById(int padId)
         {
             return _padden
-                .Include(p => p.Oefening)
+                .Include(p => p.OefeningNaam)
                 .Include(p => p.Toegangscode)
-                .Include(p => p.Groepsbewerking)
-                .SingleOrDefault(p => p.PadId == padId);
+                .Include(p => p.GroepsbewerkingNaam)
+                .SingleOrDefault(p => p.Id == padId);
         }
 
         public void SaveChanges()

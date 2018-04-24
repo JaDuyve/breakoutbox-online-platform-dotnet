@@ -1,4 +1,5 @@
-﻿using breakoutbox.Models.Domain;
+﻿using breakoutbox.Models;
+using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,7 +13,7 @@ namespace breakoutbox.Data.Mappers
 
 //            builder.HasKey(t => t.Id);
 
-           builder.Property(g => g.Leerlingen);
+//           builder.Property(g => g.Leerlingen);
 //            builder.HasMany(g => g.Paden)
 //                .WithOne();
         }

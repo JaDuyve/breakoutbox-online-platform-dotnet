@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,7 @@ namespace breakoutbox.Data.Repositories
 
         public Sessie GetById(string naam)
         {
-            return _sessies.Include(s => s.Groepen).SingleOrDefault(s => s.Naam == naam);
+            return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
         }
   
 
