@@ -36,6 +36,7 @@ namespace breakoutbox.Data
             modelBuilder.ApplyConfiguration(new SessieConfiguration());
             modelBuilder.ApplyConfiguration(new ToegangscodeConfiguration());
             modelBuilder.ApplyConfiguration(new VakConfiguration());
+            modelBuilder.ApplyConfiguration(new BobActieConfiguration());
         }
     }
 }

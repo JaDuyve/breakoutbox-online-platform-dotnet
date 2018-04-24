@@ -16,9 +16,9 @@
     @foreach (var groep in Model.SessieGroep)
     {
         <tr>
-            <td>@groep.SessieNaam</td>
-            <td>@groep.SessieNaam</td>
-            @*<td><input type="checkbox" @(groep.SessieNaam ? "checked" : "") /></td>*@
+            <td>@groep.Groepen.Naam</td>
+            <td>@groep.Groepen.Klas</td>
+            <td><input type="checkbox" @(groep.Groepen.Contactleer ? "checked" : "") /></td>
             <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.SessieNaam">Start</a></td>
         </tr>
     }

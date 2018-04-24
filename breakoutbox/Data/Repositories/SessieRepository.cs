@@ -26,7 +26,7 @@ namespace breakoutbox.Data.Repositories
 
         public Sessie GetById(string naam)
         {
-            return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
+            return _sessies.Include(s => s.SessieGroep).ThenInclude(g => g.Groepen).SingleOrDefault(s => s.Naam == naam);
         }
 
         /*public Sessie GetById(string naam)
