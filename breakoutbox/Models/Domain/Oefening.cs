@@ -1,27 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Oefening
+    public partial class Oefening
     {
-        public int OefeningId { get; set; }
-        public string Naam { get; set; }      
-        public string Opgave { get; set; }    
-        public string Feedback { get; set; }   
-        public string Antwoord { get; set; }  
-        public int Tijdslimiet { get; set; }  
-
-        public Vak Vak { get; set; }
-
-        public Oefening(int id, string naam, string opgave, string feedback, string antwoord, int tijdslimiet, Vak vak)
+        public Oefening()
         {
-            OefeningId = id;
-            Naam = naam;
-            Opgave = opgave;
-            Feedback = feedback;
-            Antwoord = antwoord;
-            Tijdslimiet = tijdslimiet;
-            Vak = vak;
+            BobOefening = new HashSet<BobOefening>();
+            OefeningDoelstellingscode = new HashSet<OefeningDoelstellingscode>();
+            OefeningGroepsbewerking = new HashSet<OefeningGroepsbewerking>();
+            Pad = new HashSet<Pad>();
         }
+
+        public string Naam { get; set; }
+        public string Antwoord { get; set; }
+        public string Feedback { get; set; }
+        public string Opgave { get; set; }
+        public int? Tijdslimiet { get; set; }
+        public string VakNaam { get; set; }
+
+        public Vak VakNaamNavigation { get; set; }
+        public ICollection<BobOefening> BobOefening { get; set; }
+        public ICollection<OefeningDoelstellingscode> OefeningDoelstellingscode { get; set; }
+        public ICollection<OefeningGroepsbewerking> OefeningGroepsbewerking { get; set; }
+        public ICollection<Pad> Pad { get; set; }
     }
 }

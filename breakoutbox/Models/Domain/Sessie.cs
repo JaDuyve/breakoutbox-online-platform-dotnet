@@ -1,30 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Sessie
+    public partial class Sessie
     {
+        public Sessie()
+        {
+            SessieGroep = new HashSet<SessieGroep>();
+        }
+
         public string Naam { get; set; }
-        public DateTime StartDatum { get; set; }
-        public int Code { get; set; }
-        public bool ContactLeer { get; set; }
-        public IList<Groep> Groepen { get; set; }
-        public Bob Bob { get; set; }
+        public int? Code { get; set; }
+        public bool? Contactleer { get; set; }
+        public DateTime? Startdatum { get; set; }
+        public string BobNaam { get; set; }
 
-        public Sessie(string naam, DateTime startDatum, int code, bool contactLeer, List<Groep> groepen, Bob bob)
-        {
-            Naam = naam;
-            StartDatum = startDatum;
-            Code = code;
-            ContactLeer = contactLeer;
-            Groepen = groepen;
-            Bob = bob;
-        }
-
-        protected Sessie()
-        {
-            
-        }
+        public Bob BobNaamNavigation { get; set; }
+        public ICollection<SessieGroep> SessieGroep { get; set; }
     }
 }

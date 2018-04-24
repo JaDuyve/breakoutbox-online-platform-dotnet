@@ -1,25 +1,22 @@
-﻿namespace breakoutbox.Models.Domain
+﻿using System;
+using System.Collections.Generic;
+
+namespace breakoutbox.Models
 {
-    public class Groepsbewerking
+    public partial class Groepsbewerking
     {
-        #region Properties
-
-        public string Naam { get; set; }
-        public string Opgave { get; set; }
-        public string Waarde { get; set; }
-        
-
-        #endregion
-
-        #region Constructors
-
-        public Groepsbewerking(string opgave, string naam, string waarde)
+        public Groepsbewerking()
         {
-            Naam = naam;
-            Opgave = opgave;
-            Waarde = waarde;
+            OefeningGroepsbewerking = new HashSet<OefeningGroepsbewerking>();
+            Pad = new HashSet<Pad>();
         }
 
-        #endregion
+        public string Naam { get; set; }
+        public string Bewerking { get; set; }
+        public string Opgave { get; set; }
+        public string Waarde { get; set; }
+
+        public ICollection<OefeningGroepsbewerking> OefeningGroepsbewerking { get; set; }
+        public ICollection<Pad> Pad { get; set; }
     }
 }

@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Bob
+    public partial class Bob
     {
-        public string Naam { get; set; }
-        public List<Oefening> LijstOefeningen { get; set; }
-        public List<Actie> LijstActies { get; set; }
-
-        public Bob(string naam, List<Oefening> lijstOefeningen, List<Actie> lijstActies)
+        public Bob()
         {
-            Naam = naam;
-            LijstOefeningen = lijstOefeningen;
-            LijstActies = lijstActies;
+            BobActie = new HashSet<BobActie>();
+            BobOefening = new HashSet<BobOefening>();
+            Sessie = new HashSet<Sessie>();
         }
+
+        public string Naam { get; set; }
+
+        public ICollection<BobActie> BobActie { get; set; }
+        public ICollection<BobOefening> BobOefening { get; set; }
+        public ICollection<Sessie> Sessie { get; set; }
     }
 }

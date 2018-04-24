@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Vak
+    public partial class Vak
     {
+        public Vak()
+        {
+            Oefening = new HashSet<Oefening>();
+        }
+
         public string Naam { get; set; }
         public string Kleur { get; set; }
 
-        public Vak(string naam, string kleur)
-        {
-            Naam = naam;
-            Kleur = kleur;
-        }
+        public ICollection<Oefening> Oefening { get; set; }
     }
 }

@@ -1,34 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Groep
+    public partial class Groep
     {
-        public Decimal Id { get; set; }
-        public string Naam { get; set; }
-        public string Klas { get; set; }
-        public bool Contactleer { get; set; }
-        public IEnumerable<String> Leerlingen { get; set; }
-        //public IDictionary<int, Pad> Paden { get; set; }
-        
-        protected Groep()
+        public Groep()
         {
-            
-        }
-        
-        public Groep(string naam, string klas, bool contactleer, List<string> leerlingen)
-        {
-            Naam = naam;
-            Klas = klas;
-            Contactleer = contactleer;
-            Leerlingen = leerlingen;
-            //Paden = paden;
+            GroepPad = new HashSet<GroepPad>();
+            SessieGroep = new HashSet<SessieGroep>();
         }
 
-        public bool isContactleer()
-        {
-            return Contactleer;
-        }
+        public decimal Id { get; set; }
+        public bool? Contactleer { get; set; }
+        public string Klas { get; set; }
+        public string Naam { get; set; }
+
+        public ICollection<GroepPad> GroepPad { get; set; }
+        public ICollection<SessieGroep> SessieGroep { get; set; }
     }
 }

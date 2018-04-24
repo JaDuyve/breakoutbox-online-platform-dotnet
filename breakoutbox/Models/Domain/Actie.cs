@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace breakoutbox.Models.Domain
+namespace breakoutbox.Models
 {
-    public class Actie
+    public partial class Actie
     {
+        public Actie()
+        {
+            BobActie = new HashSet<BobActie>();
+            Pad = new HashSet<Pad>();
+        }
+
         public string Naam { get; set; }
         public string Opgave { get; set; }
 
-        public Actie(string naam, string opgave)
-        {
-            Naam = naam;
-            Opgave = opgave;
-        }
+        public ICollection<BobActie> BobActie { get; set; }
+        public ICollection<Pad> Pad { get; set; }
     }
 }

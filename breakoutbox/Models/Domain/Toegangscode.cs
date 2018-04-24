@@ -1,21 +1,18 @@
-﻿namespace breakoutbox.Models.Domain
+﻿using System;
+using System.Collections.Generic;
+
+namespace breakoutbox.Models
 {
-    public class Toegangscode
+    public partial class Toegangscode
     {
-        #region Properties
-
-        public int ToegangscodeId { get; set; }
-        public string Code { get; set; }
-        
-        #endregion
-
-        #region Constructors
-
-        public Toegangscode(string code)
+        public Toegangscode()
         {
-            Code = code;
+            Pad = new HashSet<Pad>();
         }
 
-        #endregion
+        public decimal Id { get; set; }
+        public int? Code { get; set; }
+
+        public ICollection<Pad> Pad { get; set; }
     }
 }
