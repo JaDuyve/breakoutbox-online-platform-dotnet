@@ -10,5 +10,10 @@ namespace breakoutbox.Models
 
         public Groepsbewerking LijstGroepsbewerkingenNaamNavigation { get; set; }
         public Oefening OefeningNaamNavigation { get; set; }
+
+        public OefeningGroepsbewerking()
+        {
+            
+        }
     }
 }

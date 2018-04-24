@@ -16,5 +16,10 @@ namespace breakoutbox.Models
             BobNaam = bobNaam;
             LijstActiesNaam = lijstActiesNaam;
         }
+
+        public BobActie()
+        {
+                
+        }
     }
 }

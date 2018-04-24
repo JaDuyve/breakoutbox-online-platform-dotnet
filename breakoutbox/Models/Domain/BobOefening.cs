@@ -10,5 +10,10 @@ namespace breakoutbox.Models
 
         public Bob BobNaamNavigation { get; set; }
         public Oefening LijstOefeningenNaamNavigation { get; set; }
+
+        public BobOefening()
+        {
+                
+        }
     }
 }

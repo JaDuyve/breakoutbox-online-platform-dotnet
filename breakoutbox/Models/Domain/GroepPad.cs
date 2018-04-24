@@ -11,5 +11,10 @@ namespace breakoutbox.Models
 
         public Groep Groep { get; set; }
         public Pad Paden { get; set; }
+
+        public GroepPad()
+        {
+                
+        }
     }
 }

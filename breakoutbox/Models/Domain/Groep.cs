@@ -20,6 +20,9 @@ namespace breakoutbox.Models
             SessieGroep = new HashSet<SessieGroep>();
         }
 
-        
+        public Groep()
+        {
+                
+        }
     }
 }
