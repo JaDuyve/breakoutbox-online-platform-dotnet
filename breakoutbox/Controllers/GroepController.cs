@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -20,13 +21,12 @@ namespace breakoutbox.Controllers
 
         public IActionResult Index(string id)
         {
-           Sessie sessie = _sessieRepository.GetById(id);
+           Sessie sessie = _sessieRepository.GetById("test");
 
             if (sessie == null)
             {
                 return NotFound();
             }
-
             return View(sessie);
         }
 

@@ -8,13 +8,21 @@ namespace breakoutbox.Models
     {
         public Sessie()
         {
-            SessieGroep = new Collection<SessieGroep>();
+                
+        }
+        public Sessie(string naam, int code, bool contactleer, DateTime startDatum, Collection<SessieGroep> groepen)
+        {
+            Naam = naam;
+            Code = code;
+            Contactleer = contactleer;
+            Startdatum = startDatum;
+            SessieGroep = groepen;
         }
 
         public string Naam { get; set; }
-        public int? Code { get; set; }
-        public bool? Contactleer { get; set; }
-        public DateTime? Startdatum { get; set; }
+        public int Code { get; set; }
+        public bool Contactleer { get; set; }
+        public DateTime Startdatum { get; set; }
         public string BobNaam { get; set; }
 
         public Bob BobNaamNavigation { get; set; }

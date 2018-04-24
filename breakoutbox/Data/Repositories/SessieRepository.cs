@@ -8,13 +8,13 @@ namespace breakoutbox.Data.Repositories
 {
     public class SessieRepository: ISessieRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BoBContext _context;
         private readonly DbSet<Sessie> _sessies;
 
-        public SessieRepository(ApplicationDbContext context)
+        public SessieRepository(BoBContext context)
         {
             _context = context;
-            _sessies = _context.Sessies;
+            _sessies = _context.Sessie;
         }
         
 

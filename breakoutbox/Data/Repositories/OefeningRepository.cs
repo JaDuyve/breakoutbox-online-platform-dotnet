@@ -8,13 +8,13 @@ namespace breakoutbox.Data.Repositories
 {
     public class OefeningRepository : IOefeningRepository
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly BoBContext _dbContext;
         private readonly DbSet<Oefening> _oefenigen;
 
-        public OefeningRepository(ApplicationDbContext dbContext)
+        public OefeningRepository(BoBContext dbContext)
         {
             _dbContext = dbContext;
-            _oefenigen = _dbContext.Oefeningen;
+            _oefenigen = _dbContext.Oefening;
         }
 
         public Oefening GetById(string naam)

@@ -8,6 +8,7 @@ namespace breakoutbox.Data
 {
     public class ApplicationDbContext: DbContext
     {
+        
         public DbSet<Actie> Acties { get; set; }
         public DbSet<Bob> Bobs { get; set; }
         public DbSet<Groep> Groepen { get; set; } 

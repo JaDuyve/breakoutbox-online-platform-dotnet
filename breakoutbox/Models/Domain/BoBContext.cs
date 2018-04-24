@@ -25,6 +25,11 @@ namespace breakoutbox.Models
 
         // Unable to generate entity type for table 'dbo.Groep_LEERLINGEN'. Please see the warning messages.
 
+        public BoBContext(DbContextOptions options) : base(options)
+        {
+              
+        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

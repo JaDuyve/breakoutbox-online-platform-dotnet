@@ -8,13 +8,13 @@ namespace breakoutbox.Data.Repositories
 {
     public class GroepRepository: IGroepRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BoBContext _context;
         private readonly DbSet<Groep> _groepen;
 
-        public GroepRepository(ApplicationDbContext context)
+        public GroepRepository(BoBContext context)
         {
             _context = context;
-            _groepen = context.Groepen;
+            _groepen = context.Groep;
         }
         
         public Groep GetById(long ID)

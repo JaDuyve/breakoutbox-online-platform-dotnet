@@ -5,6 +5,10 @@ namespace breakoutbox.Models
 {
     public partial class SessieGroep
     {
+        public SessieGroep()
+        {
+                
+        }
         public string SessieNaam { get; set; }
         public decimal GroepenId { get; set; }
 
