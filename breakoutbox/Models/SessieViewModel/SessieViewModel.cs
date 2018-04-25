@@ -17,5 +17,10 @@ namespace breakoutbox.Models.SessieViewModel
         {
             Code = code;
         }
+
+        public SessieViewModel()
+        {
+                
+        }
     }
 }
