@@ -37,7 +37,14 @@ namespace breakoutbox.Data
             modelBuilder.ApplyConfiguration(new SessieConfiguration());
             modelBuilder.ApplyConfiguration(new SessieGroepConfiguration());
             modelBuilder.ApplyConfiguration(new ToegangscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepfinishedstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepgeblokkeerdstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepgekozenstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepkanspelenstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepspeelstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepstateConfiguration());
             modelBuilder.ApplyConfiguration(new VakConfiguration());
+
         }
     }
 }

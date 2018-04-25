@@ -10,6 +10,8 @@ namespace breakoutbox.Models
             Oefening = new HashSet<Oefening>();
         }
 
+        
+        
         public string Naam { get; set; }
         public string Kleur { get; set; }
 

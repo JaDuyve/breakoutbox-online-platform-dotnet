@@ -12,8 +12,14 @@ namespace breakoutbox.Models
         public virtual DbSet<BobOefening> BobOefening { get; set; }
         public virtual DbSet<Doelstellingscode> Doelstellingscode { get; set; }
         public virtual DbSet<Groep> Groep { get; set; }
+        public virtual DbSet<Groepfinishedstate> Groepfinishedstate { get; set; }
+        public virtual DbSet<Groepgeblokkeerdstate> Groepgeblokkeerdstate { get; set; }
+        public virtual DbSet<Groepgekozenstate> Groepgekozenstate { get; set; }
+        public virtual DbSet<Groepkanspelenstate> Groepkanspelenstate { get; set; }
         public virtual DbSet<GroepPad> GroepPad { get; set; }
         public virtual DbSet<Groepsbewerking> Groepsbewerking { get; set; }
+        public virtual DbSet<Groepspeelstate> Groepspeelstate { get; set; }
+        public virtual DbSet<Groepstate> Groepstate { get; set; }
         public virtual DbSet<Oefening> Oefening { get; set; }
         public virtual DbSet<OefeningDoelstellingscode> OefeningDoelstellingscode { get; set; }
         public virtual DbSet<OefeningGroepsbewerking> OefeningGroepsbewerking { get; set; }
@@ -25,11 +31,6 @@ namespace breakoutbox.Models
 
         // Unable to generate entity type for table 'dbo.Groep_LEERLINGEN'. Please see the warning messages.
 
-        public BoBContext(DbContextOptions options) : base(options)
-        {
-              
-        }
-        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -154,6 +155,10 @@ namespace breakoutbox.Models
 
                 entity.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
+                entity.Property(e => e.CurrentstateId)
+                    .HasColumnName("CURRENTSTATE_ID")
+                    .HasColumnType("numeric(19, 0)");
+
                 entity.Property(e => e.Klas)
                     .HasColumnName("KLAS")
                     .HasMaxLength(255)
@@ -163,6 +168,73 @@ namespace breakoutbox.Models
                     .HasColumnName("NAAM")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Progress).HasColumnName("PROGRESS");
+
+                entity.HasOne(d => d.Currentstate)
+                    .WithMany(p => p.Groep)
+                    .HasForeignKey(d => d.CurrentstateId)
+                    .HasConstraintName("GROEP_CURRENTSTATE_ID");
+            });
+
+            modelBuilder.Entity<Groepfinishedstate>(entity =>
+            {
+                entity.ToTable("GROEPFINISHEDSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Groepfinishedstate)
+                    .HasForeignKey<Groepfinishedstate>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("GROEPFINISHEDSTATE_ID");
+            });
+
+            modelBuilder.Entity<Groepgeblokkeerdstate>(entity =>
+            {
+                entity.ToTable("GROEPGEBLOKKEERDSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Groepgeblokkeerdstate)
+                    .HasForeignKey<Groepgeblokkeerdstate>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("GROEPGEBLOKKEERDSTATED");
+            });
+
+            modelBuilder.Entity<Groepgekozenstate>(entity =>
+            {
+                entity.ToTable("GROEPGEKOZENSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Groepgekozenstate)
+                    .HasForeignKey<Groepgekozenstate>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("GROEPGEKOZENSTATE_ID");
+            });
+
+            modelBuilder.Entity<Groepkanspelenstate>(entity =>
+            {
+                entity.ToTable("GROEPKANSPELENSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Groepkanspelenstate)
+                    .HasForeignKey<Groepkanspelenstate>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("GROEPKANSPELENSTATE_ID");
             });
 
             modelBuilder.Entity<GroepPad>(entity =>
@@ -220,6 +292,45 @@ namespace breakoutbox.Models
                     .HasColumnName("WAARDE")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Groepspeelstate>(entity =>
+            {
+                entity.ToTable("GROEPSPEELSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithOne(p => p.Groepspeelstate)
+                    .HasForeignKey<Groepspeelstate>(d => d.Id)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_GROEPSPEELSTATE_ID");
+            });
+
+            modelBuilder.Entity<Groepstate>(entity =>
+            {
+                entity.ToTable("GROEPSTATE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("numeric(19, 0)")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Dtype)
+                    .HasColumnName("DTYPE")
+                    .HasMaxLength(31)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.GroepId)
+                    .HasColumnName("GROEP_ID")
+                    .HasColumnType("numeric(19, 0)");
+
+                entity.HasOne(d => d.GroepNavigation)
+                    .WithMany(p => p.Groepstate)
+                    .HasForeignKey(d => d.GroepId)
+                    .HasConstraintName("FK_GROEPSTATE_GROEP_ID");
             });
 
             modelBuilder.Entity<Oefening>(entity =>
