@@ -16,7 +16,7 @@ namespace breakoutbox.Controllers
         public IActionResult Index()
         {
             IEnumerable<Oefening> oefeningen = _oefeningRepository.GetAll().OrderBy(o => o.Naam).ToList();
-            return View(oefeningen);
+            return View();
         }
     }
 }

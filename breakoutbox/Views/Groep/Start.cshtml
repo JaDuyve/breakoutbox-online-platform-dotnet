@@ -1,12 +1,13 @@
-﻿@model Groep
+﻿@model breakoutbox.Models.OefeningViewModel.AntwoordViewModel
+
 @{
     ViewData["Title"] = "Gamescherm";
 }
 <h1>Gamescherm</h1>
-<h2>@Model.Naam</h2>
+<h2>@Model.Groepsnaam</h2>
     
-<div>
-    <h3>Oefeningnaam</h3>
-    <p>Opgave</p>
-</div>
+@Html.Partial("_Oefening", Model)
+
+
+
 
