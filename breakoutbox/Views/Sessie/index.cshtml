@@ -19,8 +19,34 @@
         {
             <tr>
                 <th scope="row">1</th>
-                <td><a asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">@sessie.Naam</a></td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#SessieModal">@sessie.Naam</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="SessieModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Sessiecode toevoegen</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form  asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">
+                                    <div class="modal-body">
+                                        <label>Voer uw sessiecode in</label>
+                                        <input type="number" required />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Controleer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </td>
                 <td>@sessie.Startdatum</td>
             </tr>}
-    </tbody>   
+    </tbody>
 </table>
+
