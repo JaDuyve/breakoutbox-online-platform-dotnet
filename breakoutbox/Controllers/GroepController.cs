@@ -23,7 +23,7 @@ namespace breakoutbox.Controllers
 
         public IActionResult Index(string id)
         {
-           Sessie sessie = _sessieRepository.GetById("test");
+           Sessie sessie = _sessieRepository.GetById(id);
            
             if (sessie == null)
             {
