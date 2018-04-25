@@ -9,9 +9,20 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Actie> builder)
         {
-            builder.ToTable("Actie");
+            builder.HasKey(e => e.Naam);
 
-            builder.HasKey(t => t.Naam);
+            builder.ToTable("ACTIE");
+
+            builder.Property(e => e.Naam)
+                .HasColumnName("NAAM")
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .ValueGeneratedNever();
+
+            builder.Property(e => e.Opgave)
+                .HasColumnName("OPGAVE")
+                .HasMaxLength(255)
+                .IsUnicode(false);
 
         }
     }

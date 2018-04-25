@@ -7,13 +7,13 @@ namespace breakoutbox.Data.Repositories
 {
     public class PadRepository: IPadRepository
     {
-        private readonly BoBContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly DbSet<Pad> _padden;
 
-        public PadRepository(BoBContext context)
+        public PadRepository(ApplicationDbContext context)
         {
             _context = context;
-            _padden = context.Pad;
+            _padden = context.Paden;
         }
         
         public Pad GetById(int padId)

@@ -26,13 +26,12 @@ namespace breakoutbox
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BoBContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ISessieRepository, SessieRepository>();
             services.AddScoped<IPadRepository, PadRepository>();
             services.AddScoped<IGroepRepository, GroepRepository>();
-            services.AddScoped<IOefeningRepository, OefeningRepository>();
             
             
             services.AddMvc();

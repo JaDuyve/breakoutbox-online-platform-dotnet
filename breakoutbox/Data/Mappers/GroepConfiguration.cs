@@ -9,13 +9,24 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Groep> builder)
         {
-            builder.ToTable("Groep");
+            builder.ToTable("GROEP");
 
-//            builder.HasKey(t => t.Id);
+            builder.Property(e => e.Id)
+                .HasColumnName("ID")
+                .HasColumnType("numeric(19, 0)")
+                .ValueGeneratedOnAdd();
 
-//           builder.Property(g => g.Leerlingen);
-//            builder.HasMany(g => g.Paden)
-//                .WithOne();
+            builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
+
+            builder.Property(e => e.Klas)
+                .HasColumnName("KLAS")
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
+            builder.Property(e => e.Naam)
+                .HasColumnName("NAAM")
+                .HasMaxLength(255)
+                .IsUnicode(false);
         }
     }
 }

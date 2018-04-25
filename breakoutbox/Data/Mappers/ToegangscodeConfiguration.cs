@@ -9,9 +9,14 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Toegangscode> builder)
         {
-            builder.ToTable("Toegangscode");
+            builder.ToTable("TOEGANGSCODE");
 
-            builder.HasKey(t => t.Id);
+            builder.Property(e => e.Id)
+                .HasColumnName("ID")
+                .HasColumnType("numeric(19, 0)")
+                .ValueGeneratedOnAdd();
+
+            builder.Property(e => e.Code).HasColumnName("CODE");
         }
     }
 }
