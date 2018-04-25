@@ -1,22 +1,26 @@
 @model IEnumerable<Sessie>
 
 @{
-    ViewData["Title"] = "Sessies";
+    ViewData["Title"] = "Sessie selecteren";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <table class="table">
-    @foreach (var sessie in Model)
-    {
+    <thead class="thead-dark">
         <tr>
-            <td>
-                <a asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">@sessie.Naam</a>
-                <ul>
-                    <li></li>
-                </ul>
-            </td>
-           <td>@sessie.Startdatum</td>
+            <th scope="col">#</th>
+            <th scope="col">Sessienaam</th>
+            <th scope="col">Startdatum</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var sessie in Model)
+        {
+            <tr>
+                <th scope="row">1</th>
+                <td><a asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">@sessie.Naam</a></td>
+                <td>@sessie.Startdatum</td>
+            </tr>}
+    </tbody>   
 </table>
