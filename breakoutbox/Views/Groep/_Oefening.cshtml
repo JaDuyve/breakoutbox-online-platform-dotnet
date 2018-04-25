@@ -1,9 +1,9 @@
 ﻿@model breakoutbox.Models.OefeningViewModel.AntwoordViewModel
-
 <div>
-    <form method="post">
-        <h3>@Model.Oefening.Naam</h3>
-        <p>@Model.Oefening.Opgave</p>
+    <form method="post" action="/Groep/Start/@Model.Groep.Id">
+        <h3>@Model.Pad.OefeningNaamNavigation.Naam</h3>
+        <p>@Model.Pad.OefeningNaamNavigation.Opgave</p>
+        <p>@Model.Pad.GroepsbewerkingNaamNavigation.Opgave</p>
         <div>
             <input asp-for="Antwoord" class="form-control"/>
         </div>
