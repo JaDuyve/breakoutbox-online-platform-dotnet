@@ -4,8 +4,11 @@
         <h3>@Model.Pad.OefeningNaamNavigation.Naam</h3>
         <p>@Model.Pad.OefeningNaamNavigation.Opgave</p>
         <p>@Model.Pad.GroepsbewerkingNaamNavigation.Opgave</p>
+
+        <embed src="MyHome.pdf" width="500" height="850">
+
         <div>
-            <input asp-for="Antwoord" class="form-control"/>
+            <input asp-for="Antwoord" class="form-control" />
         </div>
         <div>
             <button class="btn btn-primary" type="submit">Beantwoord</button>
