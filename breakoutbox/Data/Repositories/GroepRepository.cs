@@ -19,7 +19,16 @@
          
          public Groep GetById(decimal ID)
          {
-             return _groepen.Include(g => g.GroepPad).ThenInclude(gp => gp.Paden).ThenInclude(p => p.OefeningNaamNavigation).SingleOrDefault(g => g.Id == ID);
+             return _groepen
+                 .Include(g => g.GroepPad).ThenInclude(gp => gp.Paden)
+                     .ThenInclude(p => p.OefeningNaamNavigation)
+                 .Include(g => g.GroepPad).ThenInclude(gp => gp.Paden)
+                     .ThenInclude(p => p.GroepsbewerkingNaamNavigation)
+                 .Include(g => g.GroepPad).ThenInclude(gp => gp.Paden)
+                     .ThenInclude(p => p.ActieNaamNavigation)
+                 .Include(g => g.GroepPad).ThenInclude(gp => gp.Paden)
+                     .ThenInclude(p => p.Toegangscode)
+                 .SingleOrDefault(g => g.Id == ID);
          }
  
      }

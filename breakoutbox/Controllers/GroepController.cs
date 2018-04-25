@@ -40,13 +40,13 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            ViewData["Oefening"] = groep.GroepPad.ElementAt(1).Paden.OefeningNaamNavigation;
+            ViewData["Oefening"] = groep.GroepPad.ElementAt(0).Paden.OefeningNaamNavigation;
 
-            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden.OefeningNaamNavigation, groep.Naam));
+            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(0).Paden, groep));
         }
 
         [HttpPost]
-        public IActionResult Start(long id, AntwoordViewModel antwoordViewModel)
+        public IActionResult Start(decimal id, AntwoordViewModel antwoordViewModel)
         {
             Groep groep = _groepRepository.GetById(id);
 
@@ -55,11 +55,11 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            if (groep.GroepPad.ElementAt(1).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
+            if (groep.GroepPad.ElementAt(0).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
-                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden.OefeningNaamNavigation, "antwoord was goed"));
+                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
             }
-            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden.OefeningNaamNavigation, "antwoord was slecht"));
+            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
 
         }
     }

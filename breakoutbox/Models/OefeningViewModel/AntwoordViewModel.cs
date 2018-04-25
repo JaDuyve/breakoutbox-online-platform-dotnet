@@ -3,12 +3,18 @@
     public class AntwoordViewModel
     {
         public string Antwoord { get; set; }
-        public Oefening Oefening { get; set; }
-        public string Groepsnaam { get; set; }
-        public AntwoordViewModel(Oefening oefening, string groepsnaam)
+        public Pad Pad { get; set; }
+        public Groep Groep { get; set; }
+        
+        public AntwoordViewModel(Pad pad,  Groep groep)
         {
-            Oefening = oefening;
-            Groepsnaam = groepsnaam;
+            Pad = pad;
+            Groep = groep;
+        }
+
+        public AntwoordViewModel()
+        {
+            
         }
     }
     
