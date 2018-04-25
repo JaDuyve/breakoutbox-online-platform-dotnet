@@ -4,23 +4,25 @@
 }
 
 
-<p>@Model.Code</p>
-<h2>Groepen</h2>
+<h2>Groep selecteren</h2>
 <table class="table">
-    <tr>
-        <th>Naam</th>
-        <th>Klas</th>
-        <th>Contactleer</th>
-        <th></th>
-    </tr>
-    @foreach (var groep in Model.SessieGroep)
-    {
+    <thead class="thead-dark">
         <tr>
-            <td>@groep.Groepen.Naam</td>
-            <td>@groep.Groepen.Klas</td>
-            <td><input type="checkbox" @(groep.Groepen.Contactleer ? "checked" : "") /></td>
-            <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.SessieNaam">Start</a></td>
+            <th scope="col">naam</th>
+            <th scope="col">Klas</th>
+            <th scope="col">Contactleer</th>
+            <th scope="col"></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var groep in Model.SessieGroep)
+        {
+            <tr>
+                <td>@groep.Groepen.Naam</td>
+                <td>@groep.Groepen.Klas</td>
+                <td><input type="checkbox" /></td>
+                <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.SessieNaam"><button type="button" class="btn btn-secondary">Start</button></a></td>
+            </tr>}
+     </tbody>
 </table>
 <a asp-controller="Sessie" asp-action="Index">Back</a>
