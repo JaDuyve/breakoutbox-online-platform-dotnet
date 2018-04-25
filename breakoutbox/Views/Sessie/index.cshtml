@@ -1,4 +1,5 @@
-@model IEnumerable<Sessie>
+
+@model breakoutbox.Models.SessieViewModel.SessieViewModel
 
 @{
     ViewData["Title"] = "Sessie selecteren";
@@ -15,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var sessie in Model)
+        @foreach (var sessie in Model.Sessies)
         {
             <tr>
                 <th scope="row">1</th>
@@ -31,10 +32,12 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form  asp-controller="Groep" asp-action="Index" asp-route-id="@sessie.Naam">
+                                <form  method="post" role="form" action="/Sessie/Index/@sessie.Naam">
                                     <div class="modal-body">
-                                        <label>Voer uw sessiecode in</label>
-                                        <input type="number" required />
+                                        <div class="form-group">
+                                            <label>Voer uw sessiecode in</label>
+                                            <input type="number" required id="sessieCode" asp-for="Code" />
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
