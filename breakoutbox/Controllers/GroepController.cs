@@ -80,9 +80,9 @@ namespace breakoutbox.Controllers
             {
                 sftp.Connect();
 
-                using (var file = System.IO.File.OpenWrite(filename))
+                using (Stream stream = System.IO.File.Create("./wwwroot/docs/" + filename))
                 {
-                    sftp.DownloadFile(remoteDirectory +filename, file);
+                    sftp.DownloadFile(remoteDirectory +filename, stream);
                 }
 
                 sftp.Disconnect();
