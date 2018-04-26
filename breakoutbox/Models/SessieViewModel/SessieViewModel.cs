@@ -13,9 +13,14 @@ namespace breakoutbox.Models.SessieViewModel
         {
             Sessies = sessies;
         }
+        public SessieViewModel(int code)
+        {
+            Code = code;
+        }
+
         public SessieViewModel()
         {
-
+                
         }
     }
 }
