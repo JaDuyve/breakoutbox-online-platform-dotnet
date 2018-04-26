@@ -18,4 +18,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Opgave_getallenleer oefening 2_Bassil,+2012,+DBMS+performance.pdf" />
+  </ItemGroup>
 </Project>
