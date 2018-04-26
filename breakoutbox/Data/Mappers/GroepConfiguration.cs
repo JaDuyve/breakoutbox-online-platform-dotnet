@@ -18,6 +18,10 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
+            builder.Property(e => e.CurrentstateId)
+                .HasColumnName("CURRENTSTATE_ID")
+                .HasColumnType("numeric(19, 0)");
+
             builder.Property(e => e.Klas)
                 .HasColumnName("KLAS")
                 .HasMaxLength(255)
@@ -27,6 +31,13 @@ namespace breakoutbox.Data.Mappers
                 .HasColumnName("NAAM")
                 .HasMaxLength(255)
                 .IsUnicode(false);
+
+            builder.Property(e => e.Progress).HasColumnName("PROGRESS");
+
+            builder.HasOne(d => d.Currentstate)
+                .WithMany(p => p.Groep)
+                .HasForeignKey(d => d.CurrentstateId)
+                .HasConstraintName("GROEP_CURRENTSTATE_ID");
         }
     }
 }

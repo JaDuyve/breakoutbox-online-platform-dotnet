@@ -1,7 +1,12 @@
-﻿namespace breakoutbox.Models.Domain
+﻿using System;
+using System.Collections.Generic;
+
+namespace breakoutbox.Models
 {
-    public class GroepKanSpelenState
+    public partial class Groepkanspelenstate
     {
-        
+        public decimal Id { get; set; }
+
+        public Groepstate IdNavigation { get; set; }
     }
 }
