@@ -8,7 +8,7 @@ namespace breakoutbox.Data.Mappers
     {
         public void Configure(EntityTypeBuilder<Groepfinishedstate> builder)
         {
-
+            builder.Property(f => f.IdF);
 
 
 

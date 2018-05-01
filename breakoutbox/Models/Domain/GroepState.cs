@@ -19,7 +19,7 @@ namespace breakoutbox.Models
         }
 
         
-
+        public decimal Id { get; set; }
         public Groep Groep { get; set; }
         public decimal? GroepId { get; set; }
 

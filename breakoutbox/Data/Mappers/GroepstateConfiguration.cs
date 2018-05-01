@@ -10,6 +10,8 @@ namespace breakoutbox.Data.Mappers
         {
             builder.ToTable("GROEPSTATE");
 
+            builder.HasKey(g => g.Id);
+            
             builder.HasOne(d => d.Groep)
                 .WithOne(g => g.Currentstate)
                 .HasForeignKey<Groep>(g => g.CurrentstateId)

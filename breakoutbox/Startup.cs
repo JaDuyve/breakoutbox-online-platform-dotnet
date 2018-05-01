@@ -56,7 +56,7 @@ namespace breakoutbox
                     "{controller=Sessie}/{action=Index}/{id?}");
             });
             
-            breakoutBoxDataInitializer.InitializeData();
+//            breakoutBoxDataInitializer.InitializeData();
         }
     }
 }
