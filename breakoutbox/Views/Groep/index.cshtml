@@ -20,8 +20,8 @@
             <tr>
                 <td>@groep.Groepen.Naam</td>
                 <td>@groep.Groepen.Klas</td>
-                <td><input type="checkbox" /></td>
-                <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.SessieNaam"><button type="button" class="btn btn-secondary">Start</button></a></td>
+                <td><input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false "/></td>
+                <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id"><button type="button" class="btn btn-secondary">Start</button></a></td>
             </tr>}
      </tbody>
 </table>

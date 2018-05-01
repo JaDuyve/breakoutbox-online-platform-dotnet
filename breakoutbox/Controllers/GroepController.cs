@@ -40,7 +40,7 @@ namespace breakoutbox.Controllers
 
         public IActionResult Start(decimal id)
         {
-            Groep groep = _groepRepository.GetById(1);
+            Groep groep = _groepRepository.GetById(id);
             if (groep == null)
             {
                 return NotFound();
