@@ -29,5 +29,10 @@ namespace breakoutbox.Data.Repositories
                 .ThenInclude(p => p.Toegangscode)
                 .SingleOrDefault(g => g.Id == ID);
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChangesAsync();
+        }
     }
 }

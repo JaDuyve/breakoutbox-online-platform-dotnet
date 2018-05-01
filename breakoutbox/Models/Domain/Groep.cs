@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using breakoutbox.Models.Domain;
 
 namespace breakoutbox.Models
 {
@@ -22,6 +23,7 @@ namespace breakoutbox.Models
         public ICollection<GroepPad> GroepPad { get; set; }
         public ICollection<Groepstate> Groepstate { get; set; }
         public ICollection<SessieGroep> SessieGroep { get; set; }
+        public string Leerlingen { get; set; } 
         public decimal? CurrentstateId { get; set; }
         
         public void Blok()

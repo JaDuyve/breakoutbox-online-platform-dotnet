@@ -41,10 +41,15 @@ namespace breakoutbox.Controllers
         public IActionResult Start(decimal id)
         {
             Groep groep = _groepRepository.GetById(id);
+           
             if (groep == null)
             {
                 return NotFound();
             }
+            
+            groep.KanSpelen();
+            
+            _groepRepository.SaveChanges();
 
             ViewData["Oefening"] = groep.GroepPad.ElementAt(0).Paden.OefeningNaamNavigation;
             getFile(groep.GroepPad.ElementAt(0).Paden.OefeningNaamNavigation.Opgave);

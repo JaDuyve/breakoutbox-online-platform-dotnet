@@ -17,6 +17,10 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
+//            builder.HasMany(g => g.Leerlingen)
+//                .WithOne()
+//                .OnDelete(DeleteBehavior.Cascade);
+            
             builder.HasOne(g => g.Currentstate)
                 .WithOne(gr => gr.Groep)
                 .HasForeignKey<Groepstate>(gr => gr.GroepId)
