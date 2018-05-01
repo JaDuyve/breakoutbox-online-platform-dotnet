@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class OefeningDoelstellingscodeConfiguration:IEntityTypeConfiguration<OefeningDoelstellingscode>
+    public class OefeningDoelstellingscodeConfiguration : IEntityTypeConfiguration<OefeningDoelstellingscode>
     {
         public void Configure(EntityTypeBuilder<OefeningDoelstellingscode> builder)
         {
-            builder.HasKey(e => new { e.OefeningNaam, e.DoelstellingscodesCode });
+            builder.HasKey(e => new {e.OefeningNaam, e.DoelstellingscodesCode});
 
             builder.ToTable("OEFENING_DOELSTELLINGSCODE");
 

@@ -1,15 +1,14 @@
 ﻿using breakoutbox.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class SessieGroepConfiguration:IEntityTypeConfiguration<SessieGroep>
+    public class SessieGroepConfiguration : IEntityTypeConfiguration<SessieGroep>
     {
         public void Configure(EntityTypeBuilder<SessieGroep> builder)
         {
-            builder.HasKey(e => new { e.SessieNaam, e.GroepenId });
+            builder.HasKey(e => new {e.SessieNaam, e.GroepenId});
 
             builder.ToTable("SESSIE_GROEP");
 

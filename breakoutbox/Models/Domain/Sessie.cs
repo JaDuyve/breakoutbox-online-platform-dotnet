@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace breakoutbox.Models
 {
-    public partial class Sessie
+    public class Sessie
     {
         public Sessie()
         {

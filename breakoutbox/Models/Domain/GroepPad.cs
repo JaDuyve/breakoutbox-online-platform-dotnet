@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace breakoutbox.Models
+﻿namespace breakoutbox.Models
 {
-    public partial class GroepPad
+    public class GroepPad
     {
         public decimal GroepId { get; set; }
         public decimal PadenId { get; set; }
@@ -11,10 +8,5 @@ namespace breakoutbox.Models
 
         public Groep Groep { get; set; }
         public Pad Paden { get; set; }
-
-        public GroepPad()
-        {
-                
-        }
     }
 }

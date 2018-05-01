@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace breakoutbox.Data.Repositories
 {
-    public class SessieRepository: ISessieRepository
+    public class SessieRepository : ISessieRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Sessie> _sessies;
@@ -24,21 +24,20 @@ namespace breakoutbox.Data.Repositories
 
         public IEnumerable<Sessie> GetAll()
         {
-            return _sessies/*.Include(s => s.Groepen)*/.ToList();
-            
+            return _sessies /*.Include(s => s.Groepen)*/.ToList();
         }
 
         public Sessie GetById(string naam)
         {
-            return _sessies.Include(s => s.SessieGroep).ThenInclude(g => g.Groepen).SingleOrDefault(s => s.Naam == naam);
+            return _sessies.Include(s => s.SessieGroep).ThenInclude(g => g.Groepen)
+                .SingleOrDefault(s => s.Naam == naam);
         }
 
         /*public Sessie GetById(string naam)
         {
             return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
         }*/
-  
-        
+
 
         public void SaveChanges()
         {

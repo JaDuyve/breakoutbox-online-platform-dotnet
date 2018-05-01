@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace breakoutbox.Models
+﻿namespace breakoutbox.Models
 {
-    public partial class SessieGroep
+    public class SessieGroep
     {
-        public SessieGroep()
-        {
-                
-        }
         public string SessieNaam { get; set; }
         public decimal GroepenId { get; set; }
 

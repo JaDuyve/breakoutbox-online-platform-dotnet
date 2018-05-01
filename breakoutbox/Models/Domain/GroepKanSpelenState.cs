@@ -1,12 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace breakoutbox.Models
+﻿namespace breakoutbox.Models
 {
-    public partial class Groepkanspelenstate
+    public class Groepkanspelenstate: Groepstate
     {
-        public decimal Id { get; set; }
 
-        public Groepstate IdNavigation { get; set; }
+
+        public Groepkanspelenstate(Groep groep):base(groep)
+        {
+            
+        }
+
+        public override void Finish()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Blok()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void Spelen()
+        {
+            Groep.ToState(new Groepspeelstate(Groep));
+        }
+
+        public override void KanSpelen()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void GekozenEnVergrendeld()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

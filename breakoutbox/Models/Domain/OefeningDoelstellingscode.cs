@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace breakoutbox.Models
+﻿namespace breakoutbox.Models
 {
-    public partial class OefeningDoelstellingscode
+    public class OefeningDoelstellingscode
     {
-        public OefeningDoelstellingscode()
-        {
-                
-        }
         public string OefeningNaam { get; set; }
         public string DoelstellingscodesCode { get; set; }
 

@@ -1,5 +1,3 @@
-using System;
-
 namespace breakoutbox.Models
 {
     public class ErrorViewModel

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class GroepPadConfiguration:IEntityTypeConfiguration<GroepPad>
+    public class GroepPadConfiguration : IEntityTypeConfiguration<GroepPad>
     {
         public void Configure(EntityTypeBuilder<GroepPad> builder)
         {
-            builder.HasKey(e => new { e.GroepId, e.PadenId });
+            builder.HasKey(e => new {e.GroepId, e.PadenId});
 
             builder.ToTable("GROEP_PAD");
 
@@ -32,6 +32,7 @@ namespace breakoutbox.Data.Mappers
                 .WithMany(p => p.GroepPad)
                 .HasForeignKey(d => d.PadenId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_GROEP_PAD_paden_ID");        }
+                .HasConstraintName("FK_GROEP_PAD_paden_ID");
+        }
     }
 }

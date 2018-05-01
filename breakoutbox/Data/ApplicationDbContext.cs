@@ -1,23 +1,18 @@
-﻿﻿using System;
-using breakoutbox.Data.Mappers;
+﻿using breakoutbox.Data.Mappers;
 using breakoutbox.Models;
-using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace breakoutbox.Data
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext : DbContext
     {
-        
+        public ApplicationDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Groep> Groepen { get; set; }
         public DbSet<Pad> Paden { get; set; }
         public DbSet<Sessie> Sessies { get; set; }
-
-        
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-              
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,14 +32,13 @@ namespace breakoutbox.Data
             modelBuilder.ApplyConfiguration(new SessieConfiguration());
             modelBuilder.ApplyConfiguration(new SessieGroepConfiguration());
             modelBuilder.ApplyConfiguration(new ToegangscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepfinishedstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepgeblokkeerdstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepgekozenstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepkanspelenstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepspeelstateConfiguration());
-            modelBuilder.ApplyConfiguration(new GroepstateConfiguration());
             modelBuilder.ApplyConfiguration(new VakConfiguration());
-
         }
     }
 }

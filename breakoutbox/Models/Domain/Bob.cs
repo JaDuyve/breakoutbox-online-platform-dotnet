@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace breakoutbox.Models
 {
-    public partial class Bob
+    public class Bob
     {
         public Bob()
         {

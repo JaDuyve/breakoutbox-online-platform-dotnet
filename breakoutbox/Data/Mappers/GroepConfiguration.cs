@@ -1,11 +1,10 @@
 ﻿using breakoutbox.Models;
-using breakoutbox.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class GroepConfiguration:IEntityTypeConfiguration<Groep>
+    public class GroepConfiguration : IEntityTypeConfiguration<Groep>
     {
         public void Configure(EntityTypeBuilder<Groep> builder)
         {
@@ -18,9 +17,10 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
-            builder.Property(e => e.CurrentstateId)
-                .HasColumnName("CURRENTSTATE_ID")
-                .HasColumnType("numeric(19, 0)");
+            builder.HasOne(g => g.Currentstate)
+                .WithOne(gr => gr.Groep)
+                .HasForeignKey<Groepstate>(gr => gr.GroepId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(e => e.Klas)
                 .HasColumnName("KLAS")
@@ -34,10 +34,7 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(e => e.Progress).HasColumnName("PROGRESS");
 
-            builder.HasOne(d => d.Currentstate)
-                .WithMany(p => p.Groep)
-                .HasForeignKey(d => d.CurrentstateId)
-                .HasConstraintName("GROEP_CURRENTSTATE_ID");
+            
         }
     }
 }

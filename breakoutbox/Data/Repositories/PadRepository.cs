@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace breakoutbox.Data.Repositories
 {
-    public class PadRepository: IPadRepository
+    public class PadRepository : IPadRepository
     {
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Pad> _padden;
@@ -15,7 +15,7 @@ namespace breakoutbox.Data.Repositories
             _context = context;
             _padden = context.Paden;
         }
-        
+
         public Pad GetById(int padId)
         {
             return _padden

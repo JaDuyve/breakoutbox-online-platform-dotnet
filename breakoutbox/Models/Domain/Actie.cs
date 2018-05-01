@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace breakoutbox.Models
 {
-    public partial class Actie
+    public class Actie
     {
-
-        
         public Actie()
         {
             BobActie = new HashSet<BobActie>();
             Pad = new HashSet<Pad>();
         }
-
 
 
         public string Naam { get; set; }

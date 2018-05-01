@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class OefeningGroepsbewerkingConfiguration:IEntityTypeConfiguration<OefeningGroepsbewerking>
+    public class OefeningGroepsbewerkingConfiguration : IEntityTypeConfiguration<OefeningGroepsbewerking>
     {
         public void Configure(EntityTypeBuilder<OefeningGroepsbewerking> builder)
         {
-            builder.HasKey(e => new { e.OefeningNaam, e.LijstGroepsbewerkingenNaam });
+            builder.HasKey(e => new {e.OefeningNaam, e.LijstGroepsbewerkingenNaam});
 
             builder.ToTable("OEFENING_GROEPSBEWERKING");
 

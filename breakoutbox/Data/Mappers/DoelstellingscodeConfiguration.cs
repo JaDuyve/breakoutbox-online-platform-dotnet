@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace breakoutbox.Data.Mappers
 {
-    public class DoelstellingscodeConfiguration:IEntityTypeConfiguration<Doelstellingscode>
+    public class DoelstellingscodeConfiguration : IEntityTypeConfiguration<Doelstellingscode>
     {
         public void Configure(EntityTypeBuilder<Doelstellingscode> builder)
         {
@@ -16,6 +16,7 @@ namespace breakoutbox.Data.Mappers
                 .HasColumnName("CODE")
                 .HasMaxLength(255)
                 .IsUnicode(false)
-                .ValueGeneratedNever();        }
+                .ValueGeneratedNever();
+        }
     }
 }
