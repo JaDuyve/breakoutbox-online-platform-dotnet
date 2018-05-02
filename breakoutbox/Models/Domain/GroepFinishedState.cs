@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace breakoutbox.Models
 {
@@ -29,7 +30,12 @@ namespace breakoutbox.Models
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public override Type GetClassType()
+        {
+            return GetType();
+        }
+
 
         public Groepfinishedstate(Groep groep):base(groep)
         {

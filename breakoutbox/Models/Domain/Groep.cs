@@ -19,7 +19,7 @@ namespace breakoutbox.Models
         public bool? Contactleer { get; set; }
         public string Klas { get; set; }
         public string Naam { get; set; }
-        public int? Progress { get; set; }
+        public int Progress { get; set; }
         public Groepstate Currentstate { get; set; }
         public ICollection<GroepPad> GroepPad { get; set; }
         public ICollection<Groepstate> Groepstate { get; set; }
@@ -61,6 +61,32 @@ namespace breakoutbox.Models
         {
             ICollection<string> leerling = Leerlingen.Split(",");
             return leerling;
+        }
+
+        private IDictionary<int, GroepPad> ConvertGroepPaden()
+        {
+            IDictionary<int, GroepPad> paden = new Dictionary<int, GroepPad>();
+            foreach (var pad in GroepPad)
+            {
+                paden.Add(pad.PadenKey, pad);
+            }
+
+            return paden;
+        }
+
+        public GroepPad getCurrentGroepPad(int key)
+        {
+            return ConvertGroepPaden()[key];
+        }
+
+        public void InitializeState()
+        {
+            ToState(new Groepgekozenstate(this));
+        }
+
+        public void VerhoogProgress()
+        {
+            Progress++;
         }
     }
 }

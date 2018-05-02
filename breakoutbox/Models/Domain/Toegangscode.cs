@@ -10,7 +10,7 @@ namespace breakoutbox.Models
         }
 
         public decimal Id { get; set; }
-        public int? Code { get; set; }
+        public int Code { get; set; }
 
         public ICollection<Pad> Pad { get; set; }
     }

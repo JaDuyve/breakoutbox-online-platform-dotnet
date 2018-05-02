@@ -11,6 +11,11 @@ namespace breakoutbox.Models.ActionViewModel
             Actie = pad.ActieNaamNavigation;
         }
 
+        public ActionViewModel()
+        {
+            
+        }
+
         public int Toegangscode { get; set; }
         public Actie Actie { get; set; }
         public Pad Pad { get; set; }

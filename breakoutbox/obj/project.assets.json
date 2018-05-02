@@ -13512,28 +13512,33 @@
     ]
   },
   "packageFolders": {
-    "/Users/thibaut/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Jari Duyvejonck\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/breakoutbox.csproj",
+      "projectUniqueName": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
       "projectName": "breakoutbox",
-      "projectPath": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/breakoutbox.csproj",
-      "packagesPath": "/Users/thibaut/.nuget/packages/",
-      "outputPath": "/Users/thibaut/RiderProjects/dotnet-g03/breakoutbox/obj/",
+      "projectPath": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
+      "packagesPath": "C:\\Users\\Jari Duyvejonck\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/thibaut/.config/NuGet/NuGet.Config"
+        "C:\\Users\\Jari Duyvejonck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

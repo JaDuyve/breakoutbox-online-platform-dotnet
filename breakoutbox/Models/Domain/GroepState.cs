@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace breakoutbox.Models
 {
@@ -35,6 +36,7 @@ namespace breakoutbox.Models
         public abstract void KanSpelen();
 
         public abstract void GekozenEnVergrendeld();
-        
+
+        public abstract Type GetClassType();
     }
 }
