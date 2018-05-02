@@ -75,14 +75,35 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
+            if (groep.Fout < 3)
             {
-                return RedirectToAction("Action", "Groep", new {Id = groep.Id});
+                if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
+                {
+                    return RedirectToAction("Action", "Groep", new {Id = groep.Id});
 
 //                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
+                }
             }
+            else
+            {
+                return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+            }
+            
             return View(new AntwoordViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
 
+        }
+
+        public IActionResult Feedback(decimal id)
+        {
+            
+            Groep groep = _groepRepository.GetById(id);
+
+            if (groep == null)
+            {
+                return NotFound();
+            }
+
+            return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
         }
 
         public IActionResult Action(decimal id)
