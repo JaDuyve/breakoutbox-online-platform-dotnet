@@ -4,7 +4,6 @@
     ViewData["Title"] = Model.Naam;
 }
 
-
 <h2>Groep selecteren</h2>
 <table class="table">
     <thead class="thead-dark">
@@ -13,6 +12,10 @@
             <th scope="col">Klas</th>
             <th scope="col">Contactleer</th>
             <th scope="col"></th>
+            <th scope="col">Leerlingen</th>
+
+
+            
         </tr>
     </thead>
     <tbody>
@@ -23,7 +26,18 @@
                 <td>@groep.Groepen.Klas</td>
                 <td><input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false "/></td>
                 <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id"><button type="button" class="btn btn-secondary">Start</button></a></td>
-            </tr>}
+
+                @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
+                {
+                    <td>@leerling</td>
+
+                        
+                }
+
+
+            </tr>
+            
+        }
      </tbody>
 </table>
 <a asp-controller="Sessie" asp-action="Index">Back</a>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using breakoutbox.Models.Domain;
 
 namespace breakoutbox.Models
@@ -54,6 +55,12 @@ namespace breakoutbox.Models
         public void ToState(Groepstate state)
         {
             Currentstate = state;
+        }
+
+        public ICollection<string> LijstLeerlingen()
+        {
+            ICollection<string> leerling = Leerlingen.Split(",");
+            return leerling;
         }
     }
 }
