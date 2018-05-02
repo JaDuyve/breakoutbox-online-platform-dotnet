@@ -13512,30 +13512,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jari Duyvejonck\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\Axel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
+      "projectUniqueName": "C:\\Users\\Axel\\Documents\\Projecten II\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
       "projectName": "breakoutbox",
-      "projectPath": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
-      "packagesPath": "C:\\Users\\Jari Duyvejonck\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jari Duyvejonck\\RiderProjects\\dotnet-g03\\breakoutbox\\obj\\",
+      "projectPath": "C:\\Users\\Axel\\Documents\\Projecten II\\dotnet-g03\\breakoutbox\\breakoutbox.csproj",
+      "packagesPath": "C:\\Users\\Axel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Axel\\Documents\\Projecten II\\dotnet-g03\\breakoutbox\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jari Duyvejonck\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\Axel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
@@ -13583,6 +13577,7 @@
             "version": "[2.0.2, )"
           },
           "Microsoft.NETCore.App": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.0, )",
             "autoReferenced": true
