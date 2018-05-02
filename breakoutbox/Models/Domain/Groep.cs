@@ -16,7 +16,7 @@ namespace breakoutbox.Models
         }
 
         public decimal Id { get; set; }
-        public bool? Contactleer { get; set; }
+        public bool Contactleer { get; set; }
         public string Klas { get; set; }
         public string Naam { get; set; }
         public int Progress { get; set; }

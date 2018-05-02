@@ -82,9 +82,19 @@ namespace breakoutbox.Controllers
 
             if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
-                return RedirectToAction("Action", "Groep", new {Id = groep.Id});
+                if (groep.Contactleer)
+                {
+                    return RedirectToAction("Action", "Groep", new {Id = groep.Id});
 
-//                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
+                }
+                else
+                {
+                    groep.VerhoogProgress();
+                    _groepRepository.SaveChanges();
+                    return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+
+                }
+
             }
             else
             {
