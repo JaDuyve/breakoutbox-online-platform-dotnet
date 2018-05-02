@@ -18,10 +18,10 @@ namespace breakoutbox.Data.Mappers
             builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
             
-            
             builder.HasOne(g => g.Currentstate)
                 .WithOne(gr => gr.Groep)
-                .HasForeignKey<Groepstate>(gr => gr.GroepId)
+                .IsRequired(false)
+                .HasForeignKey<Groepstate>(g => g.GroepId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(e => e.Klas)
