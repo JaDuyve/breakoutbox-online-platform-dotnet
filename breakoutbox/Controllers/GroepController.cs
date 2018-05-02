@@ -10,6 +10,7 @@ using breakoutbox.Models;
 using breakoutbox.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
+using System.Web;
 
 namespace breakoutbox.Controllers
 {
@@ -24,6 +25,8 @@ namespace breakoutbox.Controllers
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
+            
+            
         }
 
         public IActionResult Index(string id)
@@ -113,6 +116,18 @@ namespace breakoutbox.Controllers
                 
                 return RedirectToAction("Start", "Groep", new {Id = groep.Id});
 
+            }
+            else
+            {
+                if (groep.Fout == 3)
+                {
+                    groep.Blok();
+                    
+                }
+                else
+                {
+                    groep.VerhoogFout();
+                }           
             }
             
             return View(new ActionViewModel(pad, groep));

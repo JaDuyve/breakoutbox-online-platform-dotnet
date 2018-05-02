@@ -34,6 +34,8 @@ namespace breakoutbox.Data.Mappers
                 .HasMaxLength(255)
                 .IsUnicode(false);
 
+            builder.Property(g => g.Fout)
+                .IsRequired(false);
             builder.Property(e => e.Progress).HasColumnName("PROGRESS");
 
             

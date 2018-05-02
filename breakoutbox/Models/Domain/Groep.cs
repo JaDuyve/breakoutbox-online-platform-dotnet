@@ -26,6 +26,7 @@ namespace breakoutbox.Models
         public ICollection<SessieGroep> SessieGroep { get; set; }
         public string Leerlingen { get; set; } 
         public int? CurrentstateId { get; set; }
+        public int Fout { get; set; }
         
         public void Blok()
         {
@@ -87,6 +88,16 @@ namespace breakoutbox.Models
         public void VerhoogProgress()
         {
             Progress++;
+        }
+
+        public void VerhoogFout()
+        {
+            Fout++;
+        }
+
+        public void ResetFout()
+        {
+            Fout = 0;
         }
     }
 }
