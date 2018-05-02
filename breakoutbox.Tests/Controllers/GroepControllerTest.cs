@@ -1,4 +1,5 @@
 ﻿using breakoutbox.Controllers;
+using breakoutbox.Models;
 using breakoutbox.Models.Domain;
 using breakoutbox.Models.OefeningViewModel;
 using breakoutbox.Tests.Data;
@@ -25,20 +26,23 @@ namespace breakoutbox.Tests.Controllers
         
         [Theory]
         [InlineData(5)]
-        public void Start_Correcte_Pad_Retrourt_True(int id)
+        public void Start_Pad(int id)
         {
             var result = _groepController.Start(id) as ViewResult;
-            var GroepVm = result?.Model as AntwoordViewModel;
-            Assert.Equal(5, GroepVm, true);
-        };
+            var AntwoordVm = result?.Model as AntwoordViewModel;
+            Assert.Equal(id, AntwoordVm);
+        }
+        
         
         [Theory]
-        [InlineData(10)]
-        public void Start_Fout_Pad_Retrourt_False(int id)
+        [InlineData("maandag")]
+        [InlineData("dinsdag")]
+        [InlineData("woensdag")]
+        public void Index_GetId(string id)
         {
-            var result = _groepController.Start(id) as ViewResult;  
-            var GroepVm = result?.Model as AntwoordViewModel;
-            Assert.Equal(10, GroepVm, false);
+            var result = _groepController.Index(id) as ViewResult;
+            var sessie = result?.Model as Sessie;
+            Assert.Equal(id, sessie.Naam);
         }
     }
 }
