@@ -1,5 +1,6 @@
 ﻿using breakoutbox.Controllers;
 using breakoutbox.Models.Domain;
+using breakoutbox.Models.OefeningViewModel;
 using breakoutbox.Tests.Data;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -27,13 +28,17 @@ namespace breakoutbox.Tests.Controllers
         public void Start_Correcte_Pad_Retrourt_True(int id)
         {
             var result = _groepController.Start(id) as ViewResult;
-        }
+            var GroepVm = result?.Model as AntwoordViewModel;
+            Assert.Equal(5, GroepVm, true);
+        };
         
         [Theory]
         [InlineData(10)]
         public void Start_Fout_Pad_Retrourt_False(int id)
         {
             var result = _groepController.Start(id) as ViewResult;  
+            var GroepVm = result?.Model as AntwoordViewModel;
+            Assert.Equal(10, GroepVm, false);
         }
     }
 }
