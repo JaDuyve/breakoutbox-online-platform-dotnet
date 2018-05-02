@@ -81,16 +81,18 @@ namespace breakoutbox.Controllers
             string password = "Pazaak2.0";
             string remoteDirectory = "/uploads/"; // . always refers to the current directory.
 
-            using (var sftp = new SftpClient(host, username, password))
+            using (Stream stream = System.IO.File.Create("./wwwroot/docs/" + filename))
             {
-                sftp.Connect();
-
-                using (Stream stream = System.IO.File.Create("./wwwroot/docs/" + filename))
+                using (var sftp = new SftpClient(host, username, password))
                 {
-                    sftp.DownloadFile(remoteDirectory +filename, stream);
-                }
+                    sftp.Connect();
 
-                sftp.Disconnect();
+                    
+                        sftp.DownloadFile(remoteDirectory + filename, stream);
+                    
+
+                    sftp.Disconnect();
+                }
             }
         }
     }
