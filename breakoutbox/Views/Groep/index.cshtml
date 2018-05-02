@@ -3,41 +3,56 @@
 @{
     ViewData["Title"] = Model.Naam;
 }
-
-<h2>Groep selecteren</h2>
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">naam</th>
-            <th scope="col">Klas</th>
-            <th scope="col">Contactleer</th>
-            <th scope="col"></th>
-            <th scope="col">Leerlingen</th>
-
-
-            
-        </tr>
-    </thead>
-    <tbody>
+<div class="sessiebar">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="number" id="sample" value="@Model.Code" disabled>
+        <label class="mdl-textfield__label" for="sample">@Model.Naam</label>
+        <span class="mdl-textfield__error">Input is not a number!</span>
+    </div>
+</div>
+<div class="secties container">
+    <h2 class="text-center">Groep selecteren</h2>
+    <div class="row">
         @foreach (var groep in Model.SessieGroep)
         {
-            <tr>
-                <td>@groep.Groepen.Naam</td>
-                <td>@groep.Groepen.Klas</td>
-                <td><input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false "/></td>
-                <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id"><button type="button" class="btn btn-secondary">Start</button></a></td>
+            <div class="col col-md-3">
+                <div class="circlecard">
+                    <div class="text-center">@groep.Groepen.Naam</div>
+                    <div class="size text-center">@groep.Groepen.Klas</div>
+                    <div class="circle"></div>
 
-                @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
-                {
-                    <td>@leerling</td>
-
-                        
-                }
-
-
-            </tr>
-            
+                </div>
+            </div>
         }
-     </tbody>
-</table>
-<a asp-controller="Sessie" asp-action="Index">Back</a>
+    </div>
+    <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">naam</th>
+                <th scope="col">Klas</th>
+                <th scope="col">Contactleer</th>
+                <th scope="col"></th>
+                <th scope="col">Leerlingen</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var groep in Model.SessieGroep)
+            {
+                <tr>
+                    <td>@groep.Groepen.Naam</td>
+                    <td>@groep.Groepen.Klas</td>
+                    <td><input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " /></td>
+                    <td><a asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id"><button type="button" class="btn btn-secondary">Start</button></a></td>
+
+                    @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
+                    {
+                        <td>@leerling</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="mdl-button mdl-js-button mdl-js-ripple-effect" asp-controller="Sessie" asp-action="Index">Back</a>
+</div>
