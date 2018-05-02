@@ -17,7 +17,7 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(e => e.Contactleer).HasColumnName("CONTACTLEER");
 
-
+            
             
             builder.HasOne(g => g.Currentstate)
                 .WithOne(gr => gr.Groep)

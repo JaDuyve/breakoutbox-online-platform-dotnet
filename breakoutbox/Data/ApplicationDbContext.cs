@@ -39,6 +39,7 @@ namespace breakoutbox.Data
             modelBuilder.ApplyConfiguration(new GroepkanspelenstateConfiguration());
             modelBuilder.ApplyConfiguration(new GroepspeelstateConfiguration());
             modelBuilder.ApplyConfiguration(new VakConfiguration());
+//            modelBuilder.Entity<Groep>().Has
 //            modelBuilder.ApplyConfiguration(new LeerlingConfiguration());
 
         }

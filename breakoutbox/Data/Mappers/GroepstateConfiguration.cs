@@ -12,8 +12,8 @@ namespace breakoutbox.Data.Mappers
 
             builder.HasKey(g => g.Id);
 
-            builder.Property(gr => gr.Id)
-                .ValueGeneratedOnAdd();
+//            builder.Property(gr => gr.Id)
+//                .ValueGeneratedOnAdd();
             
             builder.HasOne(d => d.Groep)
                 .WithOne(g => g.Currentstate)
