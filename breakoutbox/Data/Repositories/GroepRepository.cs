@@ -27,6 +27,7 @@ namespace breakoutbox.Data.Repositories
                 .ThenInclude(p => p.ActieNaamNavigation)
                 .Include(g => g.GroepPad).ThenInclude(gp => gp.Paden)
                 .ThenInclude(p => p.Toegangscode)
+                .Include(g => g.Currentstate).ThenInclude(g => g.Groep)
                 .SingleOrDefault(g => g.Id == ID);
         }
 

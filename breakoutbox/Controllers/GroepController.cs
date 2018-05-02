@@ -1,12 +1,12 @@
-﻿﻿﻿using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using breakoutbox.Models;
-  using breakoutbox.Models.ActionViewModel;
-  using breakoutbox.Models.Domain;
+using breakoutbox.Models.ActionViewModel;
+using breakoutbox.Models.Domain;
 using breakoutbox.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
@@ -18,45 +18,49 @@ namespace breakoutbox.Controllers
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-        
-        
+
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
-            
-            
         }
 
         public IActionResult Index(string id)
         {
-           Sessie sessie = _sessieRepository.GetById(id);
-           
+            Sessie sessie = _sessieRepository.GetById(id);
+
             if (sessie == null)
             {
                 return NotFound();
             }
-            
-            
+
+
             return View(sessie);
         }
 
         public IActionResult Start(decimal id)
         {
             Groep groep = _groepRepository.GetById(id);
-           
+
             if (groep == null)
             {
                 return NotFound();
             }
 
-            if (groep.Currentstate.GetClassType() != typeof(Groepspeelstate))
+            if (groep.Currentstate == null)
             {
                 groep.InitializeState();
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();
+            }
+
+            if (groep.Fout == 3)
+            {
+                groep.Blok();
+                _groepRepository.SaveChanges();
+                return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
 
             Pad pad = groep.getCurrentGroepPad(groep.Progress).Paden;
@@ -75,27 +79,40 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            if (groep.Fout < 3)
+
+            if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
-                if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
-                {
-                    return RedirectToAction("Action", "Groep", new {Id = groep.Id});
+                return RedirectToAction("Action", "Groep", new {Id = groep.Id});
 
 //                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
-                }
             }
             else
             {
-                return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
-            }
-            
-            return View(new AntwoordViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
+                if (groep.Fout == 3)
+                {
+                    groep.Blok();
+                    _groepRepository.SaveChanges();
+                    return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+                }
+                else if (groep.Fout < 3)
+                {
+                    groep.VerhoogFout();
+                    _groepRepository.SaveChanges();
 
+                    if (groep.Fout == 3)
+                    {
+                        groep.Blok();
+                        _groepRepository.SaveChanges();
+                        return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+                    }
+                }
+            }
+
+            return RedirectToAction("Start", "Groep", new {Id = groep.Id});
         }
 
         public IActionResult Feedback(decimal id)
         {
-            
             Groep groep = _groepRepository.GetById(id);
 
             if (groep == null)
@@ -103,7 +120,11 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
+            string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
+
+            getFile(feedback);
+
+            return View(new FeedbackViewModel(groep, feedback));
         }
 
         public IActionResult Action(decimal id)
@@ -134,23 +155,21 @@ namespace breakoutbox.Controllers
             {
                 groep.VerhoogProgress();
                 _groepRepository.SaveChanges();
-                
-                return RedirectToAction("Start", "Groep", new {Id = groep.Id});
 
+                return RedirectToAction("Start", "Groep", new {Id = groep.Id});
             }
             else
             {
                 if (groep.Fout == 3)
                 {
                     groep.Blok();
-                    
                 }
                 else
                 {
                     groep.VerhoogFout();
-                }           
+                }
             }
-            
+
             return View(new ActionViewModel(pad, groep));
         }
 
@@ -167,9 +186,9 @@ namespace breakoutbox.Controllers
                 {
                     sftp.Connect();
 
-                    
-                        sftp.DownloadFile(remoteDirectory + filename, stream);
-                    
+
+                    sftp.DownloadFile(remoteDirectory + filename, stream);
+
 
                     sftp.Disconnect();
                 }

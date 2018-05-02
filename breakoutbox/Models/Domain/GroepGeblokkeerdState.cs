@@ -11,6 +11,10 @@ namespace breakoutbox.Models
             
         }
 
+        public Groepgeblokkeerdstate()
+        {
+            
+        }
 
         public override void Finish()
         {

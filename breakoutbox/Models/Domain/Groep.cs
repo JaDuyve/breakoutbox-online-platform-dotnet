@@ -12,7 +12,7 @@ namespace breakoutbox.Models
             Groepstate = new HashSet<Groepstate>();
             SessieGroep = new HashSet<SessieGroep>();
             
-            ToState(new Groepgekozenstate(this));
+//            ToState(new Groepgekozenstate(this));
         }
 
         public decimal Id { get; set; }

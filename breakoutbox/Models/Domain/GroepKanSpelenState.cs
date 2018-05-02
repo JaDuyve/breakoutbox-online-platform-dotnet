@@ -11,6 +11,11 @@ namespace breakoutbox.Models
             
         }
 
+        public Groepkanspelenstate()
+        {
+            
+        }
+
         public override void Finish()
         {
             throw new System.NotImplementedException();

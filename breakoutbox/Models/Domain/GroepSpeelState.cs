@@ -10,6 +10,11 @@ namespace breakoutbox.Models
             
         }
 
+        public Groepspeelstate()
+        {
+            
+        }
+        
         public override void Finish()
         {
             Groep.ToState(new Groepfinishedstate(Groep));
