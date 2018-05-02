@@ -9,53 +9,53 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<table class="table">
+<table class="mdl-data-table mdl-js-data-table">
     <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Sessienaam</th>
-        <th scope="col">Startdatum</th>
-    </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sessienaam</th>
+            <th scope="col">Startdatum</th>
+        </tr>
     </thead>
     <tbody>
-    
-    @foreach (var sessie in Model.Sessies)
-    {
-        <tr>
-            <th scope="row">@counter</th>
-            <td>
-                <a href="#" data-toggle="modal" data-target="#@sessie.Naam">@sessie.Naam</a>
-                <!-- Modal -->
-                <div class="modal fade" id="@sessie.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Sessiecode toevoegen</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <form method="post" role="form" action="/Sessie/Index/@sessie.Naam">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Voer uw sessiecode in</label>
-                                        <input type="number" required id="sessieCode" asp-for="Code" value=""/>
+
+        @foreach (var sessie in Model.Sessies)
+        {
+            <tr>
+                <th scope="row">@counter</th>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#@sessie.Naam">@sessie.Naam</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="@sessie.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Sessiecode toevoegen</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form method="post" role="form" action="/Sessie/Index/@sessie.Naam">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Voer uw sessiecode in</label>
+                                            <input type="number" required id="sessieCode" asp-for="Code" value="" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Controleer</button>
-                                </div>
-                            </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Controleer</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-            <td>@sessie.Startdatum</td>
-            
-        </tr>
-        counter++;
-    }
+                </td>
+                <td>@sessie.Startdatum</td>
+
+            </tr>
+            counter++;
+        }
     </tbody>
 </table>
 
