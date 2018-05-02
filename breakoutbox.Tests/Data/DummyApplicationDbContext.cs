@@ -11,6 +11,7 @@ namespace breakoutbox.Tests.Data
     {
         public  Sessie _maandag { get; }
         public  Sessie _dinsdag { get; }
+        public  Sessie _woensdag { get; }
 
         private readonly Bob _bob;
         private readonly ICollection<BobActie> _bobActies;
@@ -28,10 +29,10 @@ namespace breakoutbox.Tests.Data
             _bob = new Bob { Naam = "bob"};
             _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 04, 25), BobNaam = "bob" };
             _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 04, 25), BobNaam = "bob" };
-
+            _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob2" };
         }
         
-        public IEnumerable<Sessie> Sessies => new List<Sessie> { _maandag, _dinsdag};
+        public IEnumerable<Sessie> Sessies => new List<Sessie> { _maandag, _dinsdag, _woensdag};
         
     }
 }
