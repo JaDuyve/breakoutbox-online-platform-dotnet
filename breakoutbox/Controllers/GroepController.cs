@@ -47,14 +47,19 @@ namespace breakoutbox.Controllers
             {
                 return NotFound();
             }
-            
-            groep.KanSpelen();
-            
-            _groepRepository.SaveChanges();
 
-            ViewData["Oefening"] = groep.GroepPad.ElementAt(0).Paden.OefeningNaamNavigation;
-            getFile(groep.GroepPad.ElementAt(0).Paden.OefeningNaamNavigation.Opgave);
-            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(0).Paden, groep));
+            if (groep.Currentstate.GetClassType() != typeof(Groepspeelstate))
+            {
+                groep.InitializeState();
+                groep.KanSpelen();
+                groep.Spelen();
+                _groepRepository.SaveChanges();
+            }
+
+            Pad pad = groep.getCurrentGroepPad(groep.Progress).Paden;
+            ViewData["Oefening"] = pad.OefeningNaamNavigation;
+            getFile(pad.OefeningNaamNavigation.Opgave);
+            return View(new AntwoordViewModel(pad, groep));
         }
 
         [HttpPost]
@@ -67,13 +72,13 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            if (groep.GroepPad.ElementAt(0).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
+            if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
                 return RedirectToAction("Action", "Groep", new {Id = groep.Id});
 
 //                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
             }
-            return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
+            return View(new AntwoordViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
 
         }
 
@@ -86,8 +91,31 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
+            return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
+        }
+
+        [HttpPost]
+        public IActionResult Action(decimal id, ActionViewModel actionViewModel)
+        {
+            Groep groep = _groepRepository.GetById(id);
+
+            if (groep == null)
+            {
+                return NotFound();
+            }
+
+            Pad pad = groep.getCurrentGroepPad(groep.Progress).Paden;
+
+            if (pad.Toegangscode.Code == actionViewModel.Toegangscode)
+            {
+                groep.VerhoogProgress();
+                _groepRepository.SaveChanges();
+                
+                return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+
+            }
             
-            return View(new ActionViewModel(groep.GroepPad.ElementAt(0).Paden, groep));
+            return View(new ActionViewModel(pad, groep));
         }
 
         private void getFile(string filename)

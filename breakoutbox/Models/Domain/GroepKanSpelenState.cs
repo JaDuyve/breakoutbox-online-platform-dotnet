@@ -1,4 +1,6 @@
-﻿namespace breakoutbox.Models
+﻿using System;
+
+namespace breakoutbox.Models
 {
     public class Groepkanspelenstate: Groepstate
     {
@@ -27,6 +29,11 @@
         public override void KanSpelen()
         {
             throw new System.NotImplementedException();
+        }
+        
+        public override Type GetClassType()
+        {
+            return GetType();
         }
 
         public override void GekozenEnVergrendeld()
