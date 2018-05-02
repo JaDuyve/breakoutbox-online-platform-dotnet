@@ -1,0 +1,14 @@
+﻿@model breakoutbox.Models.ActionViewModel.ActionViewModel
+
+<div>
+    <form method="post" action="/Groep/Start/@Model.Groep.Id">
+        <h3>Actie</h3>
+        <p>@Model.Actie.Opgave</p>
+        <div>
+            <input asp-for="Toegangscode" class="form-control"/>
+        </div>
+        <div>
+            <button class="btn btn-primary" type="submit">Controlleer</button>
+        </div>
+    </form>
+</div>

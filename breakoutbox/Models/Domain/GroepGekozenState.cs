@@ -2,8 +2,6 @@
 {
     public class Groepgekozenstate: Groepstate
     {
-        public decimal Id { get; set; }
-
 
         public Groepgekozenstate(Groep groep):base(groep)
         {

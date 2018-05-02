@@ -1,11 +1,12 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using breakoutbox.Models;
-using breakoutbox.Models.Domain;
+  using breakoutbox.Models.ActionViewModel;
+  using breakoutbox.Models.Domain;
 using breakoutbox.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
@@ -68,10 +69,25 @@ namespace breakoutbox.Controllers
 
             if (groep.GroepPad.ElementAt(0).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
-                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
+                return RedirectToAction("Action", "Groep", new {Id = groep.Id});
+
+//                return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
             }
             return View(new AntwoordViewModel(groep.GroepPad.ElementAt(1).Paden, groep));
 
+        }
+
+        public IActionResult Action(decimal id)
+        {
+            Groep groep = _groepRepository.GetById(id);
+
+            if (groep == null)
+            {
+                return NotFound();
+            }
+
+            
+            return View(new ActionViewModel(groep.GroepPad.ElementAt(0).Paden, groep));
         }
 
         private void getFile(string filename)

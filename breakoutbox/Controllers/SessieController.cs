@@ -7,8 +7,8 @@ namespace breakoutbox.Controllers
     public class SessieController : Controller
     {
         private readonly ISessieRepository _sessieRepository;
-
-        public SessieController(ISessieRepository sessieRepository)
+        
+        public SessieController(ISessieRepository sessieRepository, IGroepRepository groepRepository)
         {
             _sessieRepository = sessieRepository;
         }
@@ -25,7 +25,11 @@ namespace breakoutbox.Controllers
         )
         {
             var sessie = _sessieRepository.GetById(id);
-            if (model.Code == sessie.Code) return RedirectToAction("index", "Groep", new {Id = sessie.Naam});
+            if (model.Code == sessie.Code)
+            {
+                
+                return RedirectToAction("index", "Groep", new {Id = sessie.Naam});
+            }
             return RedirectToAction(nameof(Index));
         }
     }

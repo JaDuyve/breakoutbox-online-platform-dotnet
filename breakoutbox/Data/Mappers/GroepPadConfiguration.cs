@@ -10,6 +10,7 @@ namespace breakoutbox.Data.Mappers
         {
             builder.HasKey(e => new {e.GroepId, e.PadenId});
 
+            
             builder.ToTable("GROEP_PAD");
 
             builder.Property(e => e.GroepId)

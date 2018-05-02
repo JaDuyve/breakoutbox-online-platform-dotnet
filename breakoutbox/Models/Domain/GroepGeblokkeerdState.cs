@@ -22,6 +22,7 @@
 
         public override void Spelen()
         {
+            
             Groep.ToState(new Groepspeelstate(Groep));
             
             

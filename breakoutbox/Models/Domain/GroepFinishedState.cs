@@ -30,7 +30,6 @@ namespace breakoutbox.Models
             throw new System.NotImplementedException();
         }
         
-        public decimal IdF { get; set; }
 
         public Groepfinishedstate(Groep groep):base(groep)
         {
