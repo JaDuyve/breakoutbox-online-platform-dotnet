@@ -14,14 +14,15 @@ namespace breakoutbox.Data.Mappers
 
             builder.Property(gr => gr.Id)
                 .ValueGeneratedOnAdd();
-            
+
             builder.HasOne(d => d.Groep)
                 .WithOne(g => g.Currentstate)
-                .HasForeignKey<Groep>(g => g.CurrentstateId)
-                .OnDelete(DeleteBehavior.Cascade);
-            
-            
-            
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasForeignKey<Groep>(g => g.CurrentstateId);
+
+//                .WithOne(g => g.Currentstate)
+
+
             builder.HasDiscriminator<string>("type")
                 .HasValue<Groepfinishedstate>("finish")
                 .HasValue<Groepgeblokkeerdstate>("blok")

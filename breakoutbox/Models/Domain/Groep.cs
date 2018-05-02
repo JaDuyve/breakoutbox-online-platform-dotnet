@@ -24,7 +24,7 @@ namespace breakoutbox.Models
         public ICollection<Groepstate> Groepstate { get; set; }
         public ICollection<SessieGroep> SessieGroep { get; set; }
         public string Leerlingen { get; set; } 
-        public decimal? CurrentstateId { get; set; }
+        public int? CurrentstateId { get; set; }
         
         public void Blok()
         {

@@ -8,7 +8,7 @@ namespace breakoutbox.Controllers
     {
         private readonly ISessieRepository _sessieRepository;
         
-        public SessieController(ISessieRepository sessieRepository, IGroepRepository groepRepository)
+        public SessieController(ISessieRepository sessieRepository)
         {
             _sessieRepository = sessieRepository;
         }
