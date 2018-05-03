@@ -33,7 +33,7 @@ namespace breakoutbox.Data.Repositories
 
         public void SaveChanges()
         {
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }
