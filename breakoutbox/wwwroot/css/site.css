@@ -206,3 +206,8 @@ iframe {
     height: 176px;
     background: url('../images/shattered-island.gif') center / cover;
 }
+
+form{
+    margin-top: 80px;
+    
+}

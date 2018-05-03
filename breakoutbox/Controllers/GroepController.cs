@@ -11,6 +11,7 @@ using breakoutbox.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
 using System.Web;
+using Remotion.Linq.Clauses.ResultOperators;
 
 namespace breakoutbox.Controllers
 {
@@ -82,6 +83,8 @@ namespace breakoutbox.Controllers
 
             if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
+                groep.ResetFout();
+                _groepRepository.SaveChanges();
                 if (groep.Contactleer)
                 {
                     return RedirectToAction("Action", "Groep", new {Id = groep.Id});
@@ -146,7 +149,13 @@ namespace breakoutbox.Controllers
                 return NotFound();
             }
 
-            return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep));
+            if (groep.getCurrentGroepPad(groep.Progress).Paden.ActieNaamNavigation == null)
+            {
+                return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep, true,
+                    "Zoek de schatkist"));
+            }
+
+            return View(new ActionViewModel(groep.getCurrentGroepPad(groep.Progress).Paden, groep, false));
         }
 
         [HttpPost]
@@ -164,6 +173,7 @@ namespace breakoutbox.Controllers
             if (pad.Toegangscode.Code == actionViewModel.Toegangscode)
             {
                 groep.VerhoogProgress();
+                
                 _groepRepository.SaveChanges();
 
                 return RedirectToAction("Start", "Groep", new {Id = groep.Id});
@@ -180,7 +190,7 @@ namespace breakoutbox.Controllers
                 }
             }
 
-            return View(new ActionViewModel(pad, groep));
+            return View(new ActionViewModel(pad, groep, false));
         }
 
         private void getFile(string filename)
