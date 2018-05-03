@@ -5,7 +5,10 @@ namespace breakoutbox.Models
 {
     public class Groepfinishedstate: Groepstate
     {
-        
+        public Groepfinishedstate()
+        {
+            
+        }
         public override void Finish()
         {
             throw new System.NotImplementedException();

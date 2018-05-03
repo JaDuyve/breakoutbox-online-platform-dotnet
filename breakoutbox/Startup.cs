@@ -1,4 +1,5 @@
-﻿using breakoutbox.Data;
+﻿using System;
+using breakoutbox.Data;
 using breakoutbox.Data.Repositories;
 using breakoutbox.Models.Domain;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,11 @@ namespace breakoutbox
 
 
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.CookieName = ".MyApplication";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +61,8 @@ namespace breakoutbox
                     "default",
                     "{controller=Sessie}/{action=Index}/{id?}");
             });
-            
+
+            app.UseSession();
 //            breakoutBoxDataInitializer.InitializeData();
         }
     }

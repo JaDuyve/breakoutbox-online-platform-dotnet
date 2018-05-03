@@ -10,6 +10,10 @@ namespace breakoutbox.Models
            
         }
 
+        public Groepgekozenstate()
+        {
+            
+        }
 
         public override void Finish()
         {

@@ -12,11 +12,11 @@ namespace breakoutbox.Models
             Groepstate = new HashSet<Groepstate>();
             SessieGroep = new HashSet<SessieGroep>();
             
-            ToState(new Groepgekozenstate(this));
+//            ToState(new Groepgekozenstate(this));
         }
 
         public decimal Id { get; set; }
-        public bool? Contactleer { get; set; }
+        public bool Contactleer { get; set; }
         public string Klas { get; set; }
         public string Naam { get; set; }
         public int Progress { get; set; }
@@ -26,6 +26,7 @@ namespace breakoutbox.Models
         public ICollection<SessieGroep> SessieGroep { get; set; }
         public string Leerlingen { get; set; } 
         public int? CurrentstateId { get; set; }
+        public int Fout { get; set; }
         
         public void Blok()
         {
@@ -59,7 +60,7 @@ namespace breakoutbox.Models
 
         public ICollection<string> LijstLeerlingen()
         {
-            ICollection<string> leerling = Leerlingen.Split(",");
+            ICollection<string> leerling = Leerlingen.Substring(0, Leerlingen.Length -3).Split(",");
             return leerling;
         }
 
@@ -87,6 +88,16 @@ namespace breakoutbox.Models
         public void VerhoogProgress()
         {
             Progress++;
+        }
+
+        public void VerhoogFout()
+        {
+            Fout++;
+        }
+
+        public void ResetFout()
+        {
+            Fout = 0;
         }
     }
 }
