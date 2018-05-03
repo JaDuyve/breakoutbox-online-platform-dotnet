@@ -30,6 +30,7 @@
 /**/
 body {
 }
+
 .jumbotron {
     color: white;
     text-align: center;
@@ -40,6 +41,7 @@ body {
     height: 100vh;
     position: relative;
 }
+
 .jumbocard {
     display: block;
     position: absolute;
@@ -50,31 +52,39 @@ body {
     padding: 50px;
     border-radius: 15px;
 }
+
 h1 {
     font-size: 72px;
     margin: 0;
     padding: 0;
 }
+
 h2 {
     margin: 1em 0;
 }
+
 .table {
     margin: 3em 0;
 }
+
 tr:hover {
     background-color: #efefef;
 }
+
 .material-icons {
     color: white;
 }
+
 .secties h2 {
     margin: 3em 0;
 }
+
 .sessiebar {
     background-color: #607D8B;
     width: 100%;
     margin: 48px 0;
 }
+
 .circle {
     margin: 10px auto;
     width: 100px;
@@ -85,15 +95,47 @@ tr:hover {
     background: #00796B;
     border: 5px solid #80CBC4;
 }
-.size {
+
+    .circle:hover {
+        border: 5px solid #B2DFDB;
+        transition-duration: 0.3s;
+    }
+
+.klas {
     position: absolute;
-    top: 60px;
     z-index: 1;
+    display:block;
+    top: 90px;
+    left: 88px;
+    right: 100px;
     width: 100%;
     color: white;
+    cursor: default;
     font-size: 16px;
 }
+
 .circlecard {
+    display: block;
     width: 200px;
     position: relative;
+    background: rgba(236,239,241,0.5);
+    padding: 25px;
+    border-radius: 25px;
+    margin: 1em 0;
 }
+
+.groepen {
+    margin: 2em 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+a:focus {
+    outline: 0;
+}
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
