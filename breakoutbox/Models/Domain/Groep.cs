@@ -60,7 +60,7 @@ namespace breakoutbox.Models
 
         public ICollection<string> LijstLeerlingen()
         {
-            ICollection<string> leerling = Leerlingen.Substring(0, Leerlingen.Length -3).Split(",");
+            ICollection<string> leerling = Leerlingen.Substring(0, Leerlingen.Length -2).Split(",");
             return leerling;
         }
 

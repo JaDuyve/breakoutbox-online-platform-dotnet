@@ -31,6 +31,24 @@
 body {
 }
 
+.navbar {
+    -webkit-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
+    -moz-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
+    box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
+    background-color: rgba(96,125,139,1);
+    padding: 1em;
+}
+
+footer {
+    padding: 5em;
+    background-color: rgba(96,125,139,1);
+    color: white;
+    -webkit-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
+    -moz-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
+    box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
+    text-align:center;
+}
+
 .jumbotron {
     color: white;
     text-align: center;
@@ -75,14 +93,28 @@ tr:hover {
     color: white;
 }
 
+.sessies {
+    padding: 2em;
+}
+
 .secties h2 {
     margin: 3em 0;
 }
 
 .sessiebar {
+    float: right;
+    margin: 5em 0;
     background-color: #607D8B;
-    width: 100%;
-    margin: 48px 0;
+    width: 250px;
+    padding: 1em; 5em;
+}
+
+fieldset[disabled] .mdl-textfield .mdl-textfield__input, .mdl-textfield.is-disabled .mdl-textfield__input, .mdl-textfield__label, .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+    color: white;
+}
+
+fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disabled.is-disabled .mdl-textfield__label {
+    color: white;
 }
 
 .circle {
@@ -104,7 +136,7 @@ tr:hover {
 .klas {
     position: absolute;
     z-index: 1;
-    display:block;
+    display: block;
     top: 90px;
     left: 88px;
     right: 100px;
@@ -126,16 +158,51 @@ tr:hover {
 
 .groepen {
     margin: 2em 0;
+    clear: both;
 }
 
 a {
     color: black;
     text-decoration: none;
 }
-a:focus {
-    outline: 0;
-}
+
+    a:focus {
+        outline: 0;
+    }
+
     a:hover {
         color: black;
         text-decoration: none;
     }
+
+.gamescherm {
+    background-image: url(../images/shattered-island.gif);
+    background-color: slategrey;
+    padding: 8em;
+    color: white;
+    text-align: center;
+    -webkit-box-shadow: inset 0px -18px 64px -34px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px -18px 64px -34px rgba(0,0,0,0.75);
+    box-shadow: inset 0px -18px 64px -34px rgba(0,0,0,0.75);
+}
+.voortgang {
+    background-color: rgba(96,125,139,1);
+    padding: 1em 100px;
+    width: 100%;
+    color: white;
+}
+iframe {
+    height: 100vh;
+    width: 100%;
+    padding: 5em;
+}
+.oefcard.mdl-card {
+    width: 512px;
+    margin: 5em auto;
+}
+
+.oefcard > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('../images/shattered-island.gif') center / cover;
+}
