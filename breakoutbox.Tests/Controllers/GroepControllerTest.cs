@@ -1,8 +1,9 @@
-﻿using breakoutbox.Controllers;
-using breakoutbox.Models;
-using breakoutbox.Models.Domain;
-using breakoutbox.Models.OefeningViewModel;
+﻿
 using breakoutbox.Tests.Data;
+using BreakOutBoxAuth.Controllers;
+using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;

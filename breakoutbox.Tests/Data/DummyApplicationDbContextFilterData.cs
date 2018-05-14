@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using breakoutbox.Models;
+using BreakOutBoxAuth.Models;
 
 namespace breakoutbox.Tests.Data
 {
@@ -25,14 +25,16 @@ namespace breakoutbox.Tests.Data
             //_bobOefeningen
             
             _bob = new Bob { Naam = "bob"};
-            _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = getDateAfterToday(), BobNaam = "bob" };
+            _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob" };
             _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(), BobNaam = "bob" };
-            _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = getDateBeforeToday(), BobNaam = "bob2" };
+            _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = new DateTime(2018, 05, 4), BobNaam = "bob2" };
         }
 
         private DateTime getDateBeforeToday()
         {
-            return new DateTime().AddDays(-2);
+            
+            
+            return DateTime.Now.AddDays(-2);
         }
 
         private DateTime getDateAfterToday()
