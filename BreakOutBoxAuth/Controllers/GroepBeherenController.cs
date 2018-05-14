@@ -1,7 +1,10 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace BreakOutBoxAuth.Controllers
 {
@@ -20,6 +23,8 @@ namespace BreakOutBoxAuth.Controllers
         
         public IActionResult Index(string id)
         {
+            // Thibaut uitwerken !!!!
+            
             Sessie sessie = _sessieRepository.GetById(id);
 
             if (sessie == null)
@@ -42,7 +47,7 @@ namespace BreakOutBoxAuth.Controllers
                 
             }
 
-            if (groep.Currentstate.GetType() == typeof(Groepgeblokkeerdstate))
+            if (groep.Currentstate.GetClassType() == typeof(Groepgeblokkeerdstate))
             {
 
                 groep.Spelen();
@@ -56,6 +61,38 @@ namespace BreakOutBoxAuth.Controllers
 
             }
 
+            return RedirectToAction("Index", "GroepBeheren", new {Id = sessieId});
+
+        }
+
+        public IActionResult GroepenActiveren(string sessieId)
+        {
+            var sessie = _sessieRepository.GetByIdGroepenMetGroepstate(sessieId);
+
+            if (sessie == null)
+            {
+                return NotFound();
+            }
+
+            Groepstate state;
+            
+            foreach (var sessieGroep in sessie.SessieGroep)
+            {
+                state = sessieGroep.Groepen.Currentstate;
+                if (sessieGroep.Groepen.Currentstate.GetClassType() == typeof(Groepgekozenstate))
+                {
+                    sessieGroep.Groepen.GekozenEnVergrendeld();
+                }
+                sessieGroep.Groepen.KanSpelen();
+                
+                _groepstateRepository.Delete(state);
+                
+            }  
+            
+            _sessieRepository.SaveChanges();
+            _groepstateRepository.SaveChangesAsync();
+            
+            
             return RedirectToAction("Index", "GroepBeheren", new {Id = sessieId});
 
         }

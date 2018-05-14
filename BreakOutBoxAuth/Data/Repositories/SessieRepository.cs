@@ -23,6 +23,15 @@ namespace BreakOutBoxAuth.Data.Repositories
             return _sessies.Where(s => s.Code == code).SingleOrDefault();
         }
 
+        public Sessie GetByIdGroepenMetGroepstate(string naam)
+        {
+            return _sessies.Where(s => s.Naam.Equals(naam))
+                .Include(s => s.SessieGroep)
+                .ThenInclude(g => g.Groepen)
+                .ThenInclude(g => g.Currentstate)
+                .SingleOrDefault();
+        }
+
         public IEnumerable<Sessie> GetAll()
         {
             return _sessies.ToList();
@@ -31,9 +40,14 @@ namespace BreakOutBoxAuth.Data.Repositories
         public Sessie GetById(string naam)
         {
             return _sessies.Include(s => s.SessieGroep).ThenInclude(g => g.Groepen)
-                .SingleOrDefault(s => s.Naam == naam);
+                .SingleOrDefault(s => s.Naam.Equals( naam));
         }
 
+
+        public void SaveChangesAsync()
+        {
+            _context.SaveChangesAsync();
+        }
 
         public IEnumerable<Sessie> GetAllActive()
         {

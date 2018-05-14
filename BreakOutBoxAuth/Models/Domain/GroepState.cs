@@ -38,5 +38,7 @@ namespace BreakOutBoxAuth.Models
         public abstract void GekozenEnVergrendeld();
 
         public abstract Type GetClassType();
+
+        public abstract string GetStatus();
     }
 }

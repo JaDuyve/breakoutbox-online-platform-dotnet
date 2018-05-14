@@ -40,6 +40,11 @@ namespace BreakOutBoxAuth.Models
             return GetType();
         }
 
+        public override string GetStatus()
+        {
+            return "Gekozen & vergrendeld";
+        }
+
         public override void GekozenEnVergrendeld()
         {
             throw new System.NotImplementedException();

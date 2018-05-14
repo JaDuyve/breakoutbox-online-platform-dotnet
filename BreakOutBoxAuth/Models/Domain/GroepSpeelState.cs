@@ -40,9 +40,16 @@ namespace BreakOutBoxAuth.Models
             return GetType();
         }
 
+        public override string GetStatus()
+        {
+            return "Spelen";
+        }
+
         public override void GekozenEnVergrendeld()
         {
             throw new System.NotImplementedException();
         }
+        
+        
     }
 }

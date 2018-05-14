@@ -36,6 +36,11 @@ namespace BreakOutBoxAuth.Models
             return GetType();
         }
 
+        public override string GetStatus()
+        {
+            return "Uitgespeeld";
+        }
+
 
         public Groepfinishedstate(Groep groep):base(groep)
         {

@@ -44,6 +44,11 @@ namespace BreakOutBoxAuth.Models
             return GetType();
         }
 
+        public override string GetStatus()
+        {
+            return "Geblokkeerd";
+        }
+
         public override void GekozenEnVergrendeld()
         {
             throw new System.NotImplementedException();

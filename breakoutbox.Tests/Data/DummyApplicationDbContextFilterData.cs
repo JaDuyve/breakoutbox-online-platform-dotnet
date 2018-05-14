@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using breakoutbox.Models;
-using breakoutbox.Models.Domain;
 
 namespace breakoutbox.Tests.Data
 {
-    public class DummyApplicationDbContext
+    public class DummyApplicationDbContextFilterData
     {
         public  Sessie _maandag { get; }
         public  Sessie _dinsdag { get; }
@@ -18,7 +16,7 @@ namespace breakoutbox.Tests.Data
         private readonly ICollection<BobOefening> _bobOefeningen;
         private readonly ICollection<Sessie> _bobSessie;
 
-        public DummyApplicationDbContext()
+        public DummyApplicationDbContextFilterData()
         {
             _bobActies = new Collection<BobActie>();
             _bobActies.Add(new BobActie{BobNaam = "bobActie", LijstActiesNaam = "zoek aarde"});
@@ -27,9 +25,9 @@ namespace breakoutbox.Tests.Data
             //_bobOefeningen
             
             _bob = new Bob { Naam = "bob"};
-            _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 04, 25), BobNaam = "bob" };
-            _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 04, 25), BobNaam = "bob" };
-            _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob2" };
+            _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = getDateAfterToday(), BobNaam = "bob" };
+            _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(), BobNaam = "bob" };
+            _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = getDateBeforeToday(), BobNaam = "bob2" };
         }
 
         private DateTime getDateBeforeToday()
@@ -43,6 +41,5 @@ namespace breakoutbox.Tests.Data
         }
         
         public IEnumerable<Sessie> Sessies => new List<Sessie> { _maandag, _dinsdag, _woensdag};
-        
     }
 }

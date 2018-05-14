@@ -7,7 +7,9 @@ namespace BreakOutBoxAuth.Models.Domain
         IEnumerable<Sessie> GetAll();
         Sessie GetById(string naam);
         Sessie GetByCode(int code);
+        Sessie GetByIdGroepenMetGroepstate(string naam);
         void SaveChanges();
+        void SaveChangesAsync();
         IEnumerable<Sessie> GetAllActive();
     }
 }
