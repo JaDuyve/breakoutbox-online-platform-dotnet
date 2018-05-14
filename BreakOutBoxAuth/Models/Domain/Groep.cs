@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using BreakOutBoxAuth.Models.Domain;
+using SQLitePCL;
 
 namespace BreakOutBoxAuth.Models
 {
@@ -98,6 +100,14 @@ namespace BreakOutBoxAuth.Models
         public void ResetFout()
         {
             Fout = 0;
+        }
+
+        public int GetProgress100()
+        {
+            Double progress = Convert.ToDouble(Progress);
+            Double count = Convert.ToDouble(GroepPad.Count);
+            
+            return Convert.ToInt32(Math.Floor((progress / count) * 100));
         }
     }
 }

@@ -41,5 +41,10 @@ namespace BreakOutBoxAuth.Models
         {
             
         }
+
+        public Groepfinishedstate()
+        {
+         
+        }
     }
 }
