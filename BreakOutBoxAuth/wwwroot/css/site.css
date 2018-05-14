@@ -46,7 +46,7 @@ footer {
     -webkit-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     -moz-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
-    text-align:center;
+    text-align: center;
 }
 
 .jumbotron {
@@ -58,6 +58,7 @@ footer {
     height: 100%;
     height: 100vh;
     position: relative;
+    margin: 0;
 }
 
 .jumbocard {
@@ -96,17 +97,18 @@ tr:hover {
 .sessies {
     padding: 2em;
 }
-
-.secties h2 {
-    margin: 3em 0;
+.textback {
+    color: #fff;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 1.5em;
 }
 
 .sessiebar {
     float: right;
-    margin: 5em 0;
+    margin: 8em 0 0 0;
     background-color: #607D8B;
     width: 250px;
-    padding: 1em; 5em;
+    padding: 1em;
 }
 
 fieldset[disabled] .mdl-textfield .mdl-textfield__input, .mdl-textfield.is-disabled .mdl-textfield__input, .mdl-textfield__label, .mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
@@ -125,12 +127,12 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     -moz-border-radius: 100px;
     border-radius: 100px;
     background: #00796B;
-    border: 5px solid #80CBC4;
+    border: 6px solid #80CBC4;
 }
 
     .circle:hover {
         border: 5px solid #B2DFDB;
-        transition-duration: 0.3s;
+        transition-duration: 0.5s;
     }
 
 .klas {
@@ -152,12 +154,11 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     position: relative;
     background: rgba(236,239,241,0.5);
     padding: 25px;
-    border-radius: 25px;
-    margin: 1em 0;
+    border-radius: 15px;
+    margin: 1em auto;
 }
 
 .groepen {
-    margin: 2em 0;
     clear: both;
 }
 
@@ -185,17 +186,20 @@ a {
     -moz-box-shadow: inset 0px -18px 64px -34px rgba(0,0,0,0.75);
     box-shadow: inset 0px -18px 64px -34px rgba(0,0,0,0.75);
 }
+
 .voortgang {
     background-color: rgba(96,125,139,1);
     padding: 1em 100px;
     width: 100%;
     color: white;
 }
+
 iframe {
     height: 100vh;
     width: 100%;
     padding: 5em;
 }
+
 .oefcard.mdl-card {
     width: 512px;
     margin: 5em auto;
@@ -207,7 +211,22 @@ iframe {
     background: url('../images/shattered-island.gif') center / cover;
 }
 
-form{
-    margin-top: 80px;
-    
+.logcard.mdl-card {
+    width: 512px;
+    margin: 8em auto;
+    margin-bottom: 3em;
+}
+
+.logcard > .mdl-card__title {
+    color: #fff;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+form {
+    margin-top: 1em;
+}
+
+.login {
+    width: 50%;
+    margin: 0 auto;
 }
