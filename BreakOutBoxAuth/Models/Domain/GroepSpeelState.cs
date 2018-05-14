@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public class Groepspeelstate: Groepstate
     {

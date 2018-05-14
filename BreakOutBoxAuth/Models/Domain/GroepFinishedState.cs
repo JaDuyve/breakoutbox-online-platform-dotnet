@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public class Groepfinishedstate: Groepstate
     {

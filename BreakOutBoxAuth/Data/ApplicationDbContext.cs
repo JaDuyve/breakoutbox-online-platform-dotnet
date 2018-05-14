@@ -1,8 +1,8 @@
-﻿using breakoutbox.Data.Mappers;
-using breakoutbox.Models;
+﻿using BreakOutBoxAuth.Data.Mappers;
+using BreakOutBoxAuth.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace breakoutbox.Data
+namespace BreakOutBoxAuth.Data
 {
     public class ApplicationDbContext : DbContext
     {

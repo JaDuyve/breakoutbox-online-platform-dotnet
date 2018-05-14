@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using breakoutbox.Models;
-using breakoutbox.Models.Domain;
+using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace breakoutbox.Data.Repositories
+namespace BreakOutBoxAuth.Data.Repositories
 {
     public class PadRepository : IPadRepository
     {

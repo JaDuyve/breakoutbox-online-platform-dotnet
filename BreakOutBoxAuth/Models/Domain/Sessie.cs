@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public class Sessie
     {

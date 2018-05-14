@@ -1,4 +1,4 @@
-﻿namespace breakoutbox.Models.Domain
+﻿namespace BreakOutBoxAuth.Models.Domain
 {
     public interface IGroepRepository
     {

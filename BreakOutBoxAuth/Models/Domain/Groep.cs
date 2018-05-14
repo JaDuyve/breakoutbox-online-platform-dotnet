@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using breakoutbox.Models.Domain;
+using BreakOutBoxAuth.Models.Domain;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public class Groep
     {

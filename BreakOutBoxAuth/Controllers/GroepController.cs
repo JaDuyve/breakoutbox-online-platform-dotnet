@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using breakoutbox.Models;
-using breakoutbox.Models.ActionViewModel;
-using breakoutbox.Models.Domain;
-using breakoutbox.Models.OefeningViewModel;
+using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.ActionViewModel;
+using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
 using System.Web;
 using Remotion.Linq.Clauses.ResultOperators;
 
-namespace breakoutbox.Controllers
+namespace BreakOutBoxAuth.Controllers
 {
     public class GroepController : Controller
     {

@@ -1,4 +1,4 @@
-﻿namespace breakoutbox.Models
+﻿namespace BreakOutBoxAuth.Models
 {
     public class BobOefening
     {

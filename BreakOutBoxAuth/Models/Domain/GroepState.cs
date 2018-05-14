@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public abstract class Groepstate
     {

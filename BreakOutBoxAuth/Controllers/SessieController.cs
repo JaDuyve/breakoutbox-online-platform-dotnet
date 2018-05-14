@@ -1,8 +1,8 @@
-﻿using breakoutbox.Models.Domain;
-using breakoutbox.Models.SessieViewModel;
+﻿using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Mvc;
 
-namespace breakoutbox.Controllers
+namespace BreakOutBoxAuth.Controllers
 {
     public class SessieController : Controller
     {

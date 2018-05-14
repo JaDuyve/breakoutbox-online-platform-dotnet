@@ -1,8 +1,8 @@
-﻿using breakoutbox.Models;
+﻿using BreakOutBoxAuth.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace breakoutbox.Data.Mappers
+namespace BreakOutBoxAuth.Data.Mappers
 {
     public class OefeningGroepsbewerkingConfiguration : IEntityTypeConfiguration<OefeningGroepsbewerking>
     {

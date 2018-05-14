@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Web.CodeGeneration;
 
-namespace breakoutbox.Models.ActionViewModel
+namespace BreakOutBoxAuth.Models.ActionViewModel
 {
     public class ActionViewModel
     {

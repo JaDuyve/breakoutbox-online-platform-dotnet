@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace breakoutbox.Models
+namespace BreakOutBoxAuth.Models
 {
     public class Bob
     {

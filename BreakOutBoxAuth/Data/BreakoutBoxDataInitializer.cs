@@ -1,4 +1,4 @@
-﻿namespace breakoutbox.Data
+﻿namespace BreakOutBoxAuth.Data
 {
     public class BreakoutBoxDataInitializer
     {

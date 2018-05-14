@@ -9,7 +9,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BreakOutBoxAuth.Data;
+using BreakOutBoxAuth.Data.Repositories;
 using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Services;
 
 namespace BreakOutBoxAuth

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace breakoutbox.Models.SessieViewModel
+namespace BreakOutBoxAuth.Models.SessieViewModel
 {
     public class SessieViewModel
     {

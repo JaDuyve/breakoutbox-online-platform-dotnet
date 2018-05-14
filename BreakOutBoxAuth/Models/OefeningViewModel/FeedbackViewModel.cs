@@ -1,4 +1,4 @@
-﻿namespace breakoutbox.Models.OefeningViewModel
+﻿namespace BreakOutBoxAuth.Models.OefeningViewModel
 {
     public class FeedbackViewModel
     {
