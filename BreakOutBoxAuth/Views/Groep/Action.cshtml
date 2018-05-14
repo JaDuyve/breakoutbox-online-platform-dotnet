@@ -1,31 +1,53 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
 @model BreakOutBoxAuth.Models.ActionViewModel.ActionViewModel
 
-<div>
+<div class="container">
     @if (Model.IsSchatkist)
     {
-        <form method="post" action="/Groep/Action/@Model.Groep.Id">
-            <h3>Actie</h3>
-            <p>@Model.Opgave</p>
-            <div>
-                <input asp-for="Toegangscode" class="form-control"/>
+    <form method="post" action="/Groep/Action/@Model.Groep.Id">
+        <div class="logcard mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h1 class="mdl-card__title-text">Actie</h1>
             </div>
-            <div>
-                <button class="btn btn-primary" type="submit">Controlleer</button>
+            <div class="mdl-card__supporting-text">
+                <h5>@Model.Opgave</h5>
             </div>
-        </form>
+            <div class="mdl-card__actions mdl-card--border">
+                <div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input asp-for="Toegangscode" class="mdl-textfield__input" type="number" placeholder="Voeg het gevonden nummer in!" value="" id="actie">
+                        <label class="mdl-textfield__label" for="actie">Antwoord</label>
+                    </div>
+                </div>
+                <div>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Controlleer</button>
+                </div>
+            </div>
+        </div>
+    </form>
     }
     else
     {
         <form method="post" action="/Groep/Action/@Model.Groep.Id">
-            <h3>Actie</h3>
-            <p>@Model.Pad.ActieNaamNavigation.Opgave</p>
-            <div>
-                <input asp-for="Toegangscode" class="form-control"/>
-            </div>
-            <div>
-                <button class="btn btn-primary" type="submit">Controlleer</button>
-            </div>
+            <div class="logcard mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h1 class="mdl-card__title-text">Actie</h1>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    <h5>@Model.Pad.ActieNaamNavigation.Opgave</h5>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input asp-for="Toegangscode" class="mdl-textfield__input" type="number" placeholder="Voeg het gevonden nummer in!" value="" id="actie">
+                            <label class="mdl-textfield__label" for="actie">Antwoord</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Controlleer</button>
+                    </div>
+                </div>
+            </div>            
         </form>
     }
     

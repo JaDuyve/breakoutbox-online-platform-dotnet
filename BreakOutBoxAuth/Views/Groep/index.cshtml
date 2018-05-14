@@ -19,10 +19,10 @@
         {
             <div class="col-lg-3 col-md-4">
                 <div class="circlecard mdl-shadow--2dp ">
-                    <div class="text-center">@groep.Groepen.Naam</div>
-                    <div class="klas">@groep.Groepen.Klas</div>
-                    <a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam"><div class="circle"></div></a>
+                    <h5 class="text-center">@groep.Groepen.Naam</h5>
 
+                    <a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam"><div class="circle"></div></a>
+                    <div class="klas">@groep.Groepen.Klas</div>
                     <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -38,14 +38,14 @@
                                     <p>Leerlingen:</p>
                                     <ul class="demo-list-icon mdl-list">
                                         @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
-                                    {
-                                        <li class="mdl-list__item">
-                                            <span class="mdl-list__item-primary-content">
-                                                <i class="material-icons mdl-list__item-icon">person</i>
-                                                @leerling
-                                            </span>
-                                        </li>
-                                }
+                        {
+                            <li class="mdl-list__item">
+                                <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    @leerling
+                                </span>
+                            </li>
+        }
                                     </ul>
                                 </div>
                                 <div class="modal-footer">

@@ -106,7 +106,7 @@ tr:hover {
 .sessiebar {
     float: right;
     margin: 8em 0 0 0;
-    background-color: #607D8B;
+    background-color: rgba(96,125,139,0.9);
     width: 250px;
     padding: 1em;
 }
@@ -121,37 +121,30 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
 
 .circle {
     margin: 10px auto;
-    width: 100px;
-    height: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
-    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
     background: #00796B;
     border: 6px solid #80CBC4;
 }
 
     .circle:hover {
         border: 5px solid #B2DFDB;
-        transition-duration: 0.5s;
+        transition-duration: 0.3s;
     }
 
 .klas {
-    position: absolute;
-    z-index: 1;
-    display: block;
-    top: 90px;
-    left: 88px;
-    right: 100px;
     width: 100%;
     color: white;
-    cursor: default;
     font-size: 16px;
+    color: black;
 }
 
 .circlecard {
     display: block;
     width: 200px;
-    position: relative;
     background: rgba(236,239,241,0.5);
     padding: 25px;
     border-radius: 15px;
@@ -188,10 +181,15 @@ a {
 }
 
 .voortgang {
-    background-color: rgba(96,125,139,1);
-    padding: 1em 100px;
+    color: #fff;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 2em 100px;
+    font-size: 18px;
     width: 100%;
-    color: white;
+}
+
+.progress {
+    margin: 1em 0;
 }
 
 iframe {

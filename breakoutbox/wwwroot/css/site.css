@@ -126,11 +126,11 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     border-radius: 100px;
     background: #00796B;
     border: 5px solid #80CBC4;
+    transition-duration: 0.3s;
 }
 
     .circle:hover {
         border: 5px solid #B2DFDB;
-        transition-duration: 0.3s;
     }
 
 .klas {
