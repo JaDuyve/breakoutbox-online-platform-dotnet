@@ -1,0 +1,40 @@
+﻿
+@using System.Diagnostics.Tracing
+@model BreakOutBoxAuth.Models.SessieViewModel.SessieViewModel
+
+@{
+    ViewData["Title"] = "Sessie selecteren";
+    int counter = 1;
+}
+
+
+<div class="sessies container" id="sessies">
+    <h2>@ViewData["Title"]</h2>
+    <h4 class="text-center">Dit zijn de sessies voor vandaag!</h4>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sessienaam</th>
+                <th scope="col">Startdatum</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var sessie in Model.Sessies)
+    {
+        <tr data-toggle="modal" data-target="#@sessie.Naam">
+            <th scope="row">@counter</th>
+            <td>
+                @sessie.Naam
+            </td>
+            <td>@sessie.Startdatum</td>
+
+        </tr>
+        
+counter++;
+}
+        </tbody>
+    </table>
+
+</div>

@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BreakOutBoxAuth.Controllers
 {
-    public class SessieController : Controller
+    public class SessieBeherenController : Controller
     {
         private readonly ISessieRepository _sessieRepository;
         
-        public SessieController(ISessieRepository sessieRepository)
+        public SessieBeherenController(ISessieRepository sessieRepository)
         {
             _sessieRepository = sessieRepository;
         }
@@ -16,11 +16,7 @@ namespace BreakOutBoxAuth.Controllers
         // GET
         public IActionResult Index()
         {
-            // Use this for development purpose
-//            var sessies = _sessieRepository.GetAll();
-            
-            
-            var sessies = _sessieRepository.GetAllActive();
+            var sessies = _sessieRepository.GetAll();
             return View(new SessieViewModel(sessies));
         }
 
@@ -32,7 +28,7 @@ namespace BreakOutBoxAuth.Controllers
             if (model.Code == sessie.Code)
             {
                 
-                return RedirectToAction("index", "Groep", new {Id = sessie.Naam});
+                return RedirectToAction("index", "GroepBeheren", new {Id = sessie.Naam});
             }
             return RedirectToAction(nameof(Index));
         }

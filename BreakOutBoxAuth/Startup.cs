@@ -39,6 +39,7 @@ namespace BreakOutBoxAuth
             services.AddScoped<ISessieRepository, SessieRepository>();
             services.AddScoped<IPadRepository, PadRepository>();
             services.AddScoped<IGroepRepository, GroepRepository>();
+            services.AddScoped<IGroepstateRepository, GroepstateRepository>();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();

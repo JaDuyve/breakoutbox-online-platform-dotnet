@@ -14,6 +14,7 @@ namespace BreakOutBoxAuth.Data
         public DbSet<Groep> Groepen { get; set; }
         public DbSet<Pad> Paden { get; set; }
         public DbSet<Sessie> Sessies { get; set; }
+        public DbSet<Groepstate> Groepstates { set; get; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

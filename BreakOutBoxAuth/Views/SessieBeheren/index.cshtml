@@ -1,0 +1,55 @@
+
+@using System.Diagnostics.Tracing
+@model BreakOutBoxAuth.Models.SessieViewModel.SessieViewModel
+
+@{
+    ViewData["Title"] = "Sessie selecteren";
+    int counter = 1;
+}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="jumbocard">
+            <h1>BREAKOUT-BOX</h1>
+            <h2>Ga meteen aan de slag!</h2>
+            
+            <p class="lead">Welkom bij Breakout-box! Klik <a href="#sessies">hier</a> of op de knop hieronder om meteen aan de slag te gaan. Voeg je sessiecode in voor de sessie zodat het spel kan beginnen!</p>
+            <br />
+            <a href="#sessies" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">keyboard_arrow_down</i>
+            </a>
+        </div>
+        </div>
+    
+</div>
+
+<div class="sessies container" id="sessies">
+    <h2>@ViewData["Title"]</h2>
+    <h4 class="text-center">Dit zijn de sessies voor vandaag!</h4>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sessienaam</th>
+                <th scope="col">Startdatum</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var sessie in Model.Sessies)
+    {
+        <tr data-toggle="modal" data-target="#@sessie.Naam">
+            <th scope="row">@counter</th>
+            <td>
+                @sessie.Naam
+            </td>
+            <td>@sessie.Startdatum</td>
+
+        </tr>
+        
+counter++;
+}
+        </tbody>
+    </table>
+
+</div>

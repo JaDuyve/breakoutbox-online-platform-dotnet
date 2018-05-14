@@ -35,5 +35,10 @@ namespace BreakOutBoxAuth.Data.Repositories
         {
             _context.SaveChanges();
         }
+
+        public void SaveChangesAsync()
+        {
+            _context.SaveChangesAsync();
+        }
     }
 }

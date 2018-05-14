@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
@@ -24,7 +25,7 @@ namespace BreakOutBoxAuth.Data.Repositories
 
         public IEnumerable<Sessie> GetAll()
         {
-            return _sessies /*.Include(s => s.Groepen)*/.ToList();
+            return _sessies.ToList();
         }
 
         public Sessie GetById(string naam)
@@ -33,10 +34,11 @@ namespace BreakOutBoxAuth.Data.Repositories
                 .SingleOrDefault(s => s.Naam == naam);
         }
 
-        /*public Sessie GetById(string naam)
+
+        public IEnumerable<Sessie> GetAllActive()
         {
-            return _sessies.Include(s => s.SessieGroep).SingleOrDefault(s => s.Naam == naam);
-        }*/
+            return _sessies.Where(s => s.Startdatum.Date <= DateTime.Now.Date).ToList();
+        }
 
 
         public void SaveChanges()

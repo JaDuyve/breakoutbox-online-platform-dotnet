@@ -8,5 +8,6 @@ namespace BreakOutBoxAuth.Models.Domain
         Sessie GetById(string naam);
         Sessie GetByCode(int code);
         void SaveChanges();
+        IEnumerable<Sessie> GetAllActive();
     }
 }

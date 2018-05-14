@@ -1,8 +1,8 @@
 ﻿namespace BreakOutBoxAuth.Models.Domain
 {
-    public interface IGroepRepository
+    public interface IGroepstateRepository
     {
-        Groep GetById(decimal ID);
+        void Delete(Groepstate groepstate);
         void SaveChanges();
         void SaveChangesAsync();
     }
