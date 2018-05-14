@@ -16,7 +16,7 @@ namespace breakoutbox.Models
         public string Antwoord { get; set; }
         public string Feedback { get; set; }
         public string Opgave { get; set; }
-        public int? Tijdslimiet { get; set; }
+        public int Tijdslimiet { get; set; }
         public string VakNaam { get; set; }
 
         public Vak VakNaamNavigation { get; set; }
