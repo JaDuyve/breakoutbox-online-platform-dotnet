@@ -71,7 +71,7 @@ namespace BreakOutBoxAuth
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
 			
-			app.UseSession();
+			//app.UseSession();
 //            breakoutBoxDataInitializer.InitializeData();
         }
     }
