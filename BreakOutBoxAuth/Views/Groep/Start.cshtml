@@ -1,0 +1,28 @@
+﻿@model breakoutbox.Models.OefeningViewModel.AntwoordViewModel
+
+@{
+    ViewData["Title"] = "Gamescherm";
+
+}
+
+
+<div class="gamescherm">
+    <div class="container">
+        <h1>Gamescherm</h1>
+        <h2>@Model.Groep.Naam</h2>
+        <a href="#oef" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">keyboard_arrow_down</i>
+        </a>
+    </div>
+</div>
+<div class="voortgang">
+    <div class="container-fluid">
+        <span>VOORTGANG:</span>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="@Model.Groep.Progress" aria-valuemin="0" aria-valuemax="@Model.Groep.GroepPad.Count()" style="width: 75%"></div>
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("_Oefening", Model)

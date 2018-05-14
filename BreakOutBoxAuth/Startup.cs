@@ -32,6 +32,11 @@ namespace BreakOutBoxAuth
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+				
+				services.AddScoped<BreakoutBoxDataInitializer>();
+            services.AddScoped<ISessieRepository, SessieRepository>();
+            services.AddScoped<IPadRepository, PadRepository>();
+            services.AddScoped<IGroepRepository, GroepRepository>();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
@@ -61,8 +66,11 @@ namespace BreakOutBoxAuth
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Sessie}/{action=Index}/{id?}");
             });
+			
+			app.UseSession();
+//            breakoutBoxDataInitializer.InitializeData();
         }
     }
 }

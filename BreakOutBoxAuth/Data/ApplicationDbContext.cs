@@ -1,26 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using breakoutbox.Data.Mappers;
+using breakoutbox.Models;
 using Microsoft.EntityFrameworkCore;
-using BreakOutBoxAuth.Models;
 
-namespace BreakOutBoxAuth.Data
+namespace breakoutbox.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        public DbSet<Groep> Groepen { get; set; }
+        public DbSet<Pad> Paden { get; set; }
+        public DbSet<Sessie> Sessies { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new ActieConfiguration());
+            modelBuilder.ApplyConfiguration(new BobActieConfiguration());
+            modelBuilder.ApplyConfiguration(new BobConfiguration());
+            modelBuilder.ApplyConfiguration(new BobOefeningConfiguration());
+            modelBuilder.ApplyConfiguration(new DoelstellingscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepPadConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepsBewerkingConfiguration());
+            modelBuilder.ApplyConfiguration(new OefeningConfiguration());
+            modelBuilder.ApplyConfiguration(new OefeningDoelstellingscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new OefeningGroepsbewerkingConfiguration());
+            modelBuilder.ApplyConfiguration(new PadConfiguration());
+            modelBuilder.ApplyConfiguration(new SessieConfiguration());
+            modelBuilder.ApplyConfiguration(new SessieGroepConfiguration());
+            modelBuilder.ApplyConfiguration(new ToegangscodeConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepfinishedstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepgeblokkeerdstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepgekozenstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepkanspelenstateConfiguration());
+            modelBuilder.ApplyConfiguration(new GroepspeelstateConfiguration());
+            modelBuilder.ApplyConfiguration(new VakConfiguration());
+//            modelBuilder.Entity<Groep>().Has
+//            modelBuilder.ApplyConfiguration(new LeerlingConfiguration());
+
         }
     }
 }
