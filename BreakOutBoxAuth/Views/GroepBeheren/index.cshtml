@@ -23,7 +23,7 @@
             @foreach (var sessie in Model.Sessies)
     {
 
-            <tr onclick="location.href = '@(Url.Action("Groepen", "GroepBeheren", @sessie.Naam))'">
+            <tr onclick="location.href = '@(Url.Action("Groepen", "GroepBeheren", new {id = @sessie.Naam} ))'">
                 <th scope="row">@counter</th>
                 <td>
                     @sessie.Naam
