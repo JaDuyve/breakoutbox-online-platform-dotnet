@@ -172,11 +172,19 @@ namespace BreakOutBoxAuth.Controllers
 
             if (pad.Toegangscode.Code == actionViewModel.Toegangscode)
             {
-                groep.VerhoogProgress();
+                if (actionViewModel.Actie == null)
+                {
+                    return View("Schatkist");
+                }
+                    
                 
-                _groepRepository.SaveChanges();
+                    groep.VerhoogProgress();
+                
+                    _groepRepository.SaveChanges();
 
-                return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+                    return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+                
+                
             }
             else
             {
@@ -191,6 +199,11 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             return View(new ActionViewModel(pad, groep, false));
+        }
+
+        public IActionResult Schatkist()
+        {
+            return View();
         }
 
         private void getFile(string filename)
