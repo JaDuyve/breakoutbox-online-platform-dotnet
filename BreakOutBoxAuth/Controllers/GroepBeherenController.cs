@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -25,6 +26,12 @@ namespace BreakOutBoxAuth.Controllers
         {
             // Thibaut uitwerken !!!!
             
+            var sessies = _sessieRepository.GetAllActive();
+            return View(new SessieViewModel(sessies));
+        }
+
+        public IActionResult Groepen(string id)
+        {
             Sessie sessie = _sessieRepository.GetById(id);
 
             if (sessie == null)
@@ -32,8 +39,7 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-            return null;
-//            return View(sessie);
+            return View(sessie);
         }
 
 

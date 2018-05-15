@@ -10,7 +10,6 @@
 
 <div class="sessies container" id="sessies">
     <h2>@ViewData["Title"]</h2>
-    <h4 class="text-center">Dit zijn de sessies voor vandaag!</h4>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -23,14 +22,17 @@
 
             @foreach (var sessie in Model.Sessies)
     {
-        <tr data-toggle="modal" data-target="#@sessie.Naam">
-            <th scope="row">@counter</th>
-            <td>
-                @sessie.Naam
-            </td>
-            <td>@sessie.Startdatum</td>
 
-        </tr>
+            <tr method="post" asp-controller="GroepBeheren" asp-action="Groepen" data-target="#@sessie.Naam">
+                <th scope="row">@counter</th>
+                <td>
+                    @sessie.Naam
+                </td>
+                <td>@sessie.Startdatum</td>
+
+            </tr>
+
+        
         
 counter++;
 }
