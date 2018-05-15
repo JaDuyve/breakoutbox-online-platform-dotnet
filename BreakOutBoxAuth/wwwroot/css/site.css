@@ -80,6 +80,10 @@ footer {
     border-radius: 15px;
 }
 
+.jumbocard>.schatkist{
+    top: 50%;
+}
+
 h1 {
     font-size: 72px;
     margin: 0;
