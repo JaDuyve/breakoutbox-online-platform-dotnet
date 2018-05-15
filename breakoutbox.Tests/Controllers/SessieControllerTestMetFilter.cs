@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using breakoutbox.Controllers;
-using breakoutbox.Models;
-using breakoutbox.Models.Domain;
-using breakoutbox.Models.SessieViewModel;
+using BreakOutBoxAuth.Controllers;
+using BreakOutBoxAuth.Models;
 using breakoutbox.Tests.Data;
+using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
@@ -39,14 +40,16 @@ namespace breakoutbox.Tests.Controllers
         }
         
         [Fact]
-        public void Index_AllSessies()
+        public void All_SessiesFilter()
         {
             var result = _sessieController.Index() as ViewResult;
             var sessieVm = result?.Model as SessieViewModel;
             List<Sessie> sessies = sessieVm.Sessies.ToList();
+//            Assert.Equal(2, sessies.Count);
+            Console.WriteLine(sessies);
+//            Assert.True(sessies.Any(s => s.Naam.Equals("woensdag")));
+            Assert.False(sessies.Any(s => s.Naam.Equals("maandag")));
             Assert.Equal(2, sessies.Count);
-//            Assert.True(co);
-            Assert.Equal("dinsdag", sessies[1].Naam);
         }
     }
 }

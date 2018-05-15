@@ -11,6 +11,6 @@
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\breakoutbox\breakoutbox.csproj" />
+    <ProjectReference Include="..\BreakOutBoxAuth\BreakOutBoxAuth.csproj" />
   </ItemGroup>
 </Project>

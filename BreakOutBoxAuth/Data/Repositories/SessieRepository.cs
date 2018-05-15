@@ -51,6 +51,7 @@ namespace BreakOutBoxAuth.Data.Repositories
 
         public IEnumerable<Sessie> GetAllActive()
         {
+            
             return _sessies.Where(s => s.Startdatum.Date <= DateTime.Now.Date).ToList();
         }
 

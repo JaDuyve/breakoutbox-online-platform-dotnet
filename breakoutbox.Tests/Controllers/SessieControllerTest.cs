@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using breakoutbox.Controllers;
-using breakoutbox.Models;
-using breakoutbox.Models.Domain;
-using breakoutbox.Models.SessieViewModel;
+
 using breakoutbox.Tests.Data;
+using BreakOutBoxAuth.Controllers;
+using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.Domain;
+using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
