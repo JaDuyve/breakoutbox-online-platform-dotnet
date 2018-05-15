@@ -5,10 +5,7 @@
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
-<h2>@ViewData["Title"]</h2>
-
 <div class="container">
-    <section>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="logcard mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title mdl-card--expand">
@@ -41,8 +38,6 @@
                 </div>
            </div>  
         </form>
-    </section>
-
 </div>
 
 @section Scripts {

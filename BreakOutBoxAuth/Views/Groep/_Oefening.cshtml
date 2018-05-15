@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
-                <iframe src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf"></iframe>
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf" allowfullscreen></iframe>
+                </div>
             </div>
             <div class="col-lg-6" style="padding: 5em">
                 <div class="oefcard mdl-card mdl-shadow--2dp">

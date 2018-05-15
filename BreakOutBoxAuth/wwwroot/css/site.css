@@ -29,6 +29,9 @@
 
 /**/
 body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 8rem;
 }
 
 .navbar {
@@ -47,6 +50,10 @@ footer {
     -moz-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .jumbotron {
@@ -67,8 +74,9 @@ footer {
     top: 20%;
     left: 5%;
     right: 5%;
-    background-color: rgba(96,125,139,0.8);
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     padding: 50px;
+    opacity: .95;
     border-radius: 15px;
 }
 
@@ -83,7 +91,7 @@ h2 {
 }
 
 .table {
-    margin: 3em 0;
+    margin: 5em 0;
 }
 
 tr:hover {
@@ -128,11 +136,11 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     border-radius: 120px;
     background: #00796B;
     border: 6px solid #80CBC4;
+    transition-duration: 0.3s;
 }
 
     .circle:hover {
         border: 5px solid #B2DFDB;
-        transition-duration: 0.3s;
     }
 
 .klas {
@@ -211,8 +219,7 @@ iframe {
 
 .logcard.mdl-card {
     width: 512px;
-    margin: 8em auto;
-    margin-bottom: 3em;
+    margin: 8em  auto;
 }
 
 .logcard > .mdl-card__title {
@@ -228,3 +235,4 @@ form {
     width: 50%;
     margin: 0 auto;
 }
+
