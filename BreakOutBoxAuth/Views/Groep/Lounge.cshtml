@@ -1,0 +1,51 @@
+﻿@model BreakOutBoxAuth.Models.Groep
+@{
+    ViewData["Title"] = "Lounge";
+}
+<div class="jumbotron jumbotron-fluid lounge">
+    <div class="container-fluid">
+        <div class="jumbocard loungecard">
+            <h2>Lounge</h2>
+            <div class="row">
+
+                <div class="col col-md-6">
+                    <div class="grpcard mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">@Model.Naam</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <div class="demo-list-action mdl-list">
+                                @foreach (var leerling in @Model.LijstLeerlingen())
+                                {
+                                    <div class="mdl-list__item">
+                                        <span class="mdl-list__item-primary-content">
+                                            <i class="material-icons mdl-list__item-avatar">person</i>
+                                            <span>@leerling</span>
+                                        </span>
+                                        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                <input type="checkbox" disabled id="checkbox-1" checked="@Model.Contactleer? true: false " class="mdl-checkbox__input">
+                                <span class="mdl-checkbox__label">Contactleer</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-6">
+                    <h3>Even Wachten...</h3>
+
+                    <div class="spinner">
+                        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+                    </div>                    <div>
+                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

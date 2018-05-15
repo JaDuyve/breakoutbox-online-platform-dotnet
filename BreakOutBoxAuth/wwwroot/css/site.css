@@ -31,7 +31,7 @@
 body {
     position: relative;
     margin: 0;
-    padding-bottom: 8rem;
+    padding-bottom: 10%;
 }
 
 .navbar {
@@ -226,13 +226,39 @@ iframe {
     color: #fff;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
+.grpcard.mdl-card {
+    width: 512px;
+    margin: 0 auto;
+    opacity: 1;
+}
 
+.grpcard > .mdl-card__title {
+    color: #fff;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
 form {
     margin-top: 1em;
 }
-
+.loungecard > h2 {
+    width: 100%;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 1em;
+    margin: 0 0 1em 0;
+}
 .login {
     width: 50%;
     margin: 0 auto;
 }
-
+.lounge {
+    background: url('../images/subway-lines.png');
+    background-repeat:repeat;
+    background-attachment: fixed;
+}
+.loungecard {
+    opacity: 1;
+    padding: 0 0 4em 0;
+    background: url('../images/shattered-island.gif') center;
+}
+.spinner {
+    margin: 5em auto;
+}
