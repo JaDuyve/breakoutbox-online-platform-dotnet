@@ -191,6 +191,8 @@ namespace BreakOutBoxAuth.Controllers
             {
                 if (actionViewModel.Actie == null)
                 {
+                    groep.Finish();
+                    _groepRepository.SaveChanges();
                     return View("Schatkist");
                 }
                     
