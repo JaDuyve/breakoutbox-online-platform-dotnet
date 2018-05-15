@@ -14,6 +14,7 @@ namespace breakoutbox.Tests.Data
         public  Sessie _woensdag { get; }
 
         private readonly Bob _bob;
+        public Groep Groep { get; }
         private readonly ICollection<BobActie> _bobActies;
         private readonly ICollection<BobOefening> _bobOefeningen;
         private readonly ICollection<Sessie> _bobSessie;
@@ -30,6 +31,16 @@ namespace breakoutbox.Tests.Data
             _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob" };
             _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(), BobNaam = "bob" };
             _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = new DateTime(2018, 05, 04), BobNaam = "bob2" };
+
+            //Groep
+            Groep = new Groep
+            {
+                Id = 8,
+                Naam = "Groep",
+                Klas = "2C",
+                Contactleer = true,
+                Fout = 3
+            };
         }
 
         private DateTime getDateBeforeToday()

@@ -7,6 +7,7 @@ using BreakOutBoxAuth.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
+using System;
 
 namespace breakoutbox.Tests.Controllers
 {
@@ -16,13 +17,22 @@ namespace breakoutbox.Tests.Controllers
         private readonly Mock<ISessieRepository> _mockSessieRepository;
         private readonly GroepController _groepController;
         private readonly DummyApplicationDbContext _dummyContext = new DummyApplicationDbContext();
-
+        private readonly int _groepID= 8;
+        private readonly Groep _testgroep;
         public GroepControllerTest()
         {
             _mockGroepRepository = new Mock<IGroepRepository>();
             _mockSessieRepository = new Mock<ISessieRepository>();
             _groepController = new GroepController(_mockGroepRepository.Object, _mockSessieRepository.Object);
-
+            _testgroep = new Groep
+            {
+                Id = 8,
+                Naam = "Groep",
+                Klas = "2C",
+                Contactleer = true,
+                Fout = 3
+            };
+            _mockGroepRepository.Setup(c => c.GetById(_testgroep.Id)).Returns(_dummyContext.Groep);
         }
         
         [Theory]
@@ -44,6 +54,21 @@ namespace breakoutbox.Tests.Controllers
             var result = _groepController.Index(id) as ViewResult;
             var sessie = result?.Model as Sessie;
             Assert.Equal(id, sessie.Naam);
+        }
+
+        [Fact]
+        public void StartPost_3FouteAntwoorden_RedirectsToFeedback()
+        {
+            if (_testgroep.Fout == 3)
+            {
+                var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
+                Assert.Equal("Feedback", result?.ActionName);
+            }
+            else
+            {
+                var result = _groepController.Start(_testgroep.Id, new AntwoordViewModel()) as RedirectToActionResult;
+            }
+            
         }
     }
 }
