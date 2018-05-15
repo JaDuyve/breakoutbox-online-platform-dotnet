@@ -16,48 +16,48 @@
     <div class="container groepen">
         <div class="row">
             @foreach (var groep in Model.SessieGroep)
-        {
-            <div class="col-lg-3 col-md-4">
-                <div class="circlecard mdl-shadow--2dp ">
-                    <h5 class="text-center">@groep.Groepen.Naam</h5>
+            {
+                <div class="col-lg-3 col-md-4">
+                    <div class="circlecard mdl-shadow--2dp ">
+                        <h5 class="text-center">@groep.Groepen.Naam</h5>
 
-                    <a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam"><div class="circle"></div></a>
-                    <div class="klas">@groep.Groepen.Klas</div>
-                    <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">@groep.Groepen.Naam | @groep.Groepen.Klas</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <label>Contactleer</label>
-                                    <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
-                                    <p>Leerlingen:</p>
-                                    <ul class="demo-list-icon mdl-list">
-                                        @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
-                        {
-                            <li class="mdl-list__item">
-                                <span class="mdl-list__item-primary-content">
-                                    <i class="material-icons mdl-list__item-icon">person</i>
-                                    @leerling
-                                </span>
-                            </li>
-        }
-                                    </ul>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
-                                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@groep.Groepen.Id">Ja, dit zijn wij!</a>
+                        <a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam"><div class="circle"></div></a>
+                        <div class="klas">@groep.Groepen.Klas</div>
+                        <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">@groep.Groepen.Naam | @groep.Groepen.Klas</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Contactleer</label>
+                                        <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
+                                        <p>Leerlingen:</p>
+                                        <ul class="demo-list-icon mdl-list">
+                                            @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
+                                            {
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content">
+                                                        <i class="material-icons mdl-list__item-icon">person</i>
+                                                        @leerling
+                                                    </span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
+                                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Lounge" asp-route-id="@groep.Groepen.Id">Ja, dit zijn wij!</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    }
+            }
 
         </div>
         <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect" asp-controller="Sessie" asp-action="Index">Back</a>
