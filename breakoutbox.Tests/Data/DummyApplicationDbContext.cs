@@ -18,6 +18,7 @@ namespace breakoutbox.Tests.Data
         private readonly ICollection<BobActie> _bobActies;
         private readonly ICollection<BobOefening> _bobOefeningen;
         private readonly ICollection<Sessie> _bobSessie;
+        private readonly ICollection<Groep> _groeps;
 
         public DummyApplicationDbContext()
         {
@@ -31,6 +32,9 @@ namespace breakoutbox.Tests.Data
             _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob" };
             _dinsdag = new Sessie {Naam = "dinsdag", Code = 9999, Contactleer = true, Startdatum = new DateTime(), BobNaam = "bob" };
             _woensdag = new Sessie {Naam = "woensdag", Code = 9599, Contactleer = true, Startdatum = new DateTime(2018, 05, 04), BobNaam = "bob2" };
+            
+//            _groeps = new Collection<Groep>();
+//            _groep1 = new Groep {Contactleer = false, Currentstate = null, CurrentstateId = 1, 3,null, }
 
             //Groep
             Groep = new Groep

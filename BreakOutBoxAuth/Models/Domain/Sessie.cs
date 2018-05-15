@@ -16,7 +16,7 @@ namespace BreakOutBoxAuth.Models
         public bool Contactleer { get; set; }
         public DateTime Startdatum { get; set; }
         public string BobNaam { get; set; }
-
+        public bool HasEnded { get; set; }
         public Bob BobNaamNavigation { get; set; }
         public ICollection<SessieGroep> SessieGroep { get; set; }
     }

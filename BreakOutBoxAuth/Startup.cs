@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -41,6 +42,13 @@ namespace BreakOutBoxAuth
             services.AddScoped<IGroepRepository, GroepRepository>();
             services.AddScoped<IGroepstateRepository, GroepstateRepository>();
 
+            
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "admin"));
+            });
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
@@ -48,7 +56,7 @@ namespace BreakOutBoxAuth
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BreakoutBoxDataInitializer breakoutBoxDataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -62,6 +70,7 @@ namespace BreakOutBoxAuth
             }
 
             app.UseStaticFiles();
+//            app.UseSession();
 
             app.UseAuthentication();
 
@@ -71,9 +80,9 @@ namespace BreakOutBoxAuth
                     name: "default",
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
-			
-			//app.UseSession();
-//            breakoutBoxDataInitializer.InitializeData();
+
+            //app.UseSession();
+//            breakoutBoxDataInitializer.InitializeData().Wait();
         }
     }
 }
