@@ -25,20 +25,38 @@ namespace BreakOutBoxAuth.Models
         public Groep Groep { get; set; }
         public decimal? GroepId { get; set; }
 
-        public abstract void Finish();
-        
-
-        public abstract void Blok();
-        
-
-        public abstract void Spelen();
+        public virtual void Finish()
+        {
+            
+        }
 
 
-        public abstract void KanSpelen();
+        public virtual void Blok()
+        {
+            
+        }
 
-        public abstract void Start();
-        
-        public abstract void GekozenEnVergrendeld();
+
+        public virtual void Spelen()
+        {
+            
+        }
+
+
+        public virtual void KanSpelen()
+        {
+            
+        }
+
+        public virtual void Start()
+        {
+            
+        }
+
+        public virtual void GekozenEnVergrendeld()
+        {
+            
+        }
 
         public abstract Type GetClassType();
 

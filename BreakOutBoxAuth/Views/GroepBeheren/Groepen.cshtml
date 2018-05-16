@@ -13,6 +13,8 @@
         </thead>
         <tbody>
 
+        <a class="btn btn-primary" asp-controller="GroepBeheren" asp-action="GroepenActiveren" asp-route-sessieId="@Model.Naam" role="button">Activeer groepen</a>
+
         @foreach (var groep in Model.SessieGroep)
         {
 

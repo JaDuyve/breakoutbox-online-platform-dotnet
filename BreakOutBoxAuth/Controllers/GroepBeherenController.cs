@@ -24,7 +24,6 @@ namespace BreakOutBoxAuth.Controllers
         
         public IActionResult Index(string id)
         {
-            // Thibaut uitwerken !!!!
             
             var sessies = _sessieRepository.GetAll();
             return View(sessies);
@@ -38,6 +37,19 @@ namespace BreakOutBoxAuth.Controllers
             {
                 return NotFound();
             }
+
+            Groepstate state;
+            
+            foreach (var sessieGroep in sessie.SessieGroep)
+            {
+                state = sessieGroep.Groepen.Currentstate;
+                if (sessieGroep.Groepen.Currentstate == null)
+                {
+                    sessieGroep.Groepen.InitializeState();
+                }
+                
+                
+            }  
 
             return View(sessie);
         }
@@ -85,13 +97,22 @@ namespace BreakOutBoxAuth.Controllers
             foreach (var sessieGroep in sessie.SessieGroep)
             {
                 state = sessieGroep.Groepen.Currentstate;
-                if (sessieGroep.Groepen.Currentstate.GetClassType() == typeof(Groepgekozenstate))
+                if (sessieGroep.Groepen.Currentstate.getStateEnum() != State.KANSPELEN)
                 {
-                    sessieGroep.Groepen.GekozenEnVergrendeld();
+
+//                    if (sessieGroep.Groepen.Currentstate.getStateEnum() == State.START)
+//                    {
+                        sessieGroep.Groepen.GekozenEnVergrendeld();
+//                    }
+//                    else
+//                    {
+                        sessieGroep.Groepen.KanSpelen();
+
+//                    }
+
                 }
-                sessieGroep.Groepen.KanSpelen();
-                
-                _groepstateRepository.Delete(state);
+
+//                _groepstateRepository.Delete(state);
                 
             }  
             
