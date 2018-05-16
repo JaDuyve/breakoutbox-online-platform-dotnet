@@ -24,6 +24,8 @@ namespace BreakOutBoxAuth.Controllers
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
+        private static int timeLeft { get; set; }
+        private static Timer timer;
         
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
@@ -66,11 +68,12 @@ namespace BreakOutBoxAuth.Controllers
            
                 
             Groep groep = _groepRepository.GetById(id);
-            var timeLeft = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Tijdslimiet;
-            var timer = new System.Timers.Timer();
+            timeLeft = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Tijdslimiet * 60;
+            timer = new System.Timers.Timer();
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
+            
 
 
             if (groep == null)
@@ -78,7 +81,7 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-            if (groep.Currentstate == null)ff
+            if (groep.Currentstate == null)
             {
                 groep.InitializeState();
                 groep.KanSpelen();
@@ -99,9 +102,15 @@ namespace BreakOutBoxAuth.Controllers
             return View(new AntwoordViewModel(pad, groep));
         }
 
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private  void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            Console.WriteLine("test");
+            timeLeft = timeLeft - 1;
+            ViewData["TimeLeft"] = timeLeft;
+            Console.WriteLine(timeLeft);
+            if (timeLeft == 0)
+            {
+                timer.Enabled = false; 
+            }
         }
         
         
