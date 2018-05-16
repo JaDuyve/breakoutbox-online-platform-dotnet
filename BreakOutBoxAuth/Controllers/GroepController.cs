@@ -90,7 +90,7 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             if (groep.Fout == 3)
-            {  
+            {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
 
@@ -163,14 +163,14 @@ namespace BreakOutBoxAuth.Controllers
             {
                 return NotFound();
             }
+            
 
             if (groep.Contactleer)
             {
                 groep.Blok();
-                _groepRepository.SaveChanges(); 
+                _groepRepository.SaveChanges();    
             }
-              
-            
+
             string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
 
             getFile(feedback);
