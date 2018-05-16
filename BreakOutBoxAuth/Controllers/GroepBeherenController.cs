@@ -27,7 +27,7 @@ namespace BreakOutBoxAuth.Controllers
             // Thibaut uitwerken !!!!
             
             var sessies = _sessieRepository.GetAll();
-            return View(new SessieViewModel(sessies));
+            return View(sessies);
         }
 
         public IActionResult Groepen(string id)

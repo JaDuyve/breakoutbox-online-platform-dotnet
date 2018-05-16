@@ -98,9 +98,12 @@ h2 {
 .table {
     margin: 5em 0;
 }
-
+tr {
+    background-color: #fff;
+}
 tr:hover {
     background-color: #efefef;
+    cursor: pointer;
 }
 
 .material-icons {
