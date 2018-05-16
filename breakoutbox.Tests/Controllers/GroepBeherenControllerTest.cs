@@ -1,9 +1,11 @@
-﻿using breakoutbox.Tests.Data;
+﻿using System;
+using breakoutbox.Tests.Data;
 using BreakOutBoxAuth.Controllers;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
+using Renci.SshNet;
 using SQLitePCL;
 
 namespace breakoutbox.Tests.Controllers
@@ -16,10 +18,15 @@ namespace breakoutbox.Tests.Controllers
         private readonly GroepBeherenController _groepBeherenController;
         private readonly DummyApplicationDbContext _dummyContext = new DummyApplicationDbContext();
 
-        private readonly Groep _groep;
-        private readonly int _groepId;
-        private readonly string _sessieNaam;
+        
+        
+        
         private readonly Sessie _sessie;
+        private readonly string _sessieNaam;
+        private readonly int _sessieCode;
+        private readonly bool _sessieContactleer;
+        private readonly DateTime _sessieStartdatum;
+        private readonly string _sessieBobNaam;
 
         public GroepBeherenControllerTest()
         {
@@ -29,7 +36,11 @@ namespace breakoutbox.Tests.Controllers
             
             _sessie = _dummyContext._maandag;
             _sessieNaam = _sessie.Naam;
-            _groep = _dummyContext._groep1;
+            _sessieCode = _sessie.Code;
+            _sessieContactleer = _sessie.Contactleer;
+            _sessieStartdatum = _sessie.Startdatum;
+            _sessieBobNaam = _sessie.BobNaam;
+            
             
             
             _groepBeherenController = new GroepBeherenController(_mockGroepRepository.Object, _mockSessieRepository.Object, _mockGroepstateRepository.Object)
@@ -39,7 +50,7 @@ namespace breakoutbox.Tests.Controllers
             
             _mockSessieRepository.Setup(s => s.GetAll()).Returns(_dummyContext.Sessies);
             _mockSessieRepository.Setup(s => s.GetById(_sessieNaam)).Returns(_dummyContext._maandag);
-            _mockGroepRepository.Setup(s => s.GetById(_groepId)).Returns(_dummyContext._groep1);
+            
 
             
             
