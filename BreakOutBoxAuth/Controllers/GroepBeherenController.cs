@@ -19,7 +19,7 @@ namespace BreakOutBoxAuth.Controllers
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
-            _groepstateRepository = _groepstateRepository;
+            _groepstateRepository = groepstateRepository;
         }
         
         public IActionResult Index(string id)
