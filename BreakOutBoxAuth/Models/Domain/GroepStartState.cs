@@ -14,31 +14,14 @@ namespace BreakOutBoxAuth.Models.Domain
             
         }
         
-        public override void Finish()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Blok()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Spelen()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public override void KanSpelen()
         {
-            throw new NotImplementedException();
+            Groep.ToState(new Groepkanspelenstate(Groep));
         }
 
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
+      
         public override void GekozenEnVergrendeld()
         {
             Groep.ToState(new Groepgekozenstate(Groep));

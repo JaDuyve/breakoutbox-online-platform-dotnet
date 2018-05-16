@@ -26,20 +26,7 @@ namespace BreakOutBoxAuth.Models
             Groep.ToState(new Groepgeblokkeerdstate(Groep));
         }
 
-        public override void Spelen()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void KanSpelen()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public override Type GetClassType()
         {
@@ -56,10 +43,7 @@ namespace BreakOutBoxAuth.Models
             return State.SPELEN;
         }
 
-        public override void GekozenEnVergrendeld()
-        {
-            throw new System.NotImplementedException();
-        }
+        
         
         
     }
