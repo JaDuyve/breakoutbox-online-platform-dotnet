@@ -90,14 +90,7 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             if (groep.Fout == 3)
-            {
-                if (groep.Currentstate.getStateEnum() != State.BLOK)
-                {
-                    groep.Blok();
-                    _groepRepository.SaveChanges();   
-                }
-                groep.Blok();
-                _groepRepository.SaveChanges();
+            {  
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
 
@@ -144,8 +137,6 @@ namespace BreakOutBoxAuth.Controllers
             {
                 if (groep.Fout == 3)
                 {
-                    groep.Blok();
-                    _groepRepository.SaveChanges();
                     return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
                 }
                 else if (groep.Fout < 3)
@@ -155,8 +146,6 @@ namespace BreakOutBoxAuth.Controllers
 
                     if (groep.Fout == 3)
                     {
-                        groep.Blok();
-                        _groepRepository.SaveChanges();
                         return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
                     }
                 }
@@ -175,6 +164,13 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
+            if (groep.Contactleer)
+            {
+                groep.Blok();
+                _groepRepository.SaveChanges(); 
+            }
+              
+            
             string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
 
             getFile(feedback);
