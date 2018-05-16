@@ -74,7 +74,8 @@ namespace BreakOutBoxAuth.Controllers
                 
             Groep groep = _groepRepository.GetById(id);
             
-
+            groep.Spelen();
+            _groepRepository.SaveChanges();
 
             if (groep == null)
             {
@@ -165,7 +166,7 @@ namespace BreakOutBoxAuth.Controllers
             }
             
 
-            if (groep.Contactleer)
+            if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
             {
                 groep.Blok();
                 _groepRepository.SaveChanges();    

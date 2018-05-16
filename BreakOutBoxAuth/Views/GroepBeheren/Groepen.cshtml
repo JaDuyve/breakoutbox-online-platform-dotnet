@@ -17,6 +17,7 @@
             <th scope="col">Groep</th>
             <th scope="col">Klas</th>
             <th scope="col">Status</th>
+            <th scope="col">Leerlingen</th>
             <th scope="col">DeBlokkeer</th>
         </tr>
         </thead>
@@ -27,22 +28,27 @@
         @foreach (var groep in Model.SessieGroep)
         {
 
+            
             <tr>
-                <td>
-                    @groep.Groepen.Naam
-                </td>
-                <td>@groep.Groepen.Klas</td>
+                
+            <td>
+                
+                @groep.Groepen.Naam
+
+            </td>
+                <td>@groep.Groepen.Klas</td>  
                 <td>@groep.Groepen.Currentstate.GetStatus()</td>
+                <td><a data-toggle="modal" data-target="#@groep.Groepen.Naam">Leerlingen</a></td>
                 @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
                 {
-                    <td><a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam" class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
+                    <td><a  class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
                 }
                 else
                 {
                     <td>Is niet geblokkeerd</td>
                 }
-                
             </tr>
+      
                          <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
