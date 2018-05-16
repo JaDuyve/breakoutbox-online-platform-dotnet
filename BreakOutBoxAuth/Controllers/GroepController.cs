@@ -234,6 +234,7 @@ namespace BreakOutBoxAuth.Controllers
             }
             else
             {
+                TempData["error"] = "De gegeven oplossing was niet correct, verderzoeken!";
                 if (groep.Fout == 3)
                 {
                     groep.Blok();
