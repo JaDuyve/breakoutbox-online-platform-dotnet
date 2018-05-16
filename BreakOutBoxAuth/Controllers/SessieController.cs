@@ -17,10 +17,10 @@ namespace BreakOutBoxAuth.Controllers
         public IActionResult Index()
         {
             // Use this for development purpose
-//            var sessies = _sessieRepository.GetAll();
+            var sessies = _sessieRepository.GetAll();
             
             
-            var sessies = _sessieRepository.GetAllActive();
+//            var sessies = _sessieRepository.GetAllActive();
             return View(new SessieViewModel(sessies));
         }
 

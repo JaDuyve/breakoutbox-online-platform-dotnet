@@ -65,7 +65,7 @@ namespace BreakOutBoxAuth.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "GroepBeheren");
                 }
                 if (result.RequiresTwoFactor)
                 {
