@@ -24,8 +24,6 @@ namespace BreakOutBoxAuth.Controllers
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-        private static int timeLeft { get; set; }
-        private static Timer timer;
         
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
@@ -75,11 +73,6 @@ namespace BreakOutBoxAuth.Controllers
            
                 
             Groep groep = _groepRepository.GetById(id);
-            timeLeft = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Tijdslimiet * 60;
-            timer = new System.Timers.Timer();
-            timer.Interval = 1000;
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
             
 
 
@@ -116,16 +109,6 @@ namespace BreakOutBoxAuth.Controllers
             return View(new AntwoordViewModel(pad, groep));
         }
 
-        private  void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            timeLeft = timeLeft - 1;
-            ViewData["TimeLeft"] = timeLeft;
-            Console.WriteLine(timeLeft);
-            if (timeLeft == 0)
-            {
-                timer.Enabled = false; 
-            }
-        }
         
         
         [HttpPost]
