@@ -1,6 +1,6 @@
 ﻿@model BreakOutBoxAuth.Models.Sessie
     
-@foreach (var groep in Model.SessieGroep)
+@*@foreach (var groep in Model.SessieGroep)
             {
                 <div class="col-lg-3 col-md-4">
                     <div class="circlecard mdl-shadow--2dp ">
@@ -42,4 +42,32 @@
                         </div>
                     </div>
                 </div>
-            }
+            }*@
+﻿
+
+
+<div class="sessies container" id="sessies">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Groep</th>
+            <th scope="col">klas</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var groep in Model.SessieGroep)
+        {
+
+            <tr>
+                <td>
+                    @groep.Groepen.Naam
+                </td>
+                <td>@groep.Groepen.Klas</td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
