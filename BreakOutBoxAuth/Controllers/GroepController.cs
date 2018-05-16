@@ -105,6 +105,18 @@ namespace BreakOutBoxAuth.Controllers
             getFile(pad.OefeningNaamNavigation.Opgave);
             return View(new AntwoordViewModel(pad, groep));
         }
+        
+        public IActionResult StartDirect(decimal id)
+        {
+           
+                
+            Groep groep = _groepRepository.GetById(id);
+            groep.VerhoogProgress();
+            _groepRepository.SaveChanges();
+
+           
+            return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+        }
 
         
         
