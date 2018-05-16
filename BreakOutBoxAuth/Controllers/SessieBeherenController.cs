@@ -1,5 +1,6 @@
 ﻿using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Models.SessieViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BreakOutBoxAuth.Controllers
@@ -14,12 +15,13 @@ namespace BreakOutBoxAuth.Controllers
         }
 
         // GET
+        [Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
             var sessies = _sessieRepository.GetAll();
             return View(new SessieViewModel(sessies));
         }
-
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         public IActionResult Index(string id, SessieViewModel model
         )

@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Models.SessieViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -22,13 +23,14 @@ namespace BreakOutBoxAuth.Controllers
             _groepstateRepository = groepstateRepository;
         }
         
+        [Authorize(Policy = "Admin")]
         public IActionResult Index(string id)
         {
             
             var sessies = _sessieRepository.GetAll();
             return View(sessies);
         }
-
+        [Authorize(Policy = "Admin")]
         public IActionResult Groepen(string id)
         {
             Sessie sessie = _sessieRepository.GetByIdGroepenMetGroepstate(id);
@@ -56,7 +58,7 @@ namespace BreakOutBoxAuth.Controllers
             return View(sessie);
         }
 
-
+        [Authorize(Policy = "Admin")]
         public IActionResult DeBlokkeer(decimal groepsId, string sessieId)
         {
             var groep = _groepRepository.GetById(groepsId);
@@ -84,7 +86,7 @@ namespace BreakOutBoxAuth.Controllers
             return RedirectToAction("Groepen", "GroepBeheren", new {Id = sessieId});
 
         }
-
+        [Authorize(Policy = "Admin")]
         public IActionResult GroepenActiveren(string sessieId)
         {
             var sessie = _sessieRepository.GetByIdGroepenMetGroepstate(sessieId);
