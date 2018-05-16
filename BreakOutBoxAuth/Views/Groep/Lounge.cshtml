@@ -1,7 +1,18 @@
 ﻿@model BreakOutBoxAuth.Models.Groep
 @{
     ViewData["Title"] = "Lounge";
+    if (Model.Currentstate.getStateEnum() == BreakOutBoxAuth.Models.Domain.State.KANSPELEN)
+    {
+        ViewData["KanSpelen"] = "";
+    }
+    else
+    {
+        ViewData["KanSpelen"] = "disabled";
+    }
+
 }
+<meta http-equiv="refresh" content="5" />
+
 <div class="jumbotron jumbotron-fluid lounge">
     <div class="container-fluid">
         <div class="jumbocard loungecard">
@@ -42,7 +53,7 @@
                     <div class="spinner">
                         <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
                     </div>                    <div>
-                        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</a>
+                        <button @ViewData["KanSpelen"] class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</button>
                     </div>
                 </div>
             </div>
