@@ -173,6 +173,7 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             @ViewData["Contactleer"] = groep.Contactleer;
+            @ViewData["CurrentState"] = groep.Currentstate.getStateEnum().ToString();
             string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
 
             getFile(feedback);

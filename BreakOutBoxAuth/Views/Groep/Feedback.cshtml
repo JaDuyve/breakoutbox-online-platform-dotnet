@@ -1,4 +1,5 @@
-﻿@model BreakOutBoxAuth.Models.OefeningViewModel.FeedbackViewModel
+﻿@using BreakOutBoxAuth.Models.Domain
+@model BreakOutBoxAuth.Models.OefeningViewModel.FeedbackViewModel
 <meta http-equiv="refresh" content="5" />
 <div class="gamescherm">
     <div class="container">
@@ -15,4 +16,12 @@
     <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
 </div>
 
-<a class="btn btn-primary" Visible="@ViewData["Contactleer"]?false: true" asp-controller="Groep" asp-action="Start" asp-route-sessieId="@Model.Groep.Id" role="button">Ga door</a>
+
+@if(@ViewData["Contactleer"].ToString() != "true")
+{
+    <a class="btn btn-primary" asp-controller="Groep" asp-action="Start" asp-route-sessieId="@Model.Groep.Id" role="button">Ga door</a>
+}
+else
+{
+    <p>Je kan nog niet doorgaan</p>
+}
