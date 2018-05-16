@@ -18,6 +18,8 @@ namespace BreakOutBoxAuth.Data.Repositories
             _sessies = _context.Sessies;
         }
 
+       
+
         public Sessie GetByCode(int code)
         {
             return _sessies.Where(s => s.Code == code).SingleOrDefault();
@@ -42,6 +44,8 @@ namespace BreakOutBoxAuth.Data.Repositories
             return _sessies.Include(s => s.SessieGroep).ThenInclude(g => g.Groepen)
                 .SingleOrDefault(s => s.Naam.Equals( naam));
         }
+        
+        
 
 
         public void SaveChangesAsync()

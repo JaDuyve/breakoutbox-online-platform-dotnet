@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BreakOutBoxAuth.Models.Domain;
 
 namespace BreakOutBoxAuth.Models
 {
@@ -42,5 +43,7 @@ namespace BreakOutBoxAuth.Models
         public abstract Type GetClassType();
 
         public abstract string GetStatus();
+
+        public abstract State getStateEnum();
     }
 }

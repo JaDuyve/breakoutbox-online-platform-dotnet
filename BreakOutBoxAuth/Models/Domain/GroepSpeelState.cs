@@ -1,4 +1,5 @@
 ﻿using System;
+using BreakOutBoxAuth.Models.Domain;
 
 namespace BreakOutBoxAuth.Models
 {
@@ -48,6 +49,11 @@ namespace BreakOutBoxAuth.Models
         public override string GetStatus()
         {
             return "Spelen";
+        }
+
+        public override State getStateEnum()
+        {
+            return State.SPELEN;
         }
 
         public override void GekozenEnVergrendeld()

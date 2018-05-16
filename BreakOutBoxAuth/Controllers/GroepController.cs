@@ -64,6 +64,7 @@ namespace BreakOutBoxAuth.Controllers
 
             return View(groep);
         }
+        
         public IActionResult Start(decimal id)
         {
            

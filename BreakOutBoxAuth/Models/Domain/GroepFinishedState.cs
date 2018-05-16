@@ -1,4 +1,5 @@
 ﻿using System;
+using BreakOutBoxAuth.Models.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BreakOutBoxAuth.Models
@@ -44,6 +45,11 @@ namespace BreakOutBoxAuth.Models
         public override string GetStatus()
         {
             return "Uitgespeeld";
+        }
+
+        public override State getStateEnum()
+        {
+            return State.FINISH;
         }
 
 
