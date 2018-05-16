@@ -31,9 +31,10 @@ namespace BreakOutBoxAuth.Controllers
             var sessie = _sessieRepository.GetById(id);
             if (model.Code == sessie.Code)
             {
-                
-                return RedirectToAction("index", "Groep", new {Id = sessie.Naam});
+
+                return RedirectToAction("index", "Groep", new { Id = sessie.Naam }); 
             }
+            TempData["error"] = "Foute Sessiecode, probeer opnieuw";
             return RedirectToAction(nameof(Index));
         }
     }

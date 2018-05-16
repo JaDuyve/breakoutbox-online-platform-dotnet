@@ -64,6 +64,7 @@ namespace BreakOutBoxAuth.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.username, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    TempData["error"] = "Ingelogd!";
                     _logger.LogInformation("User logged in.");
                     return RedirectToAction("Index", "GroepBeheren");
                 }

@@ -60,14 +60,14 @@
                             </div>
                             <form method="post" role="form" action="/Sessie/Index/@sessie.Naam">
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Voer uw sessiecode in</label>
-                                        <input type="number" required id="sessieCode" asp-for="Code" value="" />
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input autofocus class="mdl-textfield__input" type="number" id="sessieCode" asp-for="Code" value="" placeholder="Code">
+                                        <label class="mdl-textfield__label" for="sessieCode">Voor uw sessiecode in</label>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Controleer</button>
+                                    <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Controleer</button>
                                 </div>
                             </form>
                         </div>
