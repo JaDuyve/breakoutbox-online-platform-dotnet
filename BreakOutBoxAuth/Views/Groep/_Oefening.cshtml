@@ -65,7 +65,7 @@
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("demo").innerHTML = "EXPIRED";
-            location.href = '@(Url.Action("Feedback", "Groep", new {id = @Model.Groep.Id} ))';
+            location.href = '@(Url.Action("ExpiredTimer", "Groep", new {id = @Model.Groep.Id} ))';
         }
     }, 1000);
 </script>
