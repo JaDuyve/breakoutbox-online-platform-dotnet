@@ -1,4 +1,5 @@
 ﻿using BreakOutBoxAuth.Models;
+using BreakOutBoxAuth.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -28,7 +29,8 @@ namespace BreakOutBoxAuth.Data.Mappers
                 .HasValue<Groepgeblokkeerdstate>("blok")
                 .HasValue<Groepgekozenstate>("gekozen")
                 .HasValue<Groepkanspelenstate>("kanspelen")
-                .HasValue<Groepspeelstate>("spelen");
+                .HasValue<Groepspeelstate>("spelen")
+                .HasValue<GroepStartState>("start");
         }
     }
 }

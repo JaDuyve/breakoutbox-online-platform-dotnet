@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BreakOutBoxAuth.Models.Domain;
 
 namespace BreakOutBoxAuth.Models
 {
@@ -35,10 +36,14 @@ namespace BreakOutBoxAuth.Models
 
         public abstract void KanSpelen();
 
+        public abstract void Start();
+        
         public abstract void GekozenEnVergrendeld();
 
         public abstract Type GetClassType();
 
         public abstract string GetStatus();
+
+        public abstract State getStateEnum();
     }
 }

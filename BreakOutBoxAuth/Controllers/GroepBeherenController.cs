@@ -32,7 +32,7 @@ namespace BreakOutBoxAuth.Controllers
 
         public IActionResult Groepen(string id)
         {
-            Sessie sessie = _sessieRepository.GetById(id);
+            Sessie sessie = _sessieRepository.GetByIdGroepenMetGroepstate(id);
 
             if (sessie == null)
             {
@@ -43,7 +43,7 @@ namespace BreakOutBoxAuth.Controllers
         }
 
 
-        public IActionResult DeBlokkeer(int groepsId, int sessieId)
+        public IActionResult DeBlokkeer(decimal groepsId, string sessieId)
         {
             var groep = _groepRepository.GetById(groepsId);
 
@@ -53,21 +53,21 @@ namespace BreakOutBoxAuth.Controllers
                 
             }
 
-            if (groep.Currentstate.GetClassType() == typeof(Groepgeblokkeerdstate))
+            if (groep.Currentstate.getStateEnum() == State.BLOK)
             {
 
                 groep.Spelen();
                 groep.ResetFout();
                 Groepstate state = groep.Currentstate;
 
-                _groepRepository.SaveChangesAsync();
+                _groepRepository.SaveChanges();
 
                 _groepstateRepository.Delete(state);
                 _groepstateRepository.SaveChangesAsync();
 
             }
 
-            return RedirectToAction("Index", "GroepBeheren", new {Id = sessieId});
+            return RedirectToAction("Groepen", "GroepBeheren", new {Id = sessieId});
 
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using BreakOutBoxAuth.Models.Domain;
 
 namespace BreakOutBoxAuth.Models
 {
@@ -35,7 +36,12 @@ namespace BreakOutBoxAuth.Models
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         public override Type GetClassType()
         {
             return GetType();
@@ -44,6 +50,11 @@ namespace BreakOutBoxAuth.Models
         public override string GetStatus()
         {
             return "kan Beginnen Spelen";
+        }
+
+        public override State getStateEnum()
+        {
+            return State.KANSPELEN;
         }
 
         public override void GekozenEnVergrendeld()

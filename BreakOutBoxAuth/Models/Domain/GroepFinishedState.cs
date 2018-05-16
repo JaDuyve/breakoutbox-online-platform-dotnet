@@ -1,4 +1,5 @@
 ﻿using System;
+using BreakOutBoxAuth.Models.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BreakOutBoxAuth.Models
@@ -26,6 +27,11 @@ namespace BreakOutBoxAuth.Models
             throw new System.NotImplementedException();
         }
 
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void GekozenEnVergrendeld()
         {
             throw new System.NotImplementedException();
@@ -39,6 +45,11 @@ namespace BreakOutBoxAuth.Models
         public override string GetStatus()
         {
             return "Uitgespeeld";
+        }
+
+        public override State getStateEnum()
+        {
+            return State.FINISH;
         }
 
 
