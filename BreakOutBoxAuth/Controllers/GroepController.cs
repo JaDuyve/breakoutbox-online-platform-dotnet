@@ -117,6 +117,8 @@ namespace BreakOutBoxAuth.Controllers
             }
             else
             {
+                TempData["error"] = "De gegeven oplossing was niet correct! Poging " + (groep.Fout + 1)  + "/3";
+
                 if (groep.Fout == 3)
                 {
                     groep.Blok();
