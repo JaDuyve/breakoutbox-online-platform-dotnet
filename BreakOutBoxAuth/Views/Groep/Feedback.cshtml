@@ -1,5 +1,5 @@
 ﻿@model BreakOutBoxAuth.Models.OefeningViewModel.FeedbackViewModel
-
+<meta http-equiv="refresh" content="5" />
 <div class="gamescherm">
     <div class="container">
         <h1>Gamescherm</h1>
@@ -14,3 +14,5 @@
 <div id="oef">
     <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
 </div>
+
+<a class="btn btn-primary"  Visible=@ViewData["Contactleer"]?false:true role="button">Ga door</a>

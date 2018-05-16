@@ -1,7 +1,16 @@
 ﻿@using BreakOutBoxAuth.Models.Domain
 @model BreakOutBoxAuth.Models.Sessie
-    
+
+
+<div class="sessiebar">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="number" id="sample" value="@Model.Code" disabled>
+        <label class="mdl-textfield__label" for="sample">@Model.Naam</label>
+        <span class="mdl-textfield__error">Input is not a number!</span>
+    </div>
+</div>
 <div class="sessies container" id="sessies">
+
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -26,15 +35,49 @@
                 <td>@groep.Groepen.Currentstate.GetStatus()</td>
                 @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
                 {
-                    <td><a class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
+                    <td><a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam" class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
                 }
                 else
                 {
                     <td>Is niet geblokkeerd</td>
                 }
+                
             </tr>
+                         <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">@groep.Groepen.Naam | @groep.Groepen.Klas</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>Contactleer</label>
+                                        <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
+                                        <p>Leerlingen:</p>
+                                        <ul class="demo-list-icon mdl-list">
+                                            @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
+                                            {
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content">
+                                                        <i class="material-icons mdl-list__item-icon">person</i>
+                                                        @leerling
+                                                    </span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>       
         }
         </tbody>
     </table>
+    
+    
 
 </div>

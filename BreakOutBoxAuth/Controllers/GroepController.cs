@@ -171,6 +171,7 @@ namespace BreakOutBoxAuth.Controllers
                 _groepRepository.SaveChanges();    
             }
 
+            @ViewData["Contactleer"] = groep.Contactleer;
             string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
 
             getFile(feedback);
