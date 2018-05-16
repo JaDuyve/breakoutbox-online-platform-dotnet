@@ -50,6 +50,8 @@ namespace BreakOutBoxAuth.Controllers
                 
                 
             }  
+            
+            _sessieRepository.SaveChanges();
 
             return View(sessie);
         }
@@ -120,7 +122,7 @@ namespace BreakOutBoxAuth.Controllers
             _groepstateRepository.SaveChangesAsync();
             
             
-            return RedirectToAction("Index", "GroepBeheren", new {Id = sessieId});
+            return RedirectToAction("Groepen", "GroepBeheren", new {Id = sessieId});
 
         }
     }
