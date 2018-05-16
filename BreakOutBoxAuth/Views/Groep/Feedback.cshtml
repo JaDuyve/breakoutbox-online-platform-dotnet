@@ -15,4 +15,4 @@
     <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
 </div>
 
-<a class="btn btn-primary"  Visible="@ViewData["Contactleer"]?false: true" role="button" @(Url.Action("Start", "Groep", new {id = @Model.Groep.Id}))>Ga door</a>
+<a class="btn btn-primary" Visible="@ViewData["Contactleer"]?false: true" asp-controller="Groep" asp-action="Start" asp-route-sessieId="@Model.Groep.Id" role="button">Ga door</a>
