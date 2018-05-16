@@ -1,6 +1,6 @@
 ﻿@using BreakOutBoxAuth.Models.Domain
 @model BreakOutBoxAuth.Models.OefeningViewModel.FeedbackViewModel
-<meta http-equiv="refresh" content="5" />
+<meta http-equiv="refresh" content="10" />
 <div class="gamescherm">
     <div class="container">
         <h1>Gamescherm</h1>
@@ -16,10 +16,10 @@
     <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
 </div>
 
-
-@if(@ViewData["Contactleer"].ToString() != "true")
+@if(@Model.Groep.Contactleer.ToString() != "True" || @Model.Groep.Currentstate.getStateEnum() != State.BLOK)
 {
-    <a class="btn btn-primary" asp-controller="Groep" asp-action="Start" asp-route-sessieId="@Model.Groep.Id" role="button">Ga door</a>
+    <a class="btn btn-primary" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id" role="button">Ga door</a>
+
 }
 else
 {

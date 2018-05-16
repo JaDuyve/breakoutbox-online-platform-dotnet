@@ -73,9 +73,6 @@ namespace BreakOutBoxAuth.Controllers
            
                 
             Groep groep = _groepRepository.GetById(id);
-            
-            groep.Spelen();
-            _groepRepository.SaveChanges();
 
             if (groep == null)
             {
@@ -92,6 +89,12 @@ namespace BreakOutBoxAuth.Controllers
 
             if (groep.Fout == 3)
             {
+                if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
+                {
+                    groep.Blok();
+                    _groepRepository.SaveChanges();    
+                }
+                
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
 
@@ -138,6 +141,10 @@ namespace BreakOutBoxAuth.Controllers
             {
                 if (groep.Fout == 3)
                 {
+
+                        groep.Blok();
+                        _groepRepository.SaveChanges();    
+                    
                     return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
                 }
                 else if (groep.Fout < 3)
@@ -147,6 +154,10 @@ namespace BreakOutBoxAuth.Controllers
 
                     if (groep.Fout == 3)
                     {
+
+                            groep.Blok();
+                            _groepRepository.SaveChanges();    
+                        
                         return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
                     }
                 }
@@ -166,19 +177,24 @@ namespace BreakOutBoxAuth.Controllers
             }
             
 
-            if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
-            {
-                groep.Blok();
-                _groepRepository.SaveChanges();    
-            }
-
-            @ViewData["Contactleer"] = groep.Contactleer;
-            @ViewData["CurrentState"] = groep.Currentstate.getStateEnum().ToString();
             string feedback = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Feedback;
 
             getFile(feedback);
 
             return View(new FeedbackViewModel(groep, feedback));
+        }
+
+        public IActionResult ExpiredTimer(decimal id)
+        {
+            Groep groep = _groepRepository.GetById(id);
+
+            if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
+            {
+                groep.Blok();
+                _groepRepository.SaveChanges();    
+            }  
+
+            return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
         }
 
         public IActionResult Action(decimal id)
