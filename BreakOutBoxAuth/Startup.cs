@@ -46,7 +46,7 @@ namespace BreakOutBoxAuth
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "admin"));
+                options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
             });
 
             // Add application services.
