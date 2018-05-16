@@ -34,7 +34,12 @@ namespace BreakOutBoxAuth.Models
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         public override Type GetClassType()
         {
             return GetType();

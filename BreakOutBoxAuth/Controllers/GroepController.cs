@@ -54,6 +54,7 @@ namespace BreakOutBoxAuth.Controllers
             if (groep.Currentstate == null)
             {
                 groep.InitializeState();
+                groep.GekozenEnVergrendeld();
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();
@@ -78,7 +79,7 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-            if (groep.Currentstate == null)ff
+            if (groep.Currentstate == null)
             {
                 groep.InitializeState();
                 groep.KanSpelen();
