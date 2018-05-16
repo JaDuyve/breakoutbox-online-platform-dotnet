@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using BreakOutBoxAuth.Models;
@@ -10,7 +12,10 @@ using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Models.OefeningViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Renci.SshNet;
+using System.Linq;
+using System.Timers;
 using System.Web;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Remotion.Linq.Clauses.ResultOperators;
 
 namespace BreakOutBoxAuth.Controllers
@@ -19,7 +24,7 @@ namespace BreakOutBoxAuth.Controllers
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-
+        
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
@@ -58,14 +63,22 @@ namespace BreakOutBoxAuth.Controllers
         }
         public IActionResult Start(decimal id)
         {
+           
+                
             Groep groep = _groepRepository.GetById(id);
+            var timeLeft = groep.getCurrentGroepPad(groep.Progress).Paden.OefeningNaamNavigation.Tijdslimiet;
+            var timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += OnTimedEvent;
+            timer.Enabled = true;
+
 
             if (groep == null)
             {
                 return NotFound();
             }
 
-            if (groep.Currentstate == null)
+            if (groep.Currentstate == null)ff
             {
                 groep.InitializeState();
                 groep.KanSpelen();
@@ -86,11 +99,17 @@ namespace BreakOutBoxAuth.Controllers
             return View(new AntwoordViewModel(pad, groep));
         }
 
+        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            Console.WriteLine("test");
+        }
+        
+        
         [HttpPost]
         public IActionResult Start(decimal id, AntwoordViewModel antwoordViewModel)
         {
-            Groep groep = _groepRepository.GetById(id);
-
+            var groep = _groepRepository.GetById(id);
+    
             if (groep == null)
             {
                 return NotFound();
