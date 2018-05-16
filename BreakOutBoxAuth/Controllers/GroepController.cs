@@ -56,6 +56,7 @@ namespace BreakOutBoxAuth.Controllers
             if (groep.Currentstate == null)
             {
                 groep.InitializeState();
+                groep.GekozenEnVergrendeld();
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();

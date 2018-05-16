@@ -26,6 +26,11 @@ namespace BreakOutBoxAuth.Models
             throw new System.NotImplementedException();
         }
 
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void GekozenEnVergrendeld()
         {
             throw new System.NotImplementedException();

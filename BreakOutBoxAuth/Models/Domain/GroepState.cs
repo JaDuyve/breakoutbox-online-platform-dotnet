@@ -35,6 +35,8 @@ namespace BreakOutBoxAuth.Models
 
         public abstract void KanSpelen();
 
+        public abstract void Start();
+        
         public abstract void GekozenEnVergrendeld();
 
         public abstract Type GetClassType();

@@ -84,7 +84,7 @@ namespace BreakOutBoxAuth.Models
 
         public void InitializeState()
         {
-            ToState(new Groepgekozenstate(this));
+            ToState(new GroepStartState(this));
         }
 
         public void VerhoogProgress()

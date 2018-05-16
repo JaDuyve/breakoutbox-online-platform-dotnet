@@ -34,7 +34,12 @@ namespace BreakOutBoxAuth.Models
         {
             Groep.ToState(new Groepkanspelenstate(Groep));
         }
-        
+
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
         public override Type GetClassType()
         {
             return GetType();
