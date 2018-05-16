@@ -1,4 +1,5 @@
-﻿@model BreakOutBoxAuth.Models.Groep
+﻿@using BreakOutBoxAuth.Models.Domain
+@model BreakOutBoxAuth.Models.Groep
 @{
     ViewData["Title"] = "Lounge";
     if (Model.Currentstate.getStateEnum() == BreakOutBoxAuth.Models.Domain.State.KANSPELEN)
@@ -9,9 +10,8 @@
     {
         ViewData["KanSpelen"] = "disabled";
     }
-
 }
-<meta http-equiv="refresh" content="5" />
+<meta http-equiv="refresh" content="5"/>
 
 <div class="jumbotron jumbotron-fluid lounge">
     <div class="container-fluid">
@@ -33,7 +33,9 @@
                                             <i class="material-icons mdl-list__item-avatar">person</i>
                                             <span>@leerling</span>
                                         </span>
-                                        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                                        <a class="mdl-list__item-secondary-action" href="#">
+                                            <i class="material-icons">star</i>
+                                        </a>
                                     </div>
                                 }
 
@@ -52,8 +54,10 @@
 
                     <div class="spinner">
                         <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-                    </div>                    <div>
-                        <button @ViewData["KanSpelen"] class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</button>
+                    </div>
+                    @if (Model.Currentstate.getStateEnum() == State.KANSPELEN)
+                    <div>
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</button>
                     </div>
                 </div>
             </div>
