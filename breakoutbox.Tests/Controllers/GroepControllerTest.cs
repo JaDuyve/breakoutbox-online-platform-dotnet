@@ -70,5 +70,21 @@ namespace breakoutbox.Tests.Controllers
             }
             
         }
+        
+        [Fact]
+        public void ExpiredTimer_TijdVerstreken
+        
+        public IActionResult ExpiredTimer(decimal id)
+        {
+            Groep groep = _groepRepository.GetById(id);
+
+            if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
+            {
+                groep.Blok();
+                _groepRepository.SaveChanges();    
+            }  
+
+            return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+        }
     }
 }
