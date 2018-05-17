@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,21 +15,24 @@ using Renci.SshNet;
 using System.Linq;
 using System.Timers;
 using System.Web;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+ using BreakOutBoxAuth.Extensions;
+ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Remotion.Linq.Clauses.ResultOperators;
 
 namespace BreakOutBoxAuth.Controllers
 {
+    [ServiceFilter(typeof(SessionExtension))]
     public class GroepController : Controller
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-        
+//        private readonly SessionExtension _sessionExtension;
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
+//            _sessionExtension = sessionExtension;
         }
 
         public IActionResult Index(string id)
@@ -44,13 +47,20 @@ namespace BreakOutBoxAuth.Controllers
 
             return View(sessie);
         }
-        public IActionResult Lounge(decimal id)
+        public IActionResult Lounge(decimal id, Groep groep)
         {
-            Groep groep = _groepRepository.GetById(id);
+            if (groep == null)
+            {
+                groep = _groepRepository.GetById(id);
+                HttpContext.Session.SetObject("groep", groep);
+            }
             if (groep == null)
             {
                 return NotFound();
             }
+            
+            
+            
             if (groep.Currentstate == null)
             {
                 groep.InitializeState();

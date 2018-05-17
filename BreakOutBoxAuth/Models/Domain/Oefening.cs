@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Oefening
     {
         public Oefening()
@@ -12,14 +14,13 @@ namespace BreakOutBoxAuth.Models
             Pad = new HashSet<Pad>();
         }
 
-        public string Naam { get; set; }
-        public string Antwoord { get; set; }
-        public string Feedback { get; set; }
-        public string Opgave { get; set; }
-        public int Tijdslimiet { get; set; }
-        public string VakNaam { get; set; }
-
-        public Vak VakNaamNavigation { get; set; }
+        [JsonProperty] public string Naam { get; set; }
+        [JsonProperty] public string Antwoord { get; set; }
+        [JsonProperty] public string Feedback { get; set; }
+        [JsonProperty] public string Opgave { get; set; }
+        [JsonProperty] public int Tijdslimiet { get; set; }
+        [JsonProperty] public string VakNaam { get; set; }
+        [JsonProperty] public Vak VakNaamNavigation { get; set; }
         public ICollection<BobOefening> BobOefening { get; set; }
         public ICollection<OefeningDoelstellingscode> OefeningDoelstellingscode { get; set; }
         public ICollection<OefeningGroepsbewerking> OefeningGroepsbewerking { get; set; }

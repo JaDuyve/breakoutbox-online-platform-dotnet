@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Actie
     {
         public Actie()
@@ -10,9 +12,8 @@ namespace BreakOutBoxAuth.Models
             Pad = new HashSet<Pad>();
         }
 
-
-        public string Naam { get; set; }
-        public string Opgave { get; set; }
+        [JsonProperty] public string Naam { get; set; }
+        [JsonProperty] public string Opgave { get; set; }
 
         public ICollection<BobActie> BobActie { get; set; }
         public ICollection<Pad> Pad { get; set; }
