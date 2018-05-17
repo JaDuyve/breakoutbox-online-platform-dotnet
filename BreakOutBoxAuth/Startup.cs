@@ -84,7 +84,7 @@ namespace BreakOutBoxAuth
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
 
-//            breakoutBoxDataInitializer.InitializeData().Wait();
+          //  breakoutBoxDataInitializer.InitializeData().Wait();
         }
     }
 }

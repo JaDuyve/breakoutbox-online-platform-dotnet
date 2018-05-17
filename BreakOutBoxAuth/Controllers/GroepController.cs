@@ -111,6 +111,7 @@ namespace BreakOutBoxAuth.Controllers
                 
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
+            
 
             
 
@@ -158,7 +159,15 @@ namespace BreakOutBoxAuth.Controllers
                 {
                     groep.VerhoogProgress();
                     _groepRepository.SaveChanges();
-                    return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+                    if (groep.Progress <= groep.GroepPad.Count)
+                    {
+                        return RedirectToAction("Start", "Groep", new {Id = groep.Id});
+
+                    }
+                    else
+                    {
+                        return View("Schatkist");
+                    }
 
                 }
 
@@ -188,6 +197,8 @@ namespace BreakOutBoxAuth.Controllers
                     }
                 }
             }
+            
+            
 
             return RedirectToAction("Start", "Groep", new {Id = groep.Id});
         }
