@@ -1,27 +1,26 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models.Domain
 {
-    public class GroepStartState: Groepstate
+    [JsonObject(MemberSerialization.OptIn)]
+    public class GroepStartState : Groepstate
     {
         public GroepStartState()
         {
-            
         }
 
-        public GroepStartState(Groep groep):base(groep)
+        public GroepStartState(Groep groep) : base(groep)
         {
-            
         }
-        
-     
+
 
         public override void KanSpelen()
         {
             Groep.ToState(new Groepkanspelenstate(Groep));
         }
 
-      
+
         public override void GekozenEnVergrendeld()
         {
             Groep.ToState(new Groepgekozenstate(Groep));

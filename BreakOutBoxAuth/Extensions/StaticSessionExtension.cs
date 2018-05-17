@@ -9,6 +9,15 @@ namespace BreakOutBoxAuth.Extensions
         {
             session.SetString(key, JsonConvert.SerializeObject(value));
         }
+        
+        public static  void SetGroepstate<T>(this ISession session, string key, T value)
+        {
+            session.SetString(key, JsonConvert.SerializeObject(value, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects,
+                TypeNameAssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+            }));
+        }
 
         public static T GetObject<T>(this ISession session, string key)
         {

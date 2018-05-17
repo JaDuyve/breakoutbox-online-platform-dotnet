@@ -24,7 +24,7 @@ namespace BreakOutBoxAuth.Models
         [JsonProperty] public string Klas { get; set; }
         [JsonProperty] public string Naam { get; set; }
         [JsonProperty] public int Progress { get; set; }
-        [JsonProperty] public Groepstate Currentstate { get; set; }
+         public Groepstate Currentstate { get; set; }
         [JsonProperty] public ICollection<GroepPad> GroepPad { get; set; }
          public ICollection<Groepstate> Groepstate { get; set; }
         public ICollection<SessieGroep> SessieGroep { get; set; }

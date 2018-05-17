@@ -21,7 +21,7 @@ using Remotion.Linq.Clauses.ResultOperators;
 
 namespace BreakOutBoxAuth.Controllers
 {
-    [ServiceFilter(typeof(SessionExtension))]
+//    [ServiceFilter(typeof(SessionExtension))]
     public class GroepController : Controller
     {
         private readonly IGroepRepository _groepRepository;
@@ -47,13 +47,14 @@ namespace BreakOutBoxAuth.Controllers
 
             return View(sessie);
         }
-        public IActionResult Lounge(decimal id, Groep groep)
+        public IActionResult Lounge(decimal id)
         {
-            if (groep == null)
-            {
-                groep = _groepRepository.GetById(id);
-                HttpContext.Session.SetObject("groep", groep);
-            }
+//            if (groep == null)
+//            {
+                Groep groep = _groepRepository.GetById(id);
+//                HttpContext.Session.SetObject("groep", groep);
+//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
+//            }
             if (groep == null)
             {
                 return NotFound();
@@ -68,6 +69,9 @@ namespace BreakOutBoxAuth.Controllers
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();
+                
+//                HttpContext.Session.SetObject("groep", groep);
+//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
             }else if (groep.Currentstate.getStateEnum() == State.BLOK)
             {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
