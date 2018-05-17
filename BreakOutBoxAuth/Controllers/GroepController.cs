@@ -21,18 +21,16 @@ using Remotion.Linq.Clauses.ResultOperators;
 
 namespace BreakOutBoxAuth.Controllers
 {
-//    [ServiceFilter(typeof(SessionExtension))]
+    [ServiceFilter(typeof(SessionExtension))]
     public class GroepController : Controller
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-//        private readonly SessionExtension _sessionExtension;
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
-//            _sessionExtension = sessionExtension;
         }
 
         public IActionResult Index(string id)
@@ -47,14 +45,16 @@ namespace BreakOutBoxAuth.Controllers
 
             return View(sessie);
         }
-        public IActionResult Lounge(decimal id)
+        public IActionResult Lounge(decimal id, Groep groep)
         {
-//            if (groep == null)
-//            {
-                Groep groep = _groepRepository.GetById(id);
-//                HttpContext.Session.SetObject("groep", groep);
-//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
-//            }
+            if (groep == null)
+            {
+                 groep = _groepRepository.GetById(id);
+                // EERSTE KEER COOKIE MAKEN
+                // DEZE ACTIE REFRESHED DIT ZORGT ER VOOR DAT DE 2DE KEER DE COOKIE ZOU MOETEN OPHALEN EN NIET MEER NAAR DE REPOSITORY ZOU MOETEN GAAN.
+                HttpContext.Session.SetObject("groep", groep);
+                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
+            }
             if (groep == null)
             {
                 return NotFound();
@@ -70,12 +70,12 @@ namespace BreakOutBoxAuth.Controllers
                 groep.Spelen();
                 _groepRepository.SaveChanges();
                 
-//                HttpContext.Session.SetObject("groep", groep);
-//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
+                HttpContext.Session.SetObject("groep", groep);
+                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
             }else if (groep.Currentstate.getStateEnum() == State.BLOK)
             {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
-
+ 
             }
             
 
