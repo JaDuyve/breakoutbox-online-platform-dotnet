@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,21 +15,24 @@ using Renci.SshNet;
 using System.Linq;
 using System.Timers;
 using System.Web;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+ using BreakOutBoxAuth.Extensions;
+ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Remotion.Linq.Clauses.ResultOperators;
 
 namespace BreakOutBoxAuth.Controllers
 {
+//    [ServiceFilter(typeof(SessionExtension))]
     public class GroepController : Controller
     {
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
-        
+//        private readonly SessionExtension _sessionExtension;
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
+//            _sessionExtension = sessionExtension;
         }
 
         public IActionResult Index(string id)
@@ -46,11 +49,19 @@ namespace BreakOutBoxAuth.Controllers
         }
         public IActionResult Lounge(decimal id)
         {
-            Groep groep = _groepRepository.GetById(id);
+//            if (groep == null)
+//            {
+                Groep groep = _groepRepository.GetById(id);
+//                HttpContext.Session.SetObject("groep", groep);
+//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
+//            }
             if (groep == null)
             {
                 return NotFound();
             }
+            
+            
+            
             if (groep.Currentstate == null)
             {
                 groep.InitializeState();
@@ -58,6 +69,9 @@ namespace BreakOutBoxAuth.Controllers
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();
+                
+//                HttpContext.Session.SetObject("groep", groep);
+//                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
             }else if (groep.Currentstate.getStateEnum() == State.BLOK)
             {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
@@ -104,6 +118,18 @@ namespace BreakOutBoxAuth.Controllers
             ViewData["Oefening"] = pad.OefeningNaamNavigation;
             getFile(pad.OefeningNaamNavigation.Opgave);
             return View(new AntwoordViewModel(pad, groep));
+        }
+        
+        public IActionResult StartDirect(decimal id)
+        {
+           
+                
+            Groep groep = _groepRepository.GetById(id);
+            groep.VerhoogProgress();
+            _groepRepository.SaveChanges();
+
+           
+            return RedirectToAction("Start", "Groep", new {Id = groep.Id});
         }
 
         

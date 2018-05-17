@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BreakOutBoxAuth.Data;
 using BreakOutBoxAuth.Data.Repositories;
+using BreakOutBoxAuth.Extensions;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Services;
@@ -42,7 +43,7 @@ namespace BreakOutBoxAuth
             services.AddScoped<IGroepRepository, GroepRepository>();
             services.AddScoped<IGroepstateRepository, GroepstateRepository>();
 
-            
+            services.AddScoped<SessionExtension>();
 
             services.AddAuthorization(options =>
             {
@@ -51,7 +52,9 @@ namespace BreakOutBoxAuth
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-
+            
+            services.AddSession();
+            
             services.AddMvc();
         }
 
@@ -70,7 +73,7 @@ namespace BreakOutBoxAuth
             }
 
             app.UseStaticFiles();
-//            app.UseSession();
+            app.UseSession();
 
             app.UseAuthentication();
 
@@ -81,7 +84,6 @@ namespace BreakOutBoxAuth
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
 
-            //app.UseSession();
 //            breakoutBoxDataInitializer.InitializeData().Wait();
         }
     }

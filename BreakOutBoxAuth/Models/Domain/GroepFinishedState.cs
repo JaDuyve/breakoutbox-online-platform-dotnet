@@ -1,9 +1,11 @@
 ﻿using System;
 using BreakOutBoxAuth.Models.Domain;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Groepfinishedstate: Groepstate
     {
         

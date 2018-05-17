@@ -1,8 +1,10 @@
 ﻿using System;
 using BreakOutBoxAuth.Models.Domain;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Groepkanspelenstate: Groepstate
     {
 

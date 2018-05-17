@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Pad
     {
         public Pad()
@@ -9,18 +11,19 @@ namespace BreakOutBoxAuth.Models
             GroepPad = new HashSet<GroepPad>();
         }
 
-        public decimal Id { get; set; }
-        public string Antwoord { get; set; }
-        public bool? Contactleer { get; set; }
-        public string ActieNaam { get; set; }
-        public string GroepsbewerkingNaam { get; set; }
-        public string OefeningNaam { get; set; }
-        public decimal? ToegangscodeId { get; set; }
+        [JsonProperty] public decimal Id { get; set; }
+        [JsonProperty] public string Antwoord { get; set; }
+        [JsonProperty] public bool? Contactleer { get; set; }
+        [JsonProperty] public string ActieNaam { get; set; }
+        [JsonProperty] public string GroepsbewerkingNaam { get; set; }
+        [JsonProperty] public string OefeningNaam { get; set; }
+        [JsonProperty] public decimal? ToegangscodeId { get; set; }
+        [JsonProperty] public Actie ActieNaamNavigation { get; set; }
+        [JsonProperty] public Groepsbewerking GroepsbewerkingNaamNavigation { get; set; }
+        [JsonProperty] public Oefening OefeningNaamNavigation { get; set; }
+        [JsonProperty] public Toegangscode Toegangscode { get; set; }
 
-        public Actie ActieNaamNavigation { get; set; }
-        public Groepsbewerking GroepsbewerkingNaamNavigation { get; set; }
-        public Oefening OefeningNaamNavigation { get; set; }
-        public Toegangscode Toegangscode { get; set; }
+
         public ICollection<GroepPad> GroepPad { get; set; }
     }
 }
