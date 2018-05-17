@@ -121,6 +121,7 @@ footer {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 0;
 }
 
 .jumbotron {
@@ -148,6 +149,7 @@ footer {
     border-radius: 15px;
     width: 80%;
     margin: 0 auto;
+    z-index: 2;
 }
 .jumbocard p {
     width: 60%;
@@ -168,7 +170,8 @@ h2 {
 }
 
 .table {
-    margin: 5em 0;
+    margin: 5em auto;
+    width: 100%;
 }
 
 tr {
@@ -197,9 +200,9 @@ tr {
 
 .sessiebar {
     float: right;
-    margin: 8em 0 0 0;
+    margin: 4em 0 0 0;
     background-color: rgba(96,125,139,0.9);
-    width: 250px;
+    width: 200px;
     padding: 1em;
 }
 
@@ -212,7 +215,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
 }
 
 .circle {
-    margin: 10px auto;
+    margin: 1em auto;
     width: 120px;
     height: 120px;
     -webkit-border-radius: 120px;
@@ -224,7 +227,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
 }
 
     .circle:hover {
-        border: 5px solid #B2DFDB;
+        border: 6px solid #B2DFDB;
     }
 
 .klas {
@@ -312,7 +315,7 @@ iframe {
 }
 
 .grpcard.mdl-card {
-    width: 512px;
+    width: 80%;
     margin: 0 auto;
     opacity: 1;
 }
@@ -348,10 +351,12 @@ form {
     opacity: 1;
     padding: 0 0 4em 0;
     background: url('../images/shattered-island.gif') center;
+    margin-bottom: 5em;
+    position: static;
 }
 
 .spinner {
-    margin: 5em auto;
+    margin: 1em auto 5em auto;
 }
 @media (min-width: 768px) {
     nav form {
@@ -359,11 +364,12 @@ form {
         display: block;
         flex-direction: unset;
     }
-
-    
 }
 @media (min-width: 992px) {
     .jumbotron {
         height: 90vh;
+    }
+    .table {
+        width: 60%;
     }
 }

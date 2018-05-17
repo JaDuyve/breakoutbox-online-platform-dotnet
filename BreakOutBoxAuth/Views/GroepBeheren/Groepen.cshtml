@@ -2,6 +2,7 @@
 @model BreakOutBoxAuth.Models.Sessie
 <meta http-equiv="refresh" content="5" />
 
+
 <div class="sessiebar">
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="number" id="sample" value="@Model.Code" disabled>
@@ -9,74 +10,77 @@
         <span class="mdl-textfield__error">Input is not a number!</span>
     </div>
 </div>
-<div class="sessies container" id="sessies">
-    <table class="table mdl-shadow--2dp">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Groep</th>
-            <th scope="col">Klas</th>
-            <th scope="col">Status</th>
-            <th scope="col">DeBlokkeer</th>
-        </tr>
-        </thead>
-        <tbody>
-
-            <a class="btn btn-primary" asp-controller="GroepBeheren" asp-action="GroepenActiveren" asp-route-sessieId="@Model.Naam" role="button">Activeer groepen</a>
-
-            @foreach (var groep in Model.SessieGroep)
-            {
-
-            <tr>
-                <td>
-                    @groep.Groepen.Naam
-                </td>
-                <td>@groep.Groepen.Klas</td>
-                <td>@groep.Groepen.Currentstate.GetStatus()</td>
-                @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
+<div class="secties">
+    <div class="textback">
+        <h2 class="container">Groepen Beheren</h2>
+    </div>
+    <div class="groepen container" id="sessies">
+        <table class="table mdl-shadow--2dp">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Groep</th>
+                    <th scope="col">Klas</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">DeBlokkeer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var groep in Model.SessieGroep)
                 {
-                    <td><a href="#" data-toggle="modal" data-target="#@groep.Groepen.Naam" class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
-                }
-                else
-                {
-                    <td>Is niet geblokkeerd</td>
-                }
-                
-            </tr>
-                         <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">@groep.Groepen.Naam | @groep.Groepen.Klas</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <label>Contactleer</label>
-                                        <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
-                                        <p>Leerlingen:</p>
-                                        <ul class="demo-list-icon mdl-list">
-                                            @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
-                                            {
-                                                <li class="mdl-list__item">
-                                                    <span class="mdl-list__item-primary-content">
-                                                        <i class="material-icons mdl-list__item-icon">person</i>
-                                                        @leerling
-                                                    </span>
-                                                </li>
-                                            }
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
-                                    </div>
+
+                    <tr data-toggle="modal" data-target="#@groep.Groepen.Naam">
+                        <td>
+                            @groep.Groepen.Naam
+                        </td>
+                        <td>@groep.Groepen.Klas</td>
+                        <td>@groep.Groepen.Currentstate.GetStatus()</td>
+                        @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
+                        {
+                            <td><a class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
+                        }
+                        else
+                        {
+                            <td>Is niet geblokkeerd</td>
+                        }
+
+                    </tr>
+                    <div class="modal fade" id="@groep.Groepen.Naam" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@groep.Groepen.Naam | @groep.Groepen.Klas</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label>Contactleer</label>
+                                    <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
+                                    <p>Leerlingen:</p>
+                                    <ul class="demo-list-icon mdl-list">
+                                        @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
+                                        {
+                                            <li class="mdl-list__item">
+                                                <span class="mdl-list__item-primary-content">
+                                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                                    @leerling
+                                                </span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
-                       </div>       
-        }
-        </tbody>
-    </table>
+                        </div>
+                    </div>
+                }
+            </tbody>
+        </table>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="GroepBeheren" asp-action="GroepenActiveren" asp-route-sessieId="@Model.Naam" role="button">Activeer groepen</a>
 
 
 
+    </div>
 </div>
