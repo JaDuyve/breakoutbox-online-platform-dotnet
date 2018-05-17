@@ -45,16 +45,16 @@ namespace breakoutbox.Tests.Controllers
         }
         
         
-        [Theory]
-        [InlineData("maandag")]
-        [InlineData("dinsdag")]
-        [InlineData("woensdag")]
-        public void Index_GetId(string id)
-        {
-            var result = _groepController.Index(id) as ViewResult;
-            var sessie = result?.Model as Sessie;
-            Assert.Equal(id, sessie.Naam);
-        }
+       [Theory]
+                 [InlineData("maandag")]
+                 [InlineData("dinsdag")]
+                 [InlineData("woensdag")]
+                 public void Index_GetId(string id)
+                 {
+                     var result = _groepController.Index(id) as ViewResult;
+                     var sessie = result?.Model as Sessie;
+                     Assert.Equal(id, sessie.Naam);
+                 }
 
         [Fact]
         public void StartPost_3FouteAntwoorden_RedirectsToFeedback()
@@ -70,5 +70,15 @@ namespace breakoutbox.Tests.Controllers
             }
             
         }
+
+        [Fact]
+        public void ExpiredTimer_TijdVerstreken_RedirectsToFeedback()
+        {
+            _testgroep.Blok();
+            Assert.Equal("BLOK", _testgroep.Currentstate.getStateEnum().ToString());
+            var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
+            Assert.Equal("Feedback", result?.ActionName);
+        }
+        
     }
 }

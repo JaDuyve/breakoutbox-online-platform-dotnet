@@ -1,5 +1,3 @@
-
-@using System.Diagnostics.Tracing
 @model BreakOutBoxAuth.Models.SessieViewModel.SessieViewModel
 
 @{
@@ -22,13 +20,13 @@
     </div>
 
 </div>
-<div class="textback">
+<div class="textback"  id="sessies">
     <h2 class="container ">@ViewData["Title"]</h2>
 </div>
-<div class="sessies container" id="sessies">
+<div class="sessies container">
 
     <h4 class="text-center">Dit zijn de sessies voor vandaag!</h4>
-    <table class="table">
+    <table class="table mdl-shadow--2dp">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -53,7 +51,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Sessiecode toevoegen</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Sessiecode Invoeren</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
