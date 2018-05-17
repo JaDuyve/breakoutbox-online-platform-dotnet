@@ -6,14 +6,13 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="GroepBeheren" asp-action="Index">Sessiebeheer</a>
-            </li>
-            <li class="nav-item">
-                <button type="submit" class="btn btn-link navbar-btn nav-link">Log out</button>
-            </li>
-}   
+
+        <a asp-area="" asp-controller="GroepBeheren" asp-action="Index">SESSIEBEHEER</a>
+
+        <a href="javascript:$('form').submit();" >AFMELDEN</a>
+
+}
 else
 {
-        <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+    <a asp-area="" asp-controller="Account" asp-action="Login">AANMELDEN</a>
 }

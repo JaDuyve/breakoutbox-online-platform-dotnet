@@ -28,6 +28,8 @@
                         */
 
 /**/
+
+
 body {
     position: relative;
     margin: 0;
@@ -39,8 +41,72 @@ body {
     -webkit-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
     -moz-box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
     box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.21);
-    background-color: rgba(96,125,139,1);
-    padding: 1em;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+    .navbar navbar-expand-lg navbar-dark {
+        min-height: 10vh;
+    }
+
+nav form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    margin: 10px 10px;
+    padding: 10px 10px;
+    position: relative;
+}
+
+.contijner {
+    margin: 0 auto;
+    padding: 1.5em 2em;
+    text-align: center;
+}
+
+nav a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: 10px 10px;
+    padding: 10px 10px;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.contijner a:hover {
+    color: #FFF;
+}
+
+.topBotomBordersOut a:before, div.topBotomBordersOut a:after {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 2px;
+    background: #FFF;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.topBotomBordersOut a:before {
+    top: 0px;
+    transform: translateY(10px);
+}
+
+.topBotomBordersOut a:after {
+    bottom: 0px;
+    transform: translateY(-10px);
+}
+
+.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after {
+    color: #FFF;
+    opacity: 1;
+    transform: translateY(0px);
 }
 
 footer {
@@ -62,6 +128,7 @@ footer {
     text-align: center;
     background-color: rgba(96,125,139,0.8);
     background-image: url(../images/asteroids.jpg);
+
     width: 100%;
     height: 100%;
     height: 100vh;
@@ -73,20 +140,25 @@ footer {
     display: block;
     position: absolute;
     top: 20%;
-    left: 5%;
-    right: 5%;
+    left: 0;
+    right: 0;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     padding: 50px;
-    opacity: .95;
+    opacity: .98;
     border-radius: 15px;
+    width: 80%;
+    margin: 0 auto;
 }
-
-.jumbocard>.schatkist{
-    top: 50%;
+.jumbocard p {
+    width: 60%;
+    margin: 0 auto;
 }
+    .jumbocard > .schatkist {
+        top: 50%;
+    }
 
 h1 {
-    font-size: 72px;
+    font-size: 3rem;
     margin: 0;
     padding: 0;
 }
@@ -98,14 +170,16 @@ h2 {
 .table {
     margin: 5em 0;
 }
+
 tr {
     background-color: #fff;
     transition: 0.2s;
 }
-tr:hover {
-    background-color: #efefef;
-    cursor: pointer;
-}
+
+    tr:hover {
+        background-color: #efefef;
+        cursor: pointer;
+    }
 
 .material-icons {
     color: white;
@@ -114,6 +188,7 @@ tr:hover {
 .sessies {
     padding: 2em;
 }
+
 .textback {
     color: #fff;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
@@ -228,13 +303,14 @@ iframe {
 
 .logcard.mdl-card {
     width: 512px;
-    margin: 8em  auto;
+    margin: 6em auto;
 }
 
 .logcard > .mdl-card__title {
     color: #fff;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
+
 .grpcard.mdl-card {
     width: 512px;
     margin: 0 auto;
@@ -245,29 +321,49 @@ iframe {
     color: #fff;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
+
 form {
     margin-top: 1em;
 }
+
 .loungecard > h2 {
     width: 100%;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     padding: 1em;
     margin: 0 0 1em 0;
 }
+
 .login {
     width: 50%;
     margin: 0 auto;
 }
+
 .lounge {
     background: url('../images/subway-lines.png');
-    background-repeat:repeat;
+    background-repeat: repeat;
     background-attachment: fixed;
 }
+
 .loungecard {
     opacity: 1;
     padding: 0 0 4em 0;
     background: url('../images/shattered-island.gif') center;
 }
+
 .spinner {
     margin: 5em auto;
+}
+@media (min-width: 768px) {
+    nav form {
+        margin: 0;
+        display: block;
+        flex-direction: unset;
+    }
+
+    
+}
+@media (min-width: 992px) {
+    .jumbotron {
+        height: 90vh;
+    }
 }
