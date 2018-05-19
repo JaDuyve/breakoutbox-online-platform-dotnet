@@ -41,7 +41,7 @@ namespace BreakOutBoxAuth.Models
             return "Geblokkeerd";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.BLOK;
         }

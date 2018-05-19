@@ -72,7 +72,7 @@ namespace BreakOutBoxAuth.Controllers
                 
 //                HttpContext.Session.SetObject("groep", groep);
 //                HttpContext.Session.SetGroepstate("groepstate", groep.Currentstate);
-            }else if (groep.Currentstate.getStateEnum() == State.BLOK)
+            }else if (groep.Currentstate.GetStateEnum() == State.BLOK)
             {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
 

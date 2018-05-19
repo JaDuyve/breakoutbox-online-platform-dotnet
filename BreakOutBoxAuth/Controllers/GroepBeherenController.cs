@@ -69,7 +69,7 @@ namespace BreakOutBoxAuth.Controllers
                 
             }
 
-            if (groep.Currentstate.getStateEnum() == State.BLOK)
+            if (groep.Currentstate.GetStateEnum() == State.BLOK)
             {
 
                 groep.Spelen();
@@ -101,7 +101,7 @@ namespace BreakOutBoxAuth.Controllers
             foreach (var sessieGroep in sessie.SessieGroep)
             {
                 state = sessieGroep.Groepen.Currentstate;
-                if (sessieGroep.Groepen.Currentstate.getStateEnum() != State.KANSPELEN)
+                if (sessieGroep.Groepen.Currentstate.GetStateEnum() != State.KANSPELEN)
                 {
 
 //                    if (sessieGroep.Groepen.Currentstate.getStateEnum() == State.START)

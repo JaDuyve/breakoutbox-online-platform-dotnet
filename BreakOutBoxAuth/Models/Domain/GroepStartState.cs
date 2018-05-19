@@ -31,7 +31,7 @@ namespace BreakOutBoxAuth.Models.Domain
             return "Starten";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.START;
         }

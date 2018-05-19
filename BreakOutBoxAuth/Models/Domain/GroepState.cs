@@ -52,6 +52,6 @@ namespace BreakOutBoxAuth.Models
 
         public abstract string GetStatus();
 
-        public abstract State getStateEnum();
+        public abstract State GetStateEnum();
     }
 }

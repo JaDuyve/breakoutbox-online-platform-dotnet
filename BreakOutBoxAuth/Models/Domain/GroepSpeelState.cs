@@ -36,7 +36,7 @@ namespace BreakOutBoxAuth.Models
             return "Spelen";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.SPELEN;
         }

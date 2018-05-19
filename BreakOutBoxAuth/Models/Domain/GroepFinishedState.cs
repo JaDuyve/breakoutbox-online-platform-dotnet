@@ -21,7 +21,7 @@ namespace BreakOutBoxAuth.Models
             return "Uitgespeeld";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.FINISH;
         }

@@ -37,7 +37,7 @@ namespace BreakOutBoxAuth.Models
             return "kan Beginnen Spelen";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.KANSPELEN;
         }

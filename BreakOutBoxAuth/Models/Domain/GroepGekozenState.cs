@@ -36,7 +36,7 @@ namespace BreakOutBoxAuth.Models
             return "Gekozen & vergrendeld";
         }
 
-        public override State getStateEnum()
+        public override State GetStateEnum()
         {
             return State.GEKOZENVERGRENDELD;
         }
