@@ -31,6 +31,9 @@ namespace BreakOutBoxAuth.Data.Repositories
                 .Include(s => s.SessieGroep)
                 .ThenInclude(g => g.Groepen)
                 .ThenInclude(g => g.Currentstate)
+                .Include(g => g.SessieGroep)
+                .ThenInclude(g => g.Groepen)
+                .ThenInclude(g => g.GroepPad)
                 .SingleOrDefault();
         }
 
