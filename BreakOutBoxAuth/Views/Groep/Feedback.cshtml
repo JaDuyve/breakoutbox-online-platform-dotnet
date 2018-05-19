@@ -16,7 +16,7 @@
     <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
 </div>
 
-@if(@Model.Groep.Currentstate.getStateEnum() != State.BLOK)
+@if(@Model.Groep.Currentstate.GetStateEnum() != State.BLOK)
 {
     <a class="btn btn-primary" asp-controller="Groep" asp-action="StartDirect" asp-route-id="@Model.Groep.Id" role="button">Ga door</a>
 

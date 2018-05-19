@@ -38,7 +38,7 @@
                         <td data-toggle="modal" data-target="#@groep.Groepen.Naam">Leerlingen</td>
                         <td>@(groep.Groepen.Progress) / @(groep.Groepen.GroepPad.Count +1)</td>
                         <td>@groep.Groepen.Currentstate.GetStatus()</td>
-                        @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
+                        @if (groep.Groepen.Currentstate.GetStateEnum() == State.BLOK)
                         {
                             <td><a class="btn btn-primary" asp-controller="GroepBeheren" asp-action="DeBlokkeer" asp-route-groepsId="@groep.Groepen.Id" asp-route-sessieId="@Model.Naam" role="button">DeBlokkeer</a></td>
                         }
