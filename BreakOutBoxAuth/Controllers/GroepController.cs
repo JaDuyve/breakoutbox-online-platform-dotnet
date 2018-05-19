@@ -100,10 +100,14 @@ namespace BreakOutBoxAuth.Controllers
                 groep.Spelen();
                 _groepRepository.SaveChanges();
             }
+            
+            groep.Spelen();
+            _groepRepository.SaveChanges();
 
+            
             if (groep.Fout == 3)
             {
-                if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
+                if (groep.Contactleer)
                 {
                     groep.Blok();
                     _groepRepository.SaveChanges();    
@@ -225,7 +229,7 @@ namespace BreakOutBoxAuth.Controllers
         {
             Groep groep = _groepRepository.GetById(id);
 
-            if (groep.Contactleer && groep.Currentstate.getStateEnum() != State.BLOK)
+            if (groep.Contactleer)
             {
                 groep.Blok();
                 _groepRepository.SaveChanges();    
@@ -266,7 +270,7 @@ namespace BreakOutBoxAuth.Controllers
 
             if (pad.Toegangscode.Code == actionViewModel.Toegangscode)
             {
-                if (actionViewModel.Actie == null)
+                if (groep.getCurrentGroepPad(groep.Progress).Paden.ActieNaamNavigation == null  )
                 {
                     groep.Finish();
                     _groepRepository.SaveChanges();

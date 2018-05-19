@@ -20,6 +20,7 @@
                 <tr>
                     <th scope="col">Groep</th>
                     <th scope="col">Klas</th>
+                    <th scope="col">Leerlingen</th>
                     <th scope="col">Vooruitgang</th>
                     <th scope="col">Status</th>
                     <th scope="col">DeBlokkeer</th>
@@ -29,11 +30,12 @@
                 @foreach (var groep in Model.SessieGroep)
                 {
 
-                    <tr data-toggle="modal" data-target="#@groep.Groepen.Naam">
+                    <tr>
                         <td>
                             @groep.Groepen.Naam
                         </td>
                         <td>@groep.Groepen.Klas</td>
+                        <td data-toggle="modal" data-target="#@groep.Groepen.Naam">Leerlingen</td>
                         <td>@(groep.Groepen.Progress) / @(groep.Groepen.GroepPad.Count +1)</td>
                         <td>@groep.Groepen.Currentstate.GetStatus()</td>
                         @if (groep.Groepen.Currentstate.getStateEnum() == State.BLOK)
