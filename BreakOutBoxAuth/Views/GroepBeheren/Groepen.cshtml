@@ -36,7 +36,7 @@
                         </td>
                         <td>@groep.Groepen.Klas</td>
                         <td data-toggle="modal" data-target="#@groep.Groepen.Naam">Leerlingen</td>
-                        <td>@(groep.Groepen.Progress) / @(groep.Groepen.GroepPad.Count +1)</td>
+                        <td>@(groep.Groepen.Progress) / @(groep.Groepen.GroepPad.Count)</td>
                         <td>@groep.Groepen.Currentstate.GetStatus()</td>
                         @if (groep.Groepen.Currentstate.GetStateEnum() == State.BLOK)
                         {
