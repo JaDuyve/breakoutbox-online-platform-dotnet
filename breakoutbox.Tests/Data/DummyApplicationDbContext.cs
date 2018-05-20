@@ -13,7 +13,9 @@ namespace breakoutbox.Tests.Data
         public  Sessie _maandag { get; }
         public  Sessie _dinsdag { get; }
         public  Sessie _woensdag { get; }
-
+        public Pad _pad1 { get; }
+        public Pad _pad2 { get; }
+        public Pad _pad3 { get; }
         public GroepPad _groepPad1 { get; }
         public GroepPad _groepPad2 { get; }
         public GroepPad _groepPad3 { get; }
