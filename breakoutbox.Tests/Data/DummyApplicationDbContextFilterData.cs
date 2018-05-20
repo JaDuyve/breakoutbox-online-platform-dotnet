@@ -62,7 +62,7 @@ namespace breakoutbox.Tests.Data
                 Leerlingen = "Thibaut",
                 Naam = "Groep2"
             };
-            _groep2.Currentstate = new GroepStartState(_groep1);
+            _groep2.Currentstate = new GroepStartState(_groep2);
             _groep3 = new Groep
             {
                 Contactleer = true,
@@ -76,7 +76,7 @@ namespace breakoutbox.Tests.Data
                 Leerlingen = "Michiel",
                 Naam = "Groep3"
             };
-            _groep3.Currentstate = new GroepStartState(_groep1);
+            _groep3.Currentstate = new GroepStartState(_groep3);
             _sessiegroep1 = new SessieGroep {Groepen = _groep1};
             _sessiegroep1 = new SessieGroep {Groepen = _groep2};
             _sessiegroep1 = new SessieGroep {Groepen = _groep3};
