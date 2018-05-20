@@ -63,8 +63,6 @@ namespace BreakOutBoxAuth.Controllers
                 groep.KanSpelen();
                 groep.Spelen();
                 _groepRepository.SaveChanges();
-
-
             }
             else if (groep.Currentstate.GetStateEnum() == State.BLOK)
             {
@@ -291,23 +289,30 @@ namespace BreakOutBoxAuth.Controllers
 
         private void getFile(string filename)
         {
-            string host = "188.166.36.83";
-            string username = "bob";
-            string password = "Pazaak2.0";
-            string remoteDirectory = "/uploads/"; // . always refers to the current directory.
-
-            using (Stream stream = System.IO.File.Create("./wwwroot/docs/" + filename))
+            try
             {
-                using (var sftp = new SftpClient(host, username, password))
+                string host = "188.166.36.83";
+                string username = "bob";
+                string password = "Pazaak2.0";
+                string remoteDirectory = "/uploads/"; // . always refers to the current directory.
+
+                using (Stream stream = System.IO.File.Create("./wwwroot/docs/" + filename))
                 {
-                    sftp.Connect();
+                    using (var sftp = new SftpClient(host, username, password))
+                    {
+                        sftp.Connect();
 
 
-                    sftp.DownloadFile(remoteDirectory + filename, stream);
+                        sftp.DownloadFile(remoteDirectory + filename, stream);
 
 
-                    sftp.Disconnect();
+                        sftp.Disconnect();
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+
             }
         }
     }

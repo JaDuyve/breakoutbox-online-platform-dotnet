@@ -11,8 +11,8 @@ namespace breakoutbox.Tests.Data
         public Sessie _maandag { get; }
         public Sessie _dinsdag { get; }
         public Sessie _woensdag { get; }
-        public Sessie _donderdag { get;  }
-        
+        public Sessie _donderdag { get; }
+
         public Groep _groep1 { get; }
         public Groep _groep2 { get; }
         public Groep _groep3 { get; }
@@ -39,12 +39,12 @@ namespace breakoutbox.Tests.Data
         public DummyApplicationDbContextFilterData()
         {
             _bobActies = new Collection<BobActie>();
-            _bobActies.Add(new BobActie {BobNaam = "bobActie", LijstActiesNaam = "zoek aarde"});
-            _bobActies.Add(new BobActie {BobNaam = "bobActie", LijstActiesNaam = "zoek lucht"});
+            _bobActies.Add(new BobActie { BobNaam = "bobActie", LijstActiesNaam = "zoek aarde" });
+            _bobActies.Add(new BobActie { BobNaam = "bobActie", LijstActiesNaam = "zoek lucht" });
 
             //_bobOefeningen
 
-            _bob = new Bob {Naam = "bob"};
+            _bob = new Bob { Naam = "bob" };
 
             //Groepen
             _groep1 = new Groep
@@ -103,9 +103,9 @@ namespace breakoutbox.Tests.Data
                 Naam = "Groep4"
             };
             _groep4.Currentstate = new Groepgeblokkeerdstate(_groep4);
-            _sessiegroep1 = new SessieGroep {Groepen = _groep1};
-            _sessiegroep2 = new SessieGroep {Groepen = _groep2};
-            _sessiegroep3 = new SessieGroep {Groepen = _groep3};
+            _sessiegroep1 = new SessieGroep { Groepen = _groep1 };
+            _sessiegroep2 = new SessieGroep { Groepen = _groep2 };
+            _sessiegroep3 = new SessieGroep { Groepen = _groep3 };
 
             //Sessies
             _maandag = new Sessie
@@ -115,7 +115,7 @@ namespace breakoutbox.Tests.Data
                 Contactleer = true,
                 Startdatum = new DateTime(2018, 05, 25),
                 BobNaam = "bob",
-                SessieGroep = new List<SessieGroep> {_sessiegroep1, _sessiegroep2, _sessiegroep3}
+                SessieGroep = new List<SessieGroep> { _sessiegroep1, _sessiegroep2, _sessiegroep3 }
             };
             _dinsdag = new Sessie
             {
@@ -124,7 +124,7 @@ namespace breakoutbox.Tests.Data
                 Contactleer = true,
                 Startdatum = new DateTime(),
                 BobNaam = "bob",
-                SessieGroep = new List<SessieGroep> {_sessiegroep1, _sessiegroep2, _sessiegroep3}
+                SessieGroep = new List<SessieGroep> { _sessiegroep1, _sessiegroep2, _sessiegroep3 }
             };
             _woensdag = new Sessie
             {
@@ -133,7 +133,7 @@ namespace breakoutbox.Tests.Data
                 Contactleer = true,
                 Startdatum = new DateTime(2018, 05, 4),
                 BobNaam = "bob2",
-                SessieGroep = new List<SessieGroep> {_sessiegroep1, _sessiegroep2, _sessiegroep3}
+                SessieGroep = new List<SessieGroep> { _sessiegroep1, _sessiegroep2, _sessiegroep3 }
             };
 
 
@@ -181,11 +181,11 @@ namespace breakoutbox.Tests.Data
                 Naam = "Groep3"
             };
             _groep3Donderdag.Currentstate = new Groepspeelstate(_groep3Donderdag);
-            
-            _sessiegroep1Donderdag = new SessieGroep {Groepen = _groep1Donderdag};
-            _sessiegroep2Donderdag = new SessieGroep {Groepen = _groep2Donderdag};
-            _sessiegroep3Donderdag = new SessieGroep {Groepen = _groep3Donderdag};
-            
+
+            _sessiegroep1Donderdag = new SessieGroep { Groepen = _groep1Donderdag };
+            _sessiegroep2Donderdag = new SessieGroep { Groepen = _groep2Donderdag };
+            _sessiegroep3Donderdag = new SessieGroep { Groepen = _groep3Donderdag };
+
             _donderdag = new Sessie
             {
                 Naam = "donderdag",
@@ -194,7 +194,7 @@ namespace breakoutbox.Tests.Data
                 Startdatum = new DateTime(2018, 05, 4),
                 BobNaam = "bob2",
                 SessieGroep =
-                    new List<SessieGroep> {_sessiegroep1Donderdag, _sessiegroep2Donderdag, _sessiegroep3Donderdag}
+                    new List<SessieGroep> { _sessiegroep1Donderdag, _sessiegroep2Donderdag, _sessiegroep3Donderdag }
             };
         }
 
@@ -208,6 +208,6 @@ namespace breakoutbox.Tests.Data
             return new DateTime().AddDays(4);
         }
 
-        public IEnumerable<Sessie> Sessies => new List<Sessie> {_maandag, _dinsdag, _woensdag};
+        public IEnumerable<Sessie> Sessies => new List<Sessie> { _maandag, _dinsdag, _woensdag };
     }
 }

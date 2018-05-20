@@ -17,6 +17,7 @@ namespace breakoutbox.Tests.Controllers
         private readonly Mock<ISessieRepository> _mockSessieRepository;
         private readonly GroepController _groepController;
         private readonly DummyApplicationDbContext _dummyContext = new DummyApplicationDbContext();
+        private readonly DummyApplicationDbContextFilterData _dummyContextFilter = new DummyApplicationDbContextFilterData();
         private readonly int _groepID= 8;
         private readonly Groep _testgroep;
         private readonly Sessie _maandag;
@@ -35,7 +36,9 @@ namespace breakoutbox.Tests.Controllers
                 Fout = 3
             };
             _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob" };
-            _mockGroepRepository.Setup(c => c.GetById(_testgroep.Id)).Returns(_dummyContext.Groep);
+            _mockGroepRepository.Setup(g => g.GetById(1)).Returns(_dummyContext.GroepGemaaktVergrendeld);
+            _mockGroepRepository.Setup(g => g.GetById(2)).Returns(_dummyContext.GroepBlok);
+            _mockGroepRepository.Setup(g => g.GetById(3)).Returns(_dummyContext.GroepKanSpelen);
             _mockSessieRepository.Setup(c => c.GetById(_maandag.Naam)).Returns(_dummyContext._maandag);
         }
         
@@ -81,7 +84,29 @@ namespace breakoutbox.Tests.Controllers
             Assert.Equal("Feedback", result?.ActionName);
         }
         
-        
-        
+        [Fact]
+        public void GroepGekozenNietKunnenSpelenGaatNaarLoungeTest()
+        {
+            var result = _groepController.Lounge(_dummyContext.GroepGemaaktVergrendeld.Id) as ViewResult;
+            var groep = result?.Model as Groep;
+            Assert.Equal("Groep1", groep.Naam);
+            Assert.True(groep.Currentstate.GetStateEnum() == State.GEKOZENVERGRENDELD);
+        }
+        [Fact]
+        public void GroepGeblokkeerdGaatVanLoungeNaarFeedback()
+        {
+            var result = _groepController.Lounge(_dummyContext.GroepBlok.Id) as RedirectToActionResult;
+            Assert.Equal("Feedback", result?.ActionName);
+            Assert.Equal("Groep", result?.ControllerName);
+        }
+
+        [Fact]
+        public void GroepGekozenVergrendeldGaatSpelen_lukt()
+        {
+            var result = _groepController.Start(_dummyContext.GroepKanSpelen.Id) as ViewResult;
+            var groep = result?.Model as AntwoordViewModel;
+            Assert.Equal("slecht", groep.Groep.Naam);
+            Assert.True(groep.Groep.Currentstate.GetStateEnum() == State.SPELEN);
+        }
     }
 }
