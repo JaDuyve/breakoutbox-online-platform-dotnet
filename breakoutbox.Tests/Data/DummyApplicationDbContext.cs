@@ -65,13 +65,44 @@ namespace breakoutbox.Tests.Data
 //            _groep1 = new Groep {Contactleer = false, Currentstate = null, CurrentstateId = 1, 3,null, }
 
             //Groep
-            _pad1 = new Pad {Id = 1, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
-            _pad2 = new Pad {Id = 2, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
-            _pad3 = new Pad {Id = 3, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
+            _pad1 = new Pad
+            {
+                Id = 1,
+                Antwoord = "5",
+                Contactleer = true,
+                ActieNaam = "zoek doos",
+                GroepsbewerkingNaam = "optellen",
+                OefeningNaam = "oefening 1",
+                ToegangscodeId = 8,
+                ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"},
+                Toegangscode = new Toegangscode{Code = 555},
+            };
+            _pad2 = new Pad
+            {
+                Id = 2,
+                Antwoord = "5",
+                Contactleer = true,
+                ActieNaam = "zoek doos",
+                GroepsbewerkingNaam = "optellen",
+                OefeningNaam = "oefening 1",
+                ToegangscodeId = 8,
+                ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}
+            };
+            _pad3 = new Pad
+            {
+                Id = 3,
+                Antwoord = "5",
+                Contactleer = true,
+                ActieNaam = "zoek doos",
+                GroepsbewerkingNaam = "optellen",
+                OefeningNaam = "oefening 1",
+                ToegangscodeId = 8,
+                ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}
+            };
 
-            _groepPad1 = new GroepPad {GroepId = 8, PadenId = 1, PadenKey = 0, Paden = _pad1};
-            _groepPad2 = new GroepPad {GroepId = 9, PadenId = 1, PadenKey = 0, Paden = _pad2}; 
-            _groepPad3 = new GroepPad {GroepId = 10, PadenId = 1, PadenKey = 0, Paden = _pad3}; 
+            _groepPad1 = new GroepPad {GroepId = 8, PadenId = 1, PadenKey = 1, Paden = _pad1};
+            _groepPad2 = new GroepPad {GroepId = 9, PadenId = 1, PadenKey = 2, Paden = _pad2}; 
+            _groepPad3 = new GroepPad {GroepId = 10, PadenId = 1, PadenKey = 3, Paden = _pad3}; 
 
             Groep = new Groep
             {
