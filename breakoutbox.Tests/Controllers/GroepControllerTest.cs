@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 using System;
+using System.Collections.Generic;
+using BreakOutBoxAuth.Models.ActionViewModel;
 
 namespace breakoutbox.Tests.Controllers
 {
@@ -42,13 +44,12 @@ namespace breakoutbox.Tests.Controllers
             _mockSessieRepository.Setup(c => c.GetById(_maandag.Naam)).Returns(_dummyContext._maandag);
         }
         
-        [Theory]
-        [InlineData(5)]
-        public void Start_Pad(int id)
+        [Fact]
+        public void Start_Pad()
         {
-            var result = _groepController.Start(id) as ViewResult;
+            var result = _groepController.Start(8) as ViewResult;
             var AntwoordVm = result?.Model as AntwoordViewModel;
-//            Assert.Equal(id, AntwoordVm); //Axel verbeter AUB
+            Assert.Equal(_testgroep.Naam, AntwoordVm.Groep.Naam); //Axel verbeter AUB
         }
         
         
@@ -65,24 +66,41 @@ namespace breakoutbox.Tests.Controllers
         {
             if (_testgroep.Fout == 3)
             {
-                var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
-                Assert.Equal("Feedback", result?.ActionName);
+                var result = _groepController.Feedback(_testgroep.Id) as ActionResult ;
+                Assert.Equal("feedback", result?.ToString());
             }
             else
             {
                 var result = _groepController.Start(_testgroep.Id, new AntwoordViewModel()) as RedirectToActionResult;
             }
-            
         }
 
         [Fact]
+        public void Action_GetById()
+        {
+            var result = _groepController.Action(8) as ViewResult;
+            var productVm = result?.Model as ActionViewModel;
+            List<GroepPad> groepPad = productVm.Groep.GroepPad as List<GroepPad>;
+            Assert.Equal("Groep", productVm.Groep.Naam);
+            Assert.Equal(555, groepPad[0].Paden.Toegangscode.Code);
+            Assert.Equal("zoek doos", groepPad[0].Paden.ActieNaamNavigation.Naam);
+            Assert.Equal(1, groepPad[0].Paden.Id);
+            Assert.False(productVm.IsSchatkist);
+            Assert.Equal("zoek doos", groepPad[0].Paden.ActieNaamNavigation.Opgave);
+        }
+
+
+            
+        
+
+        /*[Fact]
         public void ExpiredTimer_TijdVerstreken_RedirectsToFeedback()
         {
             _testgroep.Blok();
             Assert.Equal("BLOK", _testgroep.Currentstate.GetStateEnum().ToString());
             var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
-            Assert.Equal("Feedback", result?.ActionName);
-        }
+            Assert.Equal("ExpiredTimer", result?.ActionName);
+        }*/
         
         [Fact]
         public void GroepGekozenNietKunnenSpelenGaatNaarLoungeTest()
