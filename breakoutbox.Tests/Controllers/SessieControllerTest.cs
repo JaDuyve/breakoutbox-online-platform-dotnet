@@ -51,13 +51,20 @@ namespace breakoutbox.Tests.Controllers
         }
 
 
-        [Fact]
+        [Fact] // FOUT MOET NOG VERANDEREN
         public void IndexHttpPost_ValidIndex_SessieCode()
         {
             var productVm = new SessieViewModel(_dummyContext._maandag.Code);
             
             _sessieController.Index("maandag", productVm);
             Assert.Equal(9999, _sessie.Code);
+        }
+        
+        [Fact] // moet nog afwerken -- > Jari
+        public void IndexHttpPost_ValidIndex_SessieCodeFout()
+        {
+            var result = _sessieController.Index("maandag", new SessieViewModel());
+            Assert.IsType<NotFoundResult>(result);
         }
 
     }

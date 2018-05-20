@@ -7,6 +7,7 @@ using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Differencing;
 
 namespace BreakOutBoxAuth.Controllers
 {
@@ -16,20 +17,21 @@ namespace BreakOutBoxAuth.Controllers
         private readonly ISessieRepository _sessieRepository;
         private readonly IGroepstateRepository _groepstateRepository;
 
-        public GroepBeherenController(IGroepRepository groepRepository, ISessieRepository sessieRepository, IGroepstateRepository groepstateRepository)
+        public GroepBeherenController(IGroepRepository groepRepository, ISessieRepository sessieRepository,
+            IGroepstateRepository groepstateRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
             _groepstateRepository = groepstateRepository;
         }
-        
+
         [Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
             var sessies = _sessieRepository.GetAll();
             return View(sessies);
         }
-        
+
         [Authorize(Policy = "Admin")]
         public IActionResult Groepen(string id)
         {
@@ -41,16 +43,15 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             Groepstate state;
-            
+
             foreach (var sessieGroep in sessie.SessieGroep)
             {
                 if (sessieGroep.Groepen.Currentstate == null)
                 {
                     sessieGroep.Groepen.InitializeState();
                 }
-                
-            }  
-            
+            }
+
             _sessieRepository.SaveChanges();
 
             return View(sessie);
@@ -64,12 +65,10 @@ namespace BreakOutBoxAuth.Controllers
             if (groep == null)
             {
                 return NotFound();
-                
             }
 
             if (groep.Currentstate.GetStateEnum() == State.BLOK)
             {
-
                 groep.Spelen();
                 groep.ResetFout();
                 Groepstate state = groep.Currentstate;
@@ -78,12 +77,11 @@ namespace BreakOutBoxAuth.Controllers
 
                 _groepstateRepository.Delete(state);
                 _groepstateRepository.SaveChangesAsync();
-
             }
 
-            return RedirectToAction("Groepen", "GroepBeheren", new {Id = sessieId});
-
+            return RedirectToAction(nameof(Groepen), new {Id = sessieId});
         }
+
         [Authorize(Policy = "Admin")]
         public IActionResult GroepenActiveren(string sessieId)
         {
@@ -95,35 +93,32 @@ namespace BreakOutBoxAuth.Controllers
             }
 
             Groepstate state;
-            
+
+            bool hasChanged = false;
+
             foreach (var sessieGroep in sessie.SessieGroep)
             {
                 state = sessieGroep.Groepen.Currentstate;
-                if (sessieGroep.Groepen.Currentstate.GetStateEnum() != State.KANSPELEN)
+                if (sessieGroep.Groepen.Currentstate.GetStateEnum() == State.START ||
+                    sessieGroep.Groepen.Currentstate.GetStateEnum() == State.GEKOZENVERGRENDELD)
                 {
+                    sessieGroep.Groepen.GekozenEnVergrendeld();
 
-//                    if (sessieGroep.Groepen.Currentstate.getStateEnum() == State.START)
-//                    {
-                        sessieGroep.Groepen.GekozenEnVergrendeld();
-//                    }
-//                    else
-//                    {
-                        sessieGroep.Groepen.KanSpelen();
+                    sessieGroep.Groepen.KanSpelen();
+                    hasChanged = true;
 
-//                    }
-
+                    _groepstateRepository.Delete(state);
                 }
+            }
 
-//                _groepstateRepository.Delete(state);
-                
-            }  
-            
-            _sessieRepository.SaveChanges();
-            _groepstateRepository.SaveChangesAsync();
-            
-            
-            return RedirectToAction("Groepen", "GroepBeheren", new {Id = sessieId});
+            if (hasChanged)
+            {
+                _sessieRepository.SaveChanges();
+                _groepstateRepository.SaveChangesAsync();
+            }
 
+
+            return RedirectToAction(nameof(Groepen), new {Id = sessieId});
         }
     }
 }
