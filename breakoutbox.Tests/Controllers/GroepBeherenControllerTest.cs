@@ -47,20 +47,22 @@ namespace breakoutbox.Tests.Controllers
             var result = _groepBeherenController.Index() as ViewResult;
             var sessieView = result?.Model as ICollection<Sessie>;
             List<Sessie> sessies= sessieView.ToList();
-            Assert.Equal(2, sessies.Count);
+            Assert.Equal(3, sessies.Count);
             Assert.Equal("maandag", sessies[0].Naam);
             Assert.Equal("dinsdag", sessies[1].Naam);
         }
         
         [Fact]
-        public void Groepen()
+        public void Groepen_sessiemaandag()
         {
-            var result = _groepBeherenController.Index() as ViewResult;
-            var sessieView = result?.Model as ICollection<Sessie>;
-            List<Sessie> sessies= sessieView.ToList();
-            Assert.Equal(2, sessies.Count);
-            Assert.Equal("maandag", sessies[0].Naam);
-            Assert.Equal("dinsdag", sessies[1].Naam);
+            _mockSessieRepository.Setup(s => s.GetByIdGroepenMetGroepstate("maandag")).Returns(_dummyContext._maandag);
+
+            var result = _groepBeherenController.Groepen("maandag") as ViewResult;
+            var sessieView = result?.Model as ICollection<SessieGroep>;
+            List<SessieGroep> groeps= sessieView.ToList();
+            Assert.Equal(3, groeps.Count);
+            Assert.Equal("Groep1", groeps[0].Groepen.Naam);
+            Assert.Equal("Groep2", groeps[1].Groepen.Naam);
         }
         
 

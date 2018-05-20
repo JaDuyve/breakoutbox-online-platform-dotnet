@@ -26,10 +26,10 @@ namespace BreakOutBoxAuth.Controllers
         [Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
-            
             var sessies = _sessieRepository.GetAll();
             return View(sessies);
         }
+        
         [Authorize(Policy = "Admin")]
         public IActionResult Groepen(string id)
         {
@@ -44,12 +44,10 @@ namespace BreakOutBoxAuth.Controllers
             
             foreach (var sessieGroep in sessie.SessieGroep)
             {
-                state = sessieGroep.Groepen.Currentstate;
                 if (sessieGroep.Groepen.Currentstate == null)
                 {
                     sessieGroep.Groepen.InitializeState();
                 }
-                
                 
             }  
             
