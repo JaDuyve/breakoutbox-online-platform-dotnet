@@ -80,7 +80,8 @@ namespace breakoutbox.Tests.Data
                 Klas = "2C",
                 Contactleer = true,
                 Fout = 3,
-                GroepPad = new List<GroepPad>{_groepPad1, _groepPad2, _groepPad3}
+                GroepPad = new List<GroepPad>{_groepPad1, _groepPad2, _groepPad3},
+                Progress = 1
             };
         }
 
