@@ -19,6 +19,7 @@ namespace breakoutbox.Tests.Controllers
         private readonly DummyApplicationDbContext _dummyContext = new DummyApplicationDbContext();
         private readonly int _groepID= 8;
         private readonly Groep _testgroep;
+        private readonly Sessie _maandag;
         
         public GroepControllerTest()
         {
@@ -33,7 +34,9 @@ namespace breakoutbox.Tests.Controllers
                 Contactleer = true,
                 Fout = 3
             };
+            _maandag = new Sessie {Naam = "maandag", Code = 9999, Contactleer = true, Startdatum = new DateTime(2018, 05, 25), BobNaam = "bob" };
             _mockGroepRepository.Setup(c => c.GetById(_testgroep.Id)).Returns(_dummyContext.Groep);
+            _mockSessieRepository.Setup(c => c.GetById(_maandag.Naam)).Returns(_dummyContext._maandag);
         }
         
         [Theory]
@@ -53,9 +56,9 @@ namespace breakoutbox.Tests.Controllers
         [Fact]
         public void Index_GetId()
         {
-             var result = _groepController.Index("Maandag") as ViewResult;
+             var result = _groepController.Index("maandag") as ViewResult;
              var sessie = result?.Model as Sessie;
-             Assert.Equal("Maandag", sessie.Naam);
+             Assert.Equal("maandag", sessie.Naam);
         }
 
         [Fact]
