@@ -12,7 +12,14 @@ namespace breakoutbox.Tests.Data
         public  Sessie _maandag { get; }
         public  Sessie _dinsdag { get; }
         public  Sessie _woensdag { get; }
+        public Pad _pad1 { get; }
+        public Pad _pad2 { get; }
+        public Pad _pad3 { get; }
 
+        public GroepPad _groepPad1 { get; }
+        public GroepPad _groepPad2 { get; }
+        public GroepPad _groepPad3 { get; }
+        
         private readonly Bob _bob;
         public Groep Groep { get; }
         private readonly ICollection<BobActie> _bobActies;
@@ -58,6 +65,14 @@ namespace breakoutbox.Tests.Data
 //            _groep1 = new Groep {Contactleer = false, Currentstate = null, CurrentstateId = 1, 3,null, }
 
             //Groep
+            _pad1 = new Pad {Id = 1, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
+            _pad2 = new Pad {Id = 2, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
+            _pad3 = new Pad {Id = 3, Antwoord = "5", Contactleer = true, ActieNaam = "zoek doos", GroepsbewerkingNaam="optellen", OefeningNaam = "oefening 1", ToegangscodeId = 8, ActieNaamNavigation = new Actie {Naam = "zoek doos", Opgave = "zoek doos"}, }
+
+            _groepPad1 = new GroepPad {GroepId = 8, PadenId = 1, PadenKey = 0, Paden = _pad1};
+            _groepPad2 = new GroepPad {GroepId = 9, PadenId = 1, PadenKey = 0, Paden = _pad2}; 
+            _groepPad3 = new GroepPad {GroepId = 10, PadenId = 1, PadenKey = 0, Paden = _pad3}; 
+
             Groep = new Groep
             {
                 Id = 8,
@@ -65,12 +80,7 @@ namespace breakoutbox.Tests.Data
                 Klas = "2C",
                 Contactleer = true,
                 Fout = 3,
-                GroepPad = new GroepPad
-                {
-                    GroepId = 8,
-                    PadenId = 1,
-                    PadenKey = 0
-                }
+                GroepPad = new List<GroepPad>{_groepPad1, _groepPad2, _groepPad3}
             };
         }
 
