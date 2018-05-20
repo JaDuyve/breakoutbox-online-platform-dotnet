@@ -45,9 +45,10 @@ namespace breakoutbox.Tests.Controllers
             var result = _sessieController.Index() as ViewResult;
             var productVm = result?.Model as SessieViewModel;
             List<Sessie> sessies = productVm.Sessies.ToList();
-            Assert.Equal(2, sessies.Count);
+            Assert.Equal(3, sessies.Count);
             Assert.Equal("maandag", sessies[0].Naam);
             Assert.Equal("dinsdag", sessies[1].Naam);
+            Assert.Equal("woensdag", sessies[2].Naam);
         }
 
 
