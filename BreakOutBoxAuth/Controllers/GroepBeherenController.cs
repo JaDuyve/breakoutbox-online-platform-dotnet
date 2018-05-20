@@ -24,7 +24,7 @@ namespace BreakOutBoxAuth.Controllers
         }
         
         [Authorize(Policy = "Admin")]
-        public IActionResult Index(string id)
+        public IActionResult Index()
         {
             
             var sessies = _sessieRepository.GetAll();

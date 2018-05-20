@@ -19,7 +19,7 @@
     <div class="container-fluid">
         <span>VOORTGANG:</span>
         <div class="progress" >
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="@Model.Groep.GetProgress100()" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Groep.GetProgress100()%">@(Model.Groep.Progress) / @(Model.Groep.GroepPad.Count)</div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="@Model.Groep.GetProgress100()" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Groep.GetProgress100()%">@(Model.Groep.Progress - 1) / @(Model.Groep.GroepPad.Count)</div>
         </div>
     </div>
 </div>

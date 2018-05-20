@@ -19,6 +19,7 @@ namespace breakoutbox.Tests.Controllers
         private readonly DummyApplicationDbContext _dummyContext = new DummyApplicationDbContext();
         private readonly int _groepID= 8;
         private readonly Groep _testgroep;
+        
         public GroepControllerTest()
         {
             _mockGroepRepository = new Mock<IGroepRepository>();
@@ -76,7 +77,7 @@ namespace breakoutbox.Tests.Controllers
         public void ExpiredTimer_TijdVerstreken_RedirectsToFeedback()
         {
             _testgroep.Blok();
-            Assert.Equal("BLOK", _testgroep.Currentstate.getStateEnum().ToString());
+            Assert.Equal("BLOK", _testgroep.Currentstate.GetStateEnum().ToString());
             var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
             Assert.Equal("Feedback", result?.ActionName);
         }
