@@ -49,10 +49,6 @@ namespace breakoutbox.Tests.Controllers
         }
         
         
-
-  //                [InlineData("maandag")]
-  //               [InlineData("dinsdag")]
- //                [InlineData("woensdag")]
         [Fact]
         public void Index_GetId()
         {
@@ -84,6 +80,8 @@ namespace breakoutbox.Tests.Controllers
             var result = _groepController.Feedback(_testgroep.Id) as RedirectToActionResult;
             Assert.Equal("Feedback", result?.ActionName);
         }
+        
+        
         
     }
 }
