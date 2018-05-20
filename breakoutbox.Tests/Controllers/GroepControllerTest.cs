@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 using System;
+using System.Collections.Generic;
+using BreakOutBoxAuth.Models.ActionViewModel;
 
 namespace breakoutbox.Tests.Controllers
 {
@@ -68,6 +70,13 @@ namespace breakoutbox.Tests.Controllers
             {
                 var result = _groepController.Start(_testgroep.Id, new AntwoordViewModel()) as RedirectToActionResult;
             }
+        }
+
+        [Fact]
+        public void Action_GetById(){
+            var result = _groepController.Action(8) as ViewResult;
+            var productVm = result?.Model as ActionViewModel;
+            Assert.Equal("Groep", productVm.Groep.Naam);
             
         }
 
