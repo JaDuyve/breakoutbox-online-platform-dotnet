@@ -32,7 +32,7 @@ namespace BreakOutBoxAuth.Controllers
             if (model.Code == sessie.Code)
             {
 
-                return RedirectToAction("index", "Groep", new { Id = sessie.Naam }); 
+                return RedirectToAction("Index", "Groep", new { Id = sessie.Naam }); 
             }
             TempData["error"] = "Foute Sessiecode, probeer opnieuw";
             return RedirectToAction(nameof(Index));
