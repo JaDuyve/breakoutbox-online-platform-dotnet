@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 using breakoutbox.Tests.Data;
 using BreakOutBoxAuth.Controllers;
 using BreakOutBoxAuth.Models;
@@ -45,7 +45,13 @@ namespace breakoutbox.Tests.Controllers
             _mockSessieRepository.Setup(c => c.GetById(_maandag.Naam)).Returns(_dummyContext._maandag);
         }
         
-    
+/*       [Fact]
+        public void Start_Pad()
+        {
+            var result = _groepController.Start(8) as ViewResult;
+            var AntwoordVm = result?.Model as AntwoordViewModel;
+            Assert.Equal(_testgroep.Naam, AntwoordVm.Groep.Naam); //Axel verbeter AUB
+        }*/
         
         
         [Fact]
@@ -56,7 +62,19 @@ namespace breakoutbox.Tests.Controllers
              Assert.Equal("maandag", sessie.Naam);
         }
 
-      
+       /* [Fact]
+        public void StartPost_3FouteAntwoorden_RedirectsToFeedback()
+        {
+            if (_testgroep.Fout == 3)
+            {
+                var result = _groepController.Feedback(_testgroep.Id) as ActionResult ;
+                Assert.Equal("feedback", result?.ToString());
+            }
+            else
+            {
+                var result = _groepController.Start(_testgroep.Id, new AntwoordViewModel()) as RedirectToActionResult;
+            }
+        }*/
 
         [Fact]
         public void Action_GetById()

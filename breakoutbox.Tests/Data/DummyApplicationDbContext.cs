@@ -13,9 +13,11 @@ namespace breakoutbox.Tests.Data
         public  Sessie _maandag { get; }
         public  Sessie _dinsdag { get; }
         public  Sessie _woensdag { get; }
+        
         public Pad _pad1 { get; }
         public Pad _pad2 { get; }
         public Pad _pad3 { get; }
+
         public GroepPad _groepPad1 { get; }
         public GroepPad _groepPad2 { get; }
         public GroepPad _groepPad3 { get; }
@@ -83,8 +85,8 @@ namespace breakoutbox.Tests.Data
             };
 
             _groepPad1 = new GroepPad {GroepId = 8, PadenId = 1, PadenKey = 1, Paden = _pad1};
-            _groepPad2 = new GroepPad {GroepId = 9, PadenId = 1, PadenKey = 2, Paden = _pad2}; 
-            _groepPad3 = new GroepPad {GroepId = 10, PadenId = 1, PadenKey = 3, Paden = _pad3}; 
+            _groepPad2 = new GroepPad {GroepId = 9, PadenId = 2, PadenKey = 2, Paden = _pad2}; 
+            _groepPad3 = new GroepPad {GroepId = 10, PadenId = 3, PadenKey = 3, Paden = _pad3}; 
 
             Groep = new Groep
             {

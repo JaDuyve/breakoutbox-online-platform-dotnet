@@ -52,7 +52,7 @@
                     <div class="spinner">
                         <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
                     </div>
-                    @if (Model.Currentstate.GetStateEnum() == BreakOutBoxAuth.Models.Domain.State.KANSPELEN)
+                    @if (Model.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.GEKOZENVERGRENDELD && Model.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.START)
                     {
                         <div>
                             <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</a>
