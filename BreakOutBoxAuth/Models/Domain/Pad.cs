@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data.Common;
+using BreakOutBoxAuth.Models.OefeningViewModel;
 using Newtonsoft.Json;
 
 namespace BreakOutBoxAuth.Models
@@ -26,4 +28,5 @@ namespace BreakOutBoxAuth.Models
 
         public ICollection<GroepPad> GroepPad { get; set; }
     }
-}
+} 
+

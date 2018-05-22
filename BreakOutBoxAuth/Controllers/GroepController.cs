@@ -60,8 +60,8 @@ namespace BreakOutBoxAuth.Controllers
             {
                 groep.InitializeState();
                 groep.GekozenEnVergrendeld();
-                groep.KanSpelen();
-                groep.Spelen();
+                //groep.KanSpelen();
+                //groep.Spelen();
                 _groepRepository.SaveChanges();
             }
             else if (groep.Currentstate.GetStateEnum() == State.BLOK)
@@ -164,6 +164,7 @@ namespace BreakOutBoxAuth.Controllers
             }
             else
             {
+                TempData["error"] = "Oplossing fout!";
                 if (groep.Fout == 3)
                 {
                     groep.Blok();

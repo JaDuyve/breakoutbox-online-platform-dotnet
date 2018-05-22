@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <label>Contactleer</label>
-                                    <input type="checkbox" disabled="true" checked="@groep.Groepen.Contactleer? true: false " />
+                                    <input type="checkbox" disabled="true" @(groep.Groepen.Contactleer? "checked": "") />
                                     <p>Leerlingen:</p>
                                     <ul class="demo-list-icon mdl-list">
                                         @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
