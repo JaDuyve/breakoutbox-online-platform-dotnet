@@ -15,6 +15,7 @@ using BreakOutBoxAuth.Extensions;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Services;
+using Owin;
 
 namespace BreakOutBoxAuth
 {
@@ -59,7 +60,7 @@ namespace BreakOutBoxAuth
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BreakoutBoxDataInitializer breakoutBoxDataInitializer)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BreakoutBoxDataInitializer breakoutBoxDataInitializer, IAppBuilder iapp)
         {
             if (env.IsDevelopment())
             {
@@ -83,8 +84,10 @@ namespace BreakOutBoxAuth
                     name: "default",
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
+            iapp.MapSignalR();
 
           //  breakoutBoxDataInitializer.InitializeData().Wait();
         }
+        
     }
 }
