@@ -17,13 +17,15 @@ namespace BreakOutBoxAuth.Controllers
         private readonly IGroepRepository _groepRepository;
         private readonly ISessieRepository _sessieRepository;
         private readonly IGroepstateRepository _groepstateRepository;
-
+        private readonly AppHub _hub;
+        
         public GroepBeherenController(IGroepRepository groepRepository, ISessieRepository sessieRepository,
             IGroepstateRepository groepstateRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
             _groepstateRepository = groepstateRepository;
+            
         }
 
         [Microsoft.AspNetCore.Authorization.Authorize(Policy = "Admin")]
@@ -111,19 +113,15 @@ namespace BreakOutBoxAuth.Controllers
                     _groepstateRepository.Delete(state);
                 }
             }
-
+ 
             if (hasChanged)
             {
                 _sessieRepository.SaveChanges();
                 _groepstateRepository.SaveChangesAsync();
-                
-                AppHub hub = new AppHub();
 
-                hub.ActivateLoungeStartButton(sessie.Naam);
+                var myHub = GlobalHost.ConnectionManager.GetHubContext<AppHub>();
             }
 
-//            var context = GlobalHost.ConnectionManager.GetHubContext<AppHub>();
-//             context.Clients.Group(sessie.Naam).;
             
             
             
