@@ -4,10 +4,9 @@ namespace BreakOutBoxAuth.Models.LoungeViewModel
 {
     public class LoungeViewModel
     {
-        public LoungeViewModel(Groep groep, String sessieNaam)
+        public LoungeViewModel(Groep groep)
         {
             Groep = groep;
-            SessieNaam = sessieNaam;
         }
 
         public LoungeViewModel()
@@ -18,6 +17,5 @@ namespace BreakOutBoxAuth.Models.LoungeViewModel
        
         public Groep Groep { get; set; }
         
-        public string SessieNaam { get; set; }
     }
 }

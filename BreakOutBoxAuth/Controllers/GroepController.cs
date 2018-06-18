@@ -57,7 +57,6 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-            _sessionExtension.WriteGroepToSession(groep, HttpContext);
 
             if (groep.Currentstate == null)
             {
@@ -73,7 +72,7 @@ namespace BreakOutBoxAuth.Controllers
             }
 
 
-            return View(new LoungeViewModel(groep, _sessionExtension.ReadSessieFromSession(HttpContext).Naam));
+            return View(new LoungeViewModel(groep));
         }
 
         public IActionResult Start(decimal id)
