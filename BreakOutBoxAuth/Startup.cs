@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using BreakOutBoxAuth.Data;
 using BreakOutBoxAuth.Data.Repositories;
 using BreakOutBoxAuth.Extensions;
+using BreakOutBoxAuth.hubs;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Services;
@@ -46,6 +47,7 @@ namespace BreakOutBoxAuth
 
             services.AddScoped<SessionExtension>();
 
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
@@ -57,10 +59,13 @@ namespace BreakOutBoxAuth
             services.AddSession();
             
             services.AddMvc();
+
+            services.AddSignalR();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BreakoutBoxDataInitializer breakoutBoxDataInitializer, IAppBuilder iapp)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, BreakoutBoxDataInitializer breakoutBoxDataInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -84,9 +89,11 @@ namespace BreakOutBoxAuth
                     name: "default",
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
-            iapp.MapSignalR();
 
-          //  breakoutBoxDataInitializer.InitializeData().Wait();
+            app.UseSignalR(routes => 
+                routes.MapHub<AppHub>("/AppHub"));
+
+            //  breakoutBoxDataInitializer.InitializeData().Wait();
         }
         
     }
