@@ -33,6 +33,16 @@
 <div class="sessies container">
 
     <h4 class="text-center">Dit zijn de sessies voor vandaag!</h4>
+    <form method="post" role="form" action="/Sessie/Code/">
+        <div class="modal-body">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                
+                <input autofocus class="mdl-textfield__input" type="number" id="sessieCode" asp-for="Code" value="" placeholder="Code">
+
+            </div>
+            <div><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Controleer</button></div>
+        </div>
+    </form>
     <table class="table mdl-shadow--2dp">
         <thead class="thead-dark">
             <tr>

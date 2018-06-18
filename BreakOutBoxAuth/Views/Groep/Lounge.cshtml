@@ -1,32 +1,39 @@
-﻿@using BreakOutBoxAuth.Models.Domain
-@model BreakOutBoxAuth.Models.Groep
+﻿@model BreakOutBoxAuth.Models.LoungeViewModel.LoungeViewModel
 @{
     ViewData["Title"] = "Lounge";
-    if (Model.Currentstate.GetStateEnum() == BreakOutBoxAuth.Models.Domain.State.KANSPELEN)
+    if (Model.Groep.Currentstate.GetStateEnum() == BreakOutBoxAuth.Models.Domain.State.KANSPELEN)
     {
         ViewData["KanSpelen"] = "";
     }
     else
     {
-        ViewData["KanSpelen"] = "disabled";
+        ViewData["KanSpelen"] = "";
     }
 }
-<meta http-equiv="refresh" content="10"/>
+
+@section Scripts
+{
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/signalr_communication.js"></script>
+}
+
+@* <meta http-equiv="refresh" content="10"/> *@
 
 <div class="jumbotron jumbotron-fluid lounge">
     <div class="container-fluid">
         <div class="jumbocard loungecard">
             <h2>Lobby</h2>
+            <h3 id="sessieName">@Model.SessieNaam</h3>
             <div class="row">
 
                 <div class="col col-md-6">
                     <div class="grpcard mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">@Model.Naam</h2>
+                            <h2 class="mdl-card__title-text">@Model.Groep.Naam</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
                             <div class="demo-list-action mdl-list">
-                                @foreach (var leerling in @Model.LijstLeerlingen())
+                                @foreach (var leerling in @Model.Groep.LijstLeerlingen())
                                 {
                                     <div class="mdl-list__item">
                                         <span class="mdl-list__item-primary-content">
@@ -40,7 +47,7 @@
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
                             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                                <input type="checkbox" disabled id="checkbox-1" checked="@Model.Contactleer? ''" class="mdl-checkbox__input">
+                                <input type="checkbox" disabled id="checkbox-1" checked="@Model.Groep.Contactleer? ''" class="mdl-checkbox__input">
                                 <span class="mdl-checkbox__label">Contactleer</span>
                             </label>
                         </div>
@@ -52,10 +59,16 @@
                     <div class="spinner">
                         <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
                     </div>
-                    @if (Model.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.GEKOZENVERGRENDELD && Model.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.START)
+                    @if (Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.GEKOZENVERGRENDELD && Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.START)
                     {
                         <div>
-                            <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Id">Start</a>
+                            <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id">Start</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id" disabled="disabled">Start</a>
                         </div>
                     }
                 </div>

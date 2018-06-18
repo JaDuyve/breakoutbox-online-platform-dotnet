@@ -16,6 +16,7 @@ using System.Linq;
 using System.Timers;
 using System.Web;
 using BreakOutBoxAuth.Extensions;
+using BreakOutBoxAuth.Models.LoungeViewModel;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Remotion.Linq.Clauses.ResultOperators;
 
@@ -24,13 +25,14 @@ namespace BreakOutBoxAuth.Controllers
     public class GroepController : Controller
     {
         private readonly IGroepRepository _groepRepository;
-
+        private readonly SessionExtension _sessionExtension;
         private readonly ISessieRepository _sessieRepository;
 
         public GroepController(IGroepRepository groepRepository, ISessieRepository sessieRepository)
         {
             _groepRepository = groepRepository;
             _sessieRepository = sessieRepository;
+            _sessionExtension = new SessionExtension();
         }
 
         public IActionResult Index(string id)
@@ -42,7 +44,7 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-
+            
             return View(sessie);
         }
 
@@ -55,6 +57,7 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
+            _sessionExtension.WriteGroepToSession(groep, HttpContext);
 
             if (groep.Currentstate == null)
             {
@@ -70,7 +73,7 @@ namespace BreakOutBoxAuth.Controllers
             }
 
 
-            return View(groep);
+            return View(new LoungeViewModel(groep, _sessionExtension.ReadSessieFromSession(HttpContext).Naam));
         }
 
         public IActionResult Start(decimal id)
@@ -81,6 +84,8 @@ namespace BreakOutBoxAuth.Controllers
             {
                 return NotFound();
             }
+            
+            
 
             if (groep.Currentstate == null)
             {

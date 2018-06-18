@@ -20,17 +20,17 @@ namespace BreakOutBoxAuth.Models
         }
 
         [JsonProperty] public decimal Id { get; set; }
-        [JsonProperty] public bool Contactleer { get; set; }
-        [JsonProperty] public string Klas { get; set; }
-        [JsonProperty] public string Naam { get; set; }
-        [JsonProperty] public int Progress { get; set; }
-         public Groepstate Currentstate { get; set; }
-        [JsonProperty] public ICollection<GroepPad> GroepPad { get; set; }
-         public ICollection<Groepstate> Groepstate { get; set; }
+        public bool Contactleer { get; set; }
+        public string Klas { get; set; }
+        public string Naam { get; set; }
+        public int Progress { get; set; }
+        public Groepstate Currentstate { get; set; }
+        public ICollection<GroepPad> GroepPad { get; set; }
+        public ICollection<Groepstate> Groepstate { get; set; }
         public ICollection<SessieGroep> SessieGroep { get; set; }
-        [JsonProperty] public string Leerlingen { get; set; }
-        [JsonProperty] public int? CurrentstateId { get; set; }
-        [JsonProperty] public int Fout { get; set; }
+        public string Leerlingen { get; set; }
+        public int? CurrentstateId { get; set; }
+        public int Fout { get; set; }
 
 
         public void Blok()
