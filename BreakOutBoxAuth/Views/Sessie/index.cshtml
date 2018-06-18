@@ -6,23 +6,29 @@
 }
 
 <div class="jumbotron jumbotron-fluid">
+    <div class="slider">
+        <img src="~/images/asteroids.png" />
+    </div>
     <div class="container">
         <div class="jumbocard">
+
             <h1>BREAKOUT-BOX</h1>
             <h2>Ga meteen aan de slag!</h2>
 
-            <p class="lead">Welkom bij Breakout-box! Klik <a href="#sessies">hier</a> of op de knop hieronder om meteen aan de slag te gaan. Voeg je sessiecode in voor de sessie zodat het spel kan beginnen!</p>
+            <p class="lead">Welkom bij Breakout-box! Klik op de knop hieronder om meteen aan de slag te gaan. Voeg je sessiecode in voor de sessie zodat het spel kan beginnen!</p>
             <br />
             <a href="#sessies" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                 <i class="material-icons">keyboard_arrow_down</i>
             </a>
+
         </div>
     </div>
-
 </div>
-
 <div class="textback" id="sessies">
     <h2 class="container ">@ViewData["Title"]</h2>
+</div>
+<div class="my-parallax-window">
+
 </div>
 <div class="sessies container">
 
@@ -74,7 +80,19 @@
                 </div>
                 counter++;
             }
+
         </tbody>
     </table>
 
 </div>
+
+@section Scripts {
+    <script src="~/js/jquery.parallax.min.js"></script>
+    <script>
+        $('.jumbotron').parallax({
+            speed: .5,
+            sliderSelector: '>.slider',
+            zIndex: -50
+        })
+    </script>
+}

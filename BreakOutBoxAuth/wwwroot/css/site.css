@@ -127,37 +127,35 @@ footer {
 .jumbotron {
     color: white;
     text-align: center;
-    background-color: rgba(96,125,139,0.8);
-    background-image: url(../images/asteroids.jpg);
-
+    background: transparent;
     width: 100%;
     height: 100%;
     height: 100vh;
-    position: relative;
+    display: flex;
+    align-items: center;
     margin: 0;
 }
 
 .jumbocard {
     display: block;
-    position: absolute;
-    top: 20%;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
     padding: 50px;
-    opacity: .98;
-    border-radius: 15px;
     width: 80%;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.25);
     margin: 0 auto;
-    z-index: 2;
 }
+
+    .jumbocard p, .jumbocard h1, .jumbocard h2 {
+        text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    }
 .jumbocard p {
     width: 60%;
     margin: 0 auto;
 }
-    .jumbocard > .schatkist {
-        top: 50%;
-    }
+
+.jumbocard > .schatkist {
+    top: 50%;
+}
 
 h1 {
     font-size: 3rem;
@@ -253,6 +251,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
 a {
     color: black;
     text-decoration: none;
+    transition-duration: .3s;
 }
 
     a:focus {
@@ -358,6 +357,7 @@ form {
 .spinner {
     margin: 1em auto 5em auto;
 }
+
 @media (min-width: 768px) {
     nav form {
         margin: 0;
@@ -365,11 +365,24 @@ form {
         flex-direction: unset;
     }
 }
+
 @media (min-width: 992px) {
     .jumbotron {
         height: 90vh;
     }
+
+    h1 {
+        font-size: 5rem;
+    }
+
     .table {
         width: 60%;
     }
+}
+
+.slider > img {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
 }
