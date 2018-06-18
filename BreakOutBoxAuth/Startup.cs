@@ -60,7 +60,6 @@ namespace BreakOutBoxAuth
             
             services.AddMvc();
 
-            services.AddSignalR();
 
         }
 
@@ -90,10 +89,7 @@ namespace BreakOutBoxAuth
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
 
-            app.UseSignalR(routes => 
-                routes.MapHub<AppHub>("/hubs/apphub"));
-//            app.UseSignalR(routes => 
-//                routes.MapHub<AppHub>("/AppHub"));
+            
 
             //  breakoutBoxDataInitializer.InitializeData().Wait();
         }

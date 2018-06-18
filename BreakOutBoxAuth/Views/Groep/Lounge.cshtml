@@ -11,13 +11,9 @@
     }
 }
 
-@section Scripts
-{
-    <script src="~/lib/signalr/signalr.js"></script>
-    <script src="~/js/signalr_communication.js"></script>
-}
 
-@* <meta http-equiv="refresh" content="10"/> *@
+
+ <meta http-equiv="refresh" content="10"/> 
 
 <div class="jumbotron jumbotron-fluid lounge">
     <div class="container-fluid">
@@ -63,12 +59,6 @@
                     {
                         <div>
                             <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id">Start</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div>
-                            <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id" disabled="disabled">Start</a>
                         </div>
                     }
                 </div>

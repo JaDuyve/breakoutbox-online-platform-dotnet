@@ -119,7 +119,6 @@ namespace BreakOutBoxAuth.Controllers
                 _sessieRepository.SaveChanges();
                 _groepstateRepository.SaveChangesAsync();
 
-                var myHub = GlobalHost.ConnectionManager.GetHubContext<AppHub>();
             }
 
             
