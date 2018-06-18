@@ -9,14 +9,14 @@ namespace BreakOutBoxAuth.Extensions
     public  class SessionExtension: ActionFilterAttribute
     {
 
-        private Groep _groep;
+        
 
         public SessionExtension()
         {
             
         }
         
-        public override void OnActionExecuting(ActionExecutingContext context)
+        /*public override void OnActionExecuting(ActionExecutingContext context)
         {
             _groep = ReadGroepFromSession(context.HttpContext);
             context.ActionArguments["groep"] = _groep;
@@ -34,40 +34,40 @@ namespace BreakOutBoxAuth.Extensions
                 base.OnActionExecuted(context);
             }
             
-        }
+        }*/
         
-        
-       
         
 
-        private Groep ReadGroepFromSession(HttpContext context)
+        public Sessie ReadSessieFromSession(HttpContext context)
         {
-            var eventConverter = new GroepStConverter();
-            var deseralizeSettings = new JsonSerializerSettings();
-            deseralizeSettings.Converters.Add(eventConverter);
-            deseralizeSettings.TypeNameAssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple;
-            deseralizeSettings.TypeNameHandling = TypeNameHandling.Auto;
+            
  
-            Groepstate groepstate = context.Session.GetString("groepstate") == null ? null: JsonConvert.DeserializeObject<Groepstate>(context.Session.GetString("groepstate"), deseralizeSettings);
+            
+            Sessie sessie = context.Session.GetString("sessie") == null ?
+                null : JsonConvert.DeserializeObject<Sessie>(context.Session.GetString("sessie"));
+            
+            return sessie;
+        }
+
+        public void WriteSessieToSession(Sessie sessie, HttpContext context)
+        {
+            
+            context.Session.SetString("sessie", JsonConvert.SerializeObject(sessie));
+        }
+        
+        public Groep ReadGroepFromSession(HttpContext context)
+        {
             
             Groep groep = context.Session.GetString("groep") == null ?
                 null : JsonConvert.DeserializeObject<Groep>(context.Session.GetString("groep"));
-            if (groepstate != null)
-            {
-                groep.Currentstate = groepstate;
-
-            }
+            
             return groep;
         }
 
-        private void WriteGroepToSession(Groep groep, HttpContext context)
+        public void WriteGroepToSession(Groep sessie, HttpContext context)
         {
-            context.Session.SetString("groepstate", JsonConvert.SerializeObject(groep.Currentstate, Formatting.Indented, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Objects,
-                TypeNameAssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
-            }));
-            context.Session.SetString("groep", JsonConvert.SerializeObject(groep));
+            
+            context.Session.SetString("groep", JsonConvert.SerializeObject(sessie));
         }
     }
 }

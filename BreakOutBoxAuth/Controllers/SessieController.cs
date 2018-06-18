@@ -1,4 +1,5 @@
-﻿using BreakOutBoxAuth.Models.Domain;
+﻿using BreakOutBoxAuth.Extensions;
+using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Models.SessieViewModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +8,12 @@ namespace BreakOutBoxAuth.Controllers
     public class SessieController : Controller
     {
         private readonly ISessieRepository _sessieRepository;
+        private readonly SessionExtension _sessionExtension;
         
         public SessieController(ISessieRepository sessieRepository)
         {
             _sessieRepository = sessieRepository;
+            _sessionExtension = new SessionExtension();
         }
 
         // GET
@@ -32,6 +35,8 @@ namespace BreakOutBoxAuth.Controllers
             if (model.Code == sessie.Code)
             {
 
+                _sessionExtension.WriteSessieToSession(sessie, HttpContext);
+                
                 return RedirectToAction("Index", "Groep", new { Id = sessie.Naam }); 
             }
             TempData["error"] = "Foute Sessiecode, probeer opnieuw";

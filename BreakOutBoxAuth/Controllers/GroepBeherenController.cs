@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using BreakOutBoxAuth.hubs;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Models.SessieViewModel;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Differencing;
@@ -25,14 +26,14 @@ namespace BreakOutBoxAuth.Controllers
             _groepstateRepository = groepstateRepository;
         }
 
-        [Authorize(Policy = "Admin")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "Admin")]
         public IActionResult Index()
         {
             var sessies = _sessieRepository.GetAll();
             return View(sessies);
         }
 
-        [Authorize(Policy = "Admin")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "Admin")]
         public IActionResult Groepen(string id)
         {
             Sessie sessie = _sessieRepository.GetByIdGroepenMetGroepstate(id);
@@ -57,7 +58,7 @@ namespace BreakOutBoxAuth.Controllers
             return View(sessie);
         }
 
-        [Authorize(Policy = "Admin")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "Admin")]
         public IActionResult DeBlokkeer(decimal groepsId, string sessieId)
         {
             var groep = _groepRepository.GetById(groepsId);
@@ -82,7 +83,7 @@ namespace BreakOutBoxAuth.Controllers
             return RedirectToAction(nameof(Groepen), new {Id = sessieId});
         }
 
-        [Authorize(Policy = "Admin")]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = "Admin")]
         public IActionResult GroepenActiveren(string sessieId)
         {
             var sessie = _sessieRepository.GetByIdGroepenMetGroepstate(sessieId);
@@ -115,9 +116,18 @@ namespace BreakOutBoxAuth.Controllers
             {
                 _sessieRepository.SaveChanges();
                 _groepstateRepository.SaveChangesAsync();
+                
+                AppHub hub = new AppHub();
+
+                hub.ActivateLoungeStartButton(sessie.Naam);
             }
 
-
+//            var context = GlobalHost.ConnectionManager.GetHubContext<AppHub>();
+//             context.Clients.Group(sessie.Naam).;
+            
+            
+            
+            
             return RedirectToAction(nameof(Groepen), new {Id = sessieId});
         }
     }
