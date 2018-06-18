@@ -62,6 +62,11 @@ namespace BreakOutBoxAuth.Data.Repositories
             return _sessies.Where(s => s.Startdatum.Date <= DateTime.Now.Date).ToList();
         }
 
+        public IEnumerable<Sessie> GetAllToday()
+        {
+            return _sessies.Where(s => s.Startdatum.Date == DateTime.Now.Date).ToList();
+        }
+
 
         public void SaveChanges()
         {

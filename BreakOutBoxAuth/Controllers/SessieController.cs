@@ -23,7 +23,8 @@ namespace BreakOutBoxAuth.Controllers
             //var sessies = _sessieRepository.GetAll();
             
             
-            var sessies = _sessieRepository.GetAllActive();
+            //var sessies = _sessieRepository.GetAllActive();
+            var sessies = _sessieRepository.GetAllToday();
             return View(new SessieViewModel(sessies));
         }
 
@@ -38,6 +39,18 @@ namespace BreakOutBoxAuth.Controllers
                 _sessionExtension.WriteSessieToSession(sessie, HttpContext);
                 
                 return RedirectToAction("Index", "Groep", new { Id = sessie.Naam }); 
+            }
+            TempData["error"] = "Foute Sessiecode, probeer opnieuw";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult Code(SessieViewModel model)
+        {
+            var sessie = _sessieRepository.GetByCode(model.Code);
+            if (sessie != null)
+            {
+                return RedirectToAction("Index", "Groep", new {Id = sessie.Naam});
             }
             TempData["error"] = "Foute Sessiecode, probeer opnieuw";
             return RedirectToAction(nameof(Index));
