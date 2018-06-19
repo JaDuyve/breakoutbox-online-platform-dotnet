@@ -95,13 +95,11 @@ namespace BreakOutBoxAuth.Controllers
                 return NotFound();
             }
 
-            Groepstate state;
-
             bool hasChanged = false;
 
             foreach (var sessieGroep in sessie.SessieGroep)
             {
-                state = sessieGroep.Groepen.Currentstate;
+                var state = sessieGroep.Groepen.Currentstate;
                 if (sessieGroep.Groepen.Currentstate.GetStateEnum() == State.START ||
                     sessieGroep.Groepen.Currentstate.GetStateEnum() == State.GEKOZENVERGRENDELD)
                 {

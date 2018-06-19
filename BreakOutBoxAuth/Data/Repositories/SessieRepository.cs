@@ -39,7 +39,7 @@ namespace BreakOutBoxAuth.Data.Repositories
 
         public IEnumerable<Sessie> GetAll()
         {
-            return _sessies.ToList();
+            return _sessies.OrderByDescending(sessie => sessie.Startdatum).ToList();
         }
 
         public Sessie GetById(string naam)

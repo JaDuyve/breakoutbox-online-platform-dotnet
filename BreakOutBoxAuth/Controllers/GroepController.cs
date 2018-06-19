@@ -69,7 +69,12 @@ namespace BreakOutBoxAuth.Controllers
             else if (groep.Currentstate.GetStateEnum() == State.BLOK)
             {
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+            }else if (groep.Currentstate.GetStateEnum() == State.FINISH)
+            {
+                return RedirectToAction("Schatkist", "Groep");
             }
+            
+            
 
 
             return View(new LoungeViewModel(groep));
@@ -83,22 +88,48 @@ namespace BreakOutBoxAuth.Controllers
             {
                 return NotFound();
             }
-            
-            
 
-            if (groep.Currentstate == null)
+            switch (groep.Currentstate.GetStateEnum())
             {
-                groep.InitializeState();
-                groep.KanSpelen();
+                case State.KANSPELEN:
+                    groep.Spelen();
+                    _groepRepository.SaveChanges();
+                    break;
+                case State.FINISH:
+                    return RedirectToAction("Schatkist", "Groep");
+                    break;
+                
+                case State.BLOK:
+                    return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
+                    break;
+                default:
+                    
+                    
+                    return RedirectToAction("Index", "Groep", new {Id = groep.Id});
+                    break;
+
+            }
+            /*//groep.InitializeState();
+                //groep.KanSpelen();
+                //groep.Spelen();
+                //_groepRepository.SaveChanges();
+                
                 groep.Spelen();
                 _groepRepository.SaveChanges();
+            }else if (groep.Currentstate.GetStateEnum() == State.FINISH)
+            {
+                return RedirectToAction("Schatkist", "Groep");
+            }else if (groep.Currentstate.GetStateEnum() == State.BLOK)
+            {
+                return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
             }
+*/
 
-            groep.Spelen();
-            _groepRepository.SaveChanges();
+            
+            
+            
 
-
-            if (groep.Fout == 3)
+            /*if (groep.Fout == 3)
             {
                 if (groep.Contactleer)
                 {
@@ -107,7 +138,7 @@ namespace BreakOutBoxAuth.Controllers
                 }
 
                 return RedirectToAction("Feedback", "Groep", new {Id = groep.Id});
-            }
+            }*/
 
 
             Pad pad = groep.getCurrentGroepPad(groep.Progress).Paden;
@@ -147,6 +178,7 @@ namespace BreakOutBoxAuth.Controllers
             if (groep.getCurrentGroepPad(groep.Progress).Paden.Antwoord.Equals(antwoordViewModel.Antwoord))
             {
                 groep.ResetFout();
+                
                 _groepRepository.SaveChanges();
                 if (groep.Contactleer)
                 {

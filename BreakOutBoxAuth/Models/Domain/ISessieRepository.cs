@@ -12,5 +12,6 @@ namespace BreakOutBoxAuth.Models.Domain
         void SaveChangesAsync();
         IEnumerable<Sessie> GetAllActive();
         IEnumerable<Sessie> GetAllToday();
+        
     }
 }

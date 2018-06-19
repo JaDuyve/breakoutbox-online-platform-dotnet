@@ -2,12 +2,12 @@
 @model BreakOutBoxAuth.Models.OefeningViewModel.AntwoordViewModel
 
 <div class="container-fluid">
-    <div class="oefeningen">
-        <div class="row">
-            <div class="col-lg-6">
-                <iframe src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf" allowfullscreen height="600" width="700"></iframe>
+    <div class="oefeningen row center-block">
+       @*<div class="row">*@
+            <div class="col-lg-6 center-block">
+                <iframe src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf" allowfullscreen height="600"></iframe>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-4 offset-lg-1">
                 <div class="oefcard mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title">
                         <h2 class="mdl-card__title-text">@Model.Pad.OefeningNaamNavigation.Naam.ToUpper()</h2>
@@ -32,7 +32,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            @*</div>*@
         </div>
     </div>
 </div>
