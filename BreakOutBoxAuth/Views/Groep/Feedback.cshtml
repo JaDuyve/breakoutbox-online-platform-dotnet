@@ -11,24 +11,21 @@
         </a>
     </div>
 </div>
-
-<div id="oef">
-    <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700"></iframe>
+<div class="textback"  id="oef">
+    <h2 class="container">STATUS</h2>
 </div>
+<div class="container">
+    <section class="feedback">
+        @if (@Model.Groep.Currentstate.GetStateEnum() != State.BLOK)
+        {
+            <h3 class="text-center">Je kan doorgaan!</h3>
+            <div><a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent text-center" asp-controller="Groep" asp-action="StartDirect" asp-route-id="@Model.Groep.Id" role="button">Ga door</a></div>
 
-
-@if(@Model.Groep.Currentstate.GetStateEnum() != State.BLOK)
-{
-    <div class="container">
-        <a class="btn btn-primary" asp-controller="Groep" asp-action="StartDirect" asp-route-id="@Model.Groep.Id" role="button">Ga door</a>
-
-    </div>
-    
-}
-else
-{
-    <div class="container">
-        <p>Je kan nog niet doorgaan</p>
-    </div>
-   
-}
+        }
+        else
+        {
+            <h3 class="text-center">Je kan nog niet doorgaan</h3>
+        }
+    </section>
+    <iframe src="~/docs/@(Model.Feedback)" type="application/pdf" width="500" height="700" style="margin-bottom: 2em;"></iframe>
+</div>

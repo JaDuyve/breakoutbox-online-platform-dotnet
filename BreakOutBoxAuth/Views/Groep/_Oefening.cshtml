@@ -2,36 +2,35 @@
 @model BreakOutBoxAuth.Models.OefeningViewModel.AntwoordViewModel
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="embed-responsive embed-responsive-4by3">
-                <iframe class="embed-responsive-item" src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf" allowfullscreen></iframe>
+    <div class="oefeningen">
+        <div class="row">
+            <div class="col-lg-6">
+                <iframe src="~/docs/@(Model.Pad.OefeningNaamNavigation.Opgave)" type="application/pdf" allowfullscreen height="600" width="700"></iframe>
             </div>
-        </div>
-        <div class="col-lg-6" style="padding: 5em">
-            <div class="oefcard mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text">@Model.Pad.OefeningNaamNavigation.Naam.ToUpper()</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    <span class="mdl-chip mdl-chip--contact">
-                        <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">@Model.Pad.GroepsbewerkingNaamNavigation.Opgave</span>
-                        <span class="mdl-chip__text">Jullie groepsbewerking</span>
-                    </span>
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <form method="post" action="/Groep/Start/@Model.Groep.Id">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input asp-for="Antwoord" class="mdl-textfield__input" type="number" id="sample4" placeholder="Jullie antwoord:">
-                            <label class="mdl-textfield__label" asp-for="Antwoord" for="sample4">Jullie antwoord:</label>
-                            <span class="mdl-textfield__error" asp-validation-for="Antwoord">Input is not a number!</span>
-                        </div>
-                        <div>
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">Controleer</button>
-                        </div>
-                    </form>
-                    <p>Tijd: <span id="demo"></span></p>
-                    
+            <div class="col-lg-6">
+                <div class="oefcard mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">@Model.Pad.OefeningNaamNavigation.Naam.ToUpper()</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <span class="mdl-chip mdl-chip--contact">
+                            <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">@Model.Pad.GroepsbewerkingNaamNavigation.Opgave</span>
+                            <span class="mdl-chip__text">Jullie groepsbewerking</span>
+                        </span>
+                        <p>Tijd: <span id="demo"></span></p>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <form method="post" action="/Groep/Start/@Model.Groep.Id">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input asp-for="Antwoord" class="mdl-textfield__input" type="number" id="sample4" placeholder="Jullie antwoord:">
+                                <label class="mdl-textfield__label" asp-for="Antwoord" for="sample4">Jullie antwoord:</label>
+                                <span class="mdl-textfield__error" asp-validation-for="Antwoord">Input is not a number!</span>
+                            </div>
+                            <div>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">Controleer</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +64,7 @@
                 // Output the result in an element with id="demo"
                 document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s";
 
-                // If the count down is over, write some text 
+                // If the count down is over, write some text
 
                 if (distance < 0) {
                     clearInterval(x);

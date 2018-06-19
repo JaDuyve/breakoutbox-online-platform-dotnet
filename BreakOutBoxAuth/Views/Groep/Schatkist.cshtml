@@ -1,11 +1,26 @@
-﻿<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <div class="jumbocard">
-            <h1>Hoera je hebt de schatkist gevonden!</h1>
-            <a asp-controller="Sessie" asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                <i class="material-icons">keyboard_arrow_down</i>
-            </a>
+﻿<div class="schatkist">
+    <div  data-toggle="modal" data-target="#skrt" >
+        <img class="chest" src="~/images/giphy.jpg" />
+        <img src="~/images/giphy.gif"/>
+    </div>   
+    <!-- Modal -->
+    <div class="modal fade" id="skrt" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hoera! Je hebt de schatkist gevonden!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Keer terug naar het startscherm</p>
+                </div>
+                <div class="modal-footer">
+                    <a asp-controller="Sessie" asp-action="Index" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                        <i class="material-icons">done_outline</i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    
 </div>
+
+

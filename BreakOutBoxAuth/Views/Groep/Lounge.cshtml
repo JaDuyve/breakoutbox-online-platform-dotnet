@@ -12,20 +12,19 @@
 }
 
 @section Scripts
-{
+    {
     <script src="~/lib/signalr/signalr.js"></script>
     <script src="~/js/signalr_communication.js"></script>
 }
 
 @* <meta http-equiv="refresh" content="10"/> *@
 
-<div class="jumbotron jumbotron-fluid lounge">
+<div class="lounge">
     <div class="container-fluid">
-        <div class="jumbocard loungecard">
+        <div class="loungecard">
             <h2>Lobby</h2>
             <h3 id="sessieName">@Model.SessieNaam</h3>
             <div class="row">
-
                 <div class="col col-md-6">
                     <div class="grpcard mdl-card mdl-shadow--2dp">
                         <div class="mdl-card__title">
@@ -55,22 +54,17 @@
                 </div>
                 <div class="col col-md-6">
                     <h3>Even Wachten...</h3>
-
-                    <div class="spinner">
-                        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-                    </div>
-                    @if (Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.GEKOZENVERGRENDELD && Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.START)
-                    {
-                        <div>
+                    <div class="wachten">
+                        <span class="spinner mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></span>
+                        @if (Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.GEKOZENVERGRENDELD && Model.Groep.Currentstate.GetStateEnum() != BreakOutBoxAuth.Models.Domain.State.START)
+                        {
                             <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id">Start</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div>
+                        }
+                        else
+                        {
                             <a id="startButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" asp-controller="Groep" asp-action="Start" asp-route-id="@Model.Groep.Id" disabled="disabled">Start</a>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         </div>

@@ -33,7 +33,6 @@
 body {
     position: relative;
     margin: 0;
-    padding-bottom: 10%;
     background-color: #efefef;
 }
 
@@ -117,11 +116,6 @@ footer {
     -moz-box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     box-shadow: inset 0px 8px 17px -6px rgba(0,0,0,0.31);
     text-align: center;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
 }
 
 .jumbotron {
@@ -138,24 +132,17 @@ footer {
 
 .jumbocard {
     display: block;
-    padding: 50px;
+    padding: 25px;
     width: 80%;
     border-radius: 5px;
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.5);
     margin: 0 auto;
 }
 
-    .jumbocard p, .jumbocard h1, .jumbocard h2 {
-        text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    .jumbocard p {
+        width: 60%;
+        margin: 0 auto;
     }
-.jumbocard p {
-    width: 60%;
-    margin: 0 auto;
-}
-
-.jumbocard > .schatkist {
-    top: 50%;
-}
 
 h1 {
     font-size: 3rem;
@@ -188,6 +175,7 @@ tr {
 
 .sessies {
     padding: 2em;
+    margin: 3em auto;
 }
 
 .textback {
@@ -246,6 +234,11 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
 
 .groepen {
     clear: both;
+    margin: 10em auto;
+}
+
+.onderbuttontje {
+    margin: 50px 0 0 0px;
 }
 
 a {
@@ -286,15 +279,32 @@ a {
     margin: 1em 0;
 }
 
-iframe {
-    height: 100vh;
-    width: 100%;
-    padding: 5em;
+.sessiecard.mdl-card {
+    margin: 5em auto;
+    width: 512px;
 }
 
+.sessiecard > .mdl-card__title {
+    color: #fff;
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.oefeningen {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px;
+    width: 100%;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
 .oefcard.mdl-card {
     width: 512px;
-    margin: 5em auto;
 }
 
 .oefcard > .mdl-card__title {
@@ -302,7 +312,13 @@ iframe {
     height: 176px;
     background: url('../images/shattered-island.gif') center / cover;
 }
-
+.feedback {
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 .logcard.mdl-card {
     width: 512px;
     margin: 6em auto;
@@ -343,19 +359,42 @@ form {
 .lounge {
     background: url('../images/subway-lines.png');
     background-repeat: repeat;
-    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0;
 }
 
 .loungecard {
     opacity: 1;
     padding: 0 0 4em 0;
     background: url('../images/shattered-island.gif') center;
-    margin-bottom: 5em;
-    position: static;
+    margin: 50px auto;
+    width: 100%;
 }
 
-.spinner {
-    margin: 1em auto 5em auto;
+#sessieName {
+    width: 80%;
+    text-align: center;
+    margin: 1em auto;
+    padding: 1em;
+    border-bottom: 2px solid white;
+}
+
+.wachten {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner.mdl-spinner {
+    margin: 0 25px 0 0;
 }
 
 @media (min-width: 768px) {
@@ -371,12 +410,20 @@ form {
         height: 90vh;
     }
 
+    .loungecard {
+        width: 75%;
+    }
+
     h1 {
         font-size: 5rem;
     }
 
     .table {
-        width: 60%;
+        width: 75%;
+    }
+
+    .sessiecard.mdl-card {
+        width: 75%;
     }
 }
 
@@ -385,4 +432,19 @@ form {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
+}
+.chest {
+    position: absolute;
+}
+.chest:hover {
+    opacity: 0;
+}
+.schatkist {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 10em 0;
+    background-color: #FFF;
 }
