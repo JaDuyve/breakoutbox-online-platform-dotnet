@@ -14,7 +14,7 @@
 <div class="secties">
     <div class="textback">
         <h2 class="container">Groep selecteren</h2>
-    </div>    
+    </div>
     <div class="container groepen">
         <div class="row">
             @foreach (var groep in Model.SessieGroep)
@@ -42,14 +42,14 @@
                                         <p>Leerlingen:</p>
                                         <ul class="demo-list-icon mdl-list">
                                             @foreach (var leerling in @groep.Groepen.LijstLeerlingen())
-        {
-                                    <li class="mdl-list__item">
-                                        <span class="mdl-list__item-primary-content">
-                                            <i class="material-icons mdl-list__item-icon">person</i>
-                                            @leerling
-                                        </span>
-                                    </li>
-}
+                                            {
+                                                <li class="mdl-list__item">
+                                                    <span class="mdl-list__item-primary-content">
+                                                        <i class="material-icons mdl-list__item-icon">person</i>
+                                                        @leerling
+                                                    </span>
+                                                </li>
+                                            }
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -67,3 +67,14 @@
         <a class="mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect onderbuttontje" asp-controller="Sessie" asp-action="Index">Back</a>
     </div>
 </div>
+@section Scripts {
+
+    <script>
+        window.sr = ScrollReveal({duration: 1000});
+        sr.reveal('.sessiebar', {
+            origin: 'right',
+            delay: 500
+        });
+        sr.reveal('.circlecard');
+    </script>
+}
