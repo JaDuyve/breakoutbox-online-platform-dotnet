@@ -96,12 +96,17 @@
 </div>
 
 @section Scripts {
-    <script src="~/js/jquery.parallax.min.js"></script>
+    
     <script>
         $('.jumbotron').parallax({
             speed: .5,
             sliderSelector: '>.slider',
             
         })
+    </script>
+    <script>
+        window.sr = ScrollReveal();
+        sr.reveal('.table');
+        sr.reveal('.sessiecard');
     </script>
 }
