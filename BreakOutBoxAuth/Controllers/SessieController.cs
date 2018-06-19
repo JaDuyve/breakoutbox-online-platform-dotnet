@@ -36,7 +36,6 @@ namespace BreakOutBoxAuth.Controllers
             if (model.Code == sessie.Code)
             {
 
-                _sessionExtension.WriteSessieToSession(sessie, HttpContext);
                 
                 return RedirectToAction("Index", "Groep", new { Id = sessie.Naam }); 
             }

@@ -16,7 +16,7 @@ using BreakOutBoxAuth.hubs;
 using BreakOutBoxAuth.Models;
 using BreakOutBoxAuth.Models.Domain;
 using BreakOutBoxAuth.Services;
-using Owin;
+
 
 namespace BreakOutBoxAuth
 {
@@ -44,7 +44,7 @@ namespace BreakOutBoxAuth
             services.AddScoped<IPadRepository, PadRepository>();
             services.AddScoped<IGroepRepository, GroepRepository>();
             services.AddScoped<IGroepstateRepository, GroepstateRepository>();
-
+            services.AddScoped<AppHub>();
             services.AddScoped<SessionExtension>();
 
 
@@ -60,7 +60,6 @@ namespace BreakOutBoxAuth
             
             services.AddMvc();
 
-            services.AddSignalR();
 
         }
 
@@ -90,8 +89,7 @@ namespace BreakOutBoxAuth
                     template: "{controller=Sessie}/{action=Index}/{id?}");
             });
 
-            app.UseSignalR(routes => 
-                routes.MapHub<AppHub>("/AppHub"));
+            
 
             //  breakoutBoxDataInitializer.InitializeData().Wait();
         }

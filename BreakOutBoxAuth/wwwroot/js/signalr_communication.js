@@ -1,6 +1,4 @@
-const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/AppHub")
-    .build();
+const connection = new signalR.HubConnection("/hubs/apphub");
 
 // connection.on("showButton", )
 /*connection.start()
@@ -11,7 +9,7 @@ connection.start()
         joinGroup()
     })
     .catch(function () {
-        alert("failed")
+        console.log("failed")
     });
 
 function joinGroup() {
@@ -21,9 +19,9 @@ function joinGroup() {
     connection.invoke("JoinRoom", sessieName).catch(err => console.log(err.toString()));
 }
 
-connection.on("ActivateStartButton", () => {
+connection.on("ActivateStartButton", (value) => {
     
     let a = document.getElementById("startButton");
     a.removeAttribute("disabled");
-    
+    alert("blub" + value);
 });
