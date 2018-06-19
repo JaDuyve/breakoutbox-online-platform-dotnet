@@ -22,7 +22,7 @@ namespace BreakOutBoxAuth.Data
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
-                await CreateUser("Jari", "P@ssword1!", "Admin");
+                await CreateUser("admin", "admin", "Admin");
                 _dbContext.SaveChanges();
             }
             
